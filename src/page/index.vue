@@ -151,7 +151,6 @@ export default {
       this.Headline = this.menuList[initTitleArr[0]].secondList[
         initTitleArr[1]
       ].name;
-      console.log(this.title);
     },
     clickSecond(index, r) {
       var titleArr = index.split("-");

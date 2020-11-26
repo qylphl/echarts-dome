@@ -7,6 +7,9 @@ import App from './App';
 import router from './router';
 import Router from 'vue-router';
 import './assets/icon/iconfont.css';
+// 使用echarts
+import echarts from 'echarts'
+Vue.prototype.$echarts = echarts;
 
 //解决Element/vue router连续点击多次路由报错解决方法
 const originalPush = Router.prototype.push;
