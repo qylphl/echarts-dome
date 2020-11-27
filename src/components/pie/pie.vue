@@ -1,27 +1,26 @@
 <template>
   <div class="chart-content">
-    <p class="title-bar">{{title}}</p>
+    <p class="title-bar">{{ title }}</p>
     <div class="chart-box" ref="pieChart"></div>
   </div>
 </template>
 
 <script>
-
 export default {
   props: {
     title: {
       default: "普通饼图",
       type: String,
     },
+    data: {
+      type: Array,
+    },
+    color: {
+      type: Array,
+    },
   },
   data() {
-    return {
-      data: [
-        { value: 1438, name: "违纪行为" },
-        { value: 109, name: "职务违法犯罪行为" },
-        { value: 2865, name: "其他违法犯罪行为" },
-      ],
-    };
+    return {};
   },
   mounted() {
     this.initChart();
@@ -30,7 +29,7 @@ export default {
     initChart() {
       let pieChart = this.$echarts.init(this.$refs.pieChart);
       let option = {
-        color: ["#328ff6", "#f56e6b", "#c956d7"],
+        color: this.color,
         tooltip: {
           trigger: "item",
           formatter: "{a} <br/>{b} : {c} ({d}%)",
@@ -38,7 +37,7 @@ export default {
         legend: {
           icon: "roundRect",
           orient: "horizontal",
-          bottom: '10%',
+          bottom: "10%",
           itemGap: 20,
           align: "left",
           padding: [5, 25, 5, 10],
@@ -79,5 +78,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 </style>

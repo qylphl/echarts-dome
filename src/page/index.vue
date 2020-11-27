@@ -113,7 +113,7 @@ export default {
           secondList: [
             {
               name: "来访大厅",
-              Vrouter: "/visiting",
+              Vrouter: "/barCharts",
               iconCls: "el-icon-i el-icon-location",
             },
             {

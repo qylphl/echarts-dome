@@ -11,6 +11,11 @@ import './assets/icon/iconfont.css';
 import echarts from 'echarts'
 Vue.prototype.$echarts = echarts;
 
+// 使用highcharts
+import highcharts from 'highcharts'
+// import VueHighCharts from 'vue-highcharts'
+import highcharts3d from 'highcharts/highcharts-3d'
+
 //解决Element/vue router连续点击多次路由报错解决方法
 const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {
@@ -18,6 +23,10 @@ Router.prototype.push = function push(location) {
 };
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
+
+Vue.use(highcharts);
+highcharts3d(highcharts)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

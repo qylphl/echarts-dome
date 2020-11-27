@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 const Index = r => require.ensure([], () => r(require('@/page/index')), 'Index');
 const PieCharts = r => require.ensure([], () => r(require('@/components/pieCharts')), 'PieCharts');
+const BarCharts = r => require.ensure([], () => r(require('@/components/barCharts')), 'BarCharts');
 
 Vue.use(Router)
 
@@ -32,6 +33,10 @@ export default new Router({
         {
           path: '/pieCharts',
           component: PieCharts,
+        },
+        {
+          path: '/barCharts',
+          component: BarCharts,
         },
       ]
     }
