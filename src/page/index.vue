@@ -139,7 +139,7 @@ export default {
         { title: "矩阵图相关图例", iconCls: "el-icon-i el-icon-location" },
       ],
       //选中二级菜单的index值
-      clickIndex: "-1",
+      clickIndex: "",
     };
   },
   mounted() {
@@ -147,10 +147,8 @@ export default {
   },
   methods: {
     init() {
-      var initTitleArr = this.clickIndex.split("-");
-      this.Headline = this.menuList[initTitleArr[0]].secondList[
-        initTitleArr[1]
-      ].name;
+      var initTitleArr = this.clickIndex ? this.clickIndex.split("-") : '';
+      this.Headline = initTitleArr ? this.menuList[initTitleArr[0]].secondList[initTitleArr[1]].name : this.Headline;
     },
     clickSecond(index, r) {
       var titleArr = index.split("-");

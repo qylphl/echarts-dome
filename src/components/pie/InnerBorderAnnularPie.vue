@@ -1,7 +1,7 @@
 <template>
   <div class="chart-content">
     <p class="title-bar">{{ title }}</p>
-    <div class="chart-box" ref="annularChart"></div>
+    <div class="chart-box" ref="innerBorderAnnularChart"></div>
   </div>
 </template>
 
@@ -10,13 +10,14 @@ import chartsUtils from "utils/chartsClass";
 export default {
   props: {
     title: {
-      default: "环形图",
+      default: "带内边框的环形图",
       type: String,
     },
     data: {
       type: Array,
     },
     color: {
+      //只能是普通颜色不能是渐变色
       type: Array,
     },
   },
@@ -29,8 +30,10 @@ export default {
   methods: {
     initChart() {
       let that = this,
-        annularChart = this.$echarts.init(this.$refs.annularChart),
         colorList = this.color,
+        innerBorderAnnularChart = this.$echarts.init(
+          this.$refs.innerBorderAnnularChart
+        ),
         option = {
           legend: {
             icon: "roundRect",
@@ -49,13 +52,20 @@ export default {
             },
             data: this.data.map((v) => v.name),
           },
-          // color: ['#499bfe','#f67673','#ffc460','#bc5ccb','#40dea0','#08d471','#6ad408','#fff100','#ff7700','#ff0000','#ff5e66','#7c65f1','#601986'],
+          // color: ['#fcb83d','#fc7e68','#da7cee','#3f96ff'],
           series: [
+            // 饼图
             {
               type: "pie",
               radius: ["40%", "55%"],
               center: ["50%", "40%"],
-              avoidLabelOverlap: true,
+              avoidLabelOverlap: false,
+              tooltip: {
+                show: false,
+              },
+              labelLine: {
+                show: false,
+              },
               label: {
                 normal: {
                   show: false,
@@ -63,24 +73,17 @@ export default {
                 },
                 emphasis: {
                   show: true,
+                  color: "#333",
                   formatter: (params) => {
                     return (
-                      "{name|" +
-                      params.name +
-                      "}\n{value|" +
-                      params.value +
-                      "}{percent|" +
-                      "\n" +
-                      "占比" +
-                      params.percent.toFixed(2) +
-                      "%}"
+                      "{name|" + params.name + "}\n{value|" + params.value + "}"
                     );
                   },
                   rich: {
                     name: {
                       fontSize: 14,
-                      padding: [5, 0, 5, 0],
                       color: "#333",
+                      padding: [5, 0, 5, 0],
                     },
                     value: {
                       fontSize: 28,
@@ -88,50 +91,68 @@ export default {
                       color: "#333",
                       padding: [5, 0, 5, 0],
                     },
-                    percent: {
-                      color: "#333",
-                      fontSize: 12,
-                      padding: [5, 0, 5, 0],
-                    },
                   },
                 },
               },
-              labelLine: {
-                normal: {
-                  show: false,
-                  length2: 10,
-                },
-              },
-              data: this.data,
               itemStyle: {
+                borderWidth: 0, //设置border的宽度有多大
+                borderColor: "#fff",
                 normal: {
                   color: function (params) {
                     return colorList[params.dataIndex];
                   },
-                  shadowBlur: 20,
-                  shadowColor: "rgba(56,147,252,0.3)",
-                  shadowBlur: 5,
-                  shadowOffsetY: 5,
                 },
-                show: false,
                 emphasis: {
-                  borderColor: "#fff",
-                  borderWidth: 1,
+                  shadowBlur: 10,
+                  shadowOffsetX: 0,
+                  shadowColor: "rgba(0, 0, 0, 0.5)",
                 },
-                shadowBlur: 20,
-                shadowColor: "rgba(56,147,252,0.3)",
-                shadowBlur: 5,
-                shadowOffsetY: 5,
               },
+              data: that.data,
+            },
+            {
+              type: "pie",
+              radius: ["33%", "33%"],
+              center: ["50%", "40%"],
+              color: "rgba(0,0,0,0)",
+              borderWidth: 0,
+              hoverOffset: 2,
+              tooltip: {
+                show: false,
+              },
+              labelLine: {
+                show: false,
+              },
+              legend: {
+                show: false,
+              },
+              label: {
+                show: false,
+              },
+              labelLine: {
+                show: false,
+              },
+              itemStyle: {
+                show: true,
+                borderColor: "rgba(0,0,0,0)",
+                borderWidth: 0,
+                shadowBlur: 0,
+                normal: {
+                  color: function (params) {
+                    return colorList[params.dataIndex];
+                  },
+                },
+              },
+              data: that.data,
             },
           ],
         };
       window.addEventListener("resize", function () {
-        annularChart.resize();
+        innerBorderAnnularChart.resize();
       });
-      annularChart.setOption(option, true);
-      new chartsUtils().setHighlight(
-        annularChart,
+      innerBorderAnnularChart.setOption(option, true);
+      new chartsUtils().setBorderPieHighlight(
+        innerBorderAnnularChart,
         that.data.map((v) => v.value)
       );
     },

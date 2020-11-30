@@ -2,6 +2,15 @@
 
 ## 项目描述
     项目中常用的echarts总结和整理
+    常用总结饼图                ----- src/page/pieCharts
+      饼图的各个组件            ----- src/components/pie
+        普通饼图               ----- src/components/pie/pie
+        普通3D饼图             ----- src/components/pie/3dpie
+        普通环形饼图            ----- src/components/pie/annularPie
+        带小圆点边框的环形图     ----- src/components/pie/dotAnnularPie 
+        带内边框的环形图        ----- src/components/pie/InnerBorderAnnularPie 
+        3D环形图              ----- src/components/pie/3dAnnularPie 
+        动态环形图             ----- src/components/pie/motionAnnularPie 
 
 > A Vue.js project
 

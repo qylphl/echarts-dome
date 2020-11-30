@@ -1,20 +1,166 @@
 <template>
-  <div class="content flex-box">
-    <!-- 普通饼状图 -->
-    <div class="pie-box"><pie :data="data" :color='color'></pie></div>
-    <!-- 3D饼图 -->
-    <div class="pie-box"><stereoscopicPie :data="data" :color='color'></stereoscopicPie></div>
+  <div class="content">
+    <!-- 饼图 -->
+    <div class="content-box flex-box" v-if="index == 1">
+      <!-- 普通饼状图 -->
+      <div class="pie-box">
+        <pie :data="data" :color="color"></pie>
+      </div>
+      <!-- 3D饼图 -->
+      <div class="pie-box">
+        <stereoscopicPie :data="data" :color="color"></stereoscopicPie>
+      </div>
+      <div class="pie-box hidden"></div>
+    </div>
+    <!-- 环形图 -->
+    <div class="content-box flex-box" v-if="index == 2">
+      <!-- 普通环形图 -->
+      <div class="pie-box">
+        <annularPie :data="data" :color="gradients"></annularPie>
+      </div>
+      <!-- 带小圆点环形图 -->
+      <div class="pie-box">
+        <dotAnnularPie :data="data" :color="color"></dotAnnularPie>
+      </div>
+      <!-- 带内边框环形图 -->
+      <div class="pie-box">
+        <innerBorderAnnularPie
+          :data="data"
+          :color="gradients"
+        ></innerBorderAnnularPie>
+      </div>
+      <!-- 3D环形图 -->
+      <div class="pie-box">
+        <annularStereoscopicPie
+          :data="data"
+          :color="color"
+        ></annularStereoscopicPie>
+      </div>
+      <!-- 动态环形图 -->
+      <div class="pie-box">
+        <motionAnnularPie :data="80"></motionAnnularPie>
+      </div>
+      <div class="pie-box hidden"></div>
+    </div>
+    <!-- 玫瑰图 -->
+    <div class="content-box flex-box" v-if="index == 3">
+      <!-- 普通玫瑰图 -->
+      <div class="pie-box">
+        <annularPie :data="data" :color="gradients"></annularPie>
+      </div>
+    </div>
+    <!-- 环饼嵌套图 -->
+    <div class="content-box flex-box" v-if="index == 4"></div>
+    <!-- 旭日图 -->
+    <div class="content-box flex-box" v-if="index == 5"></div>
   </div>
 </template>
 
 <script>
-import pie from "./pie";
-import stereoscopicPie from "./3dPie";
+import pie from "components/pie/pie";
+import stereoscopicPie from "components/pie/3dPie";
+import annularPie from "components/pie/annularPie";
+import dotAnnularPie from "components/pie/dotAnnularPie";
+import innerBorderAnnularPie from "components/pie/InnerBorderAnnularPie";
+import annularStereoscopicPie from "components/pie/3dAnnularPie";
+import motionAnnularPie from "components/pie/motionAnnularPie";
 export default {
   data() {
     return {
-      index:this.$route.params.index,     //  index值
+      index: this.$route.params.index, //  index值
       color: ["#328ff6", "#f56e6b", "#c956d7"],
+      gradients: [
+        {
+          type: "linear",
+          x: 0,
+          y: 0,
+          x2: 1,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: "#3b97fe", // 0% 处的颜色
+            },
+            {
+              offset: 1,
+              color: "#5dc8fe", // 100% 处的颜色
+            },
+          ],
+          globalCoord: false, // 缺省为 false
+        },
+        {
+          type: "linear",
+          x: 0,
+          y: 0,
+          x2: 1,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: "#fc6d67", // 0% 处的颜色
+            },
+            {
+              offset: 1,
+              color: "#fc896c", // 100% 处的颜色
+            },
+          ],
+          globalCoord: false, // 缺省为 false
+        },
+        {
+          type: "linear",
+          x: 0,
+          y: 0,
+          x2: 1,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: "#f8a928", // 0% 处的颜色
+            },
+            {
+              offset: 1,
+              color: "#fec669", // 100% 处的颜色
+            },
+          ],
+          globalCoord: false, // 缺省为 false
+        },
+        {
+          type: "linear",
+          x: 0,
+          y: 0,
+          x2: 1,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: "#a76dd1", // 0% 处的颜色
+            },
+            {
+              offset: 1,
+              color: "#b858d3", // 100% 处的颜色
+            },
+          ],
+          globalCoord: false, // 缺省为 false
+        },
+        {
+          type: "linear",
+          x: 0,
+          y: 0,
+          x2: 1,
+          y2: 1,
+          colorStops: [
+            {
+              offset: 0,
+              color: "#49e0b3", // 0% 处的颜色
+            },
+            {
+              offset: 1,
+              color: "#61dcbd", // 100% 处的颜色
+            },
+          ],
+          globalCoord: false, // 缺省为 false
+        },
+      ],
       data: [
         { value: 1438, name: "违纪行为" },
         { value: 109, name: "职务违法犯罪行为" },
@@ -22,29 +168,48 @@ export default {
       ],
     };
   },
+  watch: {
+    $route(to, from) {
+      this.index = this.$route.params.index;
+    },
+  },
   mounted() {},
   methods: {},
-  components: { pie, stereoscopicPie },
+  components: {
+    pie,
+    stereoscopicPie,
+    annularPie,
+    dotAnnularPie,
+    innerBorderAnnularPie,
+    annularStereoscopicPie,
+    motionAnnularPie,
+  },
 };
 </script>
 
 <style lang="scss">
 @import "style/charts.scss";
-.content {
+.content,
+.content-box {
   width: 100%;
   height: 100%;
-  padding: 40px;
   background-color: #fff;
   box-sizing: border-box;
-  overflow: visible;
+  overflow: hidden;
+}
+.content-box {
+  padding: 40px 40px 0;
+  overflow-y: visible;
+  flex-wrap: wrap;
+  justify-content: space-between;
   .pie-box {
     width: 30%;
     height: 500px;
     background: #fff;
     border-radius: 7px;
     box-shadow: 5px 5px 20px #b3b3b4;
-    margin-left: 5%;
-    &:first-child{
+    margin-bottom: 40px;
+    &:first-child {
       margin-left: 0;
     }
   }

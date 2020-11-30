@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import pie from "./pie";
-import stereoscopicPie from "./3dPie";
+import pie from "components/pie/pie";
+import stereoscopicPie from "components/pie/3dPie";
 export default {
   data() {
     return {

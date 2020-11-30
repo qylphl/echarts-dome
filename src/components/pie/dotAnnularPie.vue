@@ -1,7 +1,7 @@
 <template>
   <div class="chart-content">
     <p class="title-bar">{{ title }}</p>
-    <div class="chart-box" ref="annularChart"></div>
+    <div class="chart-box" ref="dotAnnularChart"></div>
   </div>
 </template>
 
@@ -10,13 +10,14 @@ import chartsUtils from "utils/chartsClass";
 export default {
   props: {
     title: {
-      default: "环形图",
+      default: "带小圆点的环形图",
       type: String,
     },
     data: {
       type: Array,
     },
     color: {
+      //只能是普通颜色不能是渐变色
       type: Array,
     },
   },
@@ -29,8 +30,7 @@ export default {
   methods: {
     initChart() {
       let that = this,
-        annularChart = this.$echarts.init(this.$refs.annularChart),
-        colorList = this.color,
+        dotAnnularChart = this.$echarts.init(this.$refs.dotAnnularChart),
         option = {
           legend: {
             icon: "roundRect",
@@ -49,13 +49,11 @@ export default {
             },
             data: this.data.map((v) => v.name),
           },
-          // color: ['#499bfe','#f67673','#ffc460','#bc5ccb','#40dea0','#08d471','#6ad408','#fff100','#ff7700','#ff0000','#ff5e66','#7c65f1','#601986'],
           series: [
             {
               type: "pie",
               radius: ["40%", "55%"],
               center: ["50%", "40%"],
-              avoidLabelOverlap: true,
               label: {
                 normal: {
                   show: false,
@@ -97,43 +95,92 @@ export default {
                 },
               },
               labelLine: {
-                normal: {
-                  show: false,
-                  length2: 10,
-                },
+                show: false,
               },
-              data: this.data,
               itemStyle: {
                 normal: {
                   color: function (params) {
-                    return colorList[params.dataIndex];
+                    return that.color[params.dataIndex];
                   },
-                  shadowBlur: 20,
-                  shadowColor: "rgba(56,147,252,0.3)",
-                  shadowBlur: 5,
-                  shadowOffsetY: 5,
+                  borderColor: "#fff",
+                  borderWidth: 1,
                 },
                 show: false,
                 emphasis: {
                   borderColor: "#fff",
                   borderWidth: 1,
                 },
-                shadowBlur: 20,
-                shadowColor: "rgba(56,147,252,0.3)",
-                shadowBlur: 5,
-                shadowOffsetY: 5,
               },
+              data: that.data,
+            },
+            {
+              type: "pie",
+              radius: ["70%", "70%"],
+              center: ["50%", "40%"],
+              color: "rgba(0,0,0,0)",
+              hoverOffset: 0,
+              legend: {
+                show: false,
+              },
+              label: {
+                normal: {
+                  show: false,
+                  position: "inner",
+                  formatter: (params) => {
+                    const index = params.dataIndex;
+                    return [`{hr${index}|}`].join("\n");
+                  },
+                  rich: that.getRich(),
+                },
+                emphasis: {
+                  // 强调样式
+                  show: true,
+                },
+              },
+              labelLine: {
+                normal: {
+                  show: false,
+                  length: 8,
+                  smooth: 1,
+                  width: 0,
+                },
+                emphasis: {
+                  // 强调样式
+                  show: false,
+                },
+              },
+              itemStyle: {
+                borderType: "dashed",
+                show: true,
+                borderColor: "#17acf6",
+                borderWidth: 1,
+              },
+              data: that.data,
             },
           ],
         };
       window.addEventListener("resize", function () {
-        annularChart.resize();
+        dotAnnularChart.resize();
       });
-      annularChart.setOption(option, true);
-      new chartsUtils().setHighlight(
-        annularChart,
+      dotAnnularChart.setOption(option, true);
+      new chartsUtils().setBorderPieHighlight(
+        dotAnnularChart,
         that.data.map((v) => v.value)
       );
+    },
+    getRich() {
+      let result = {},
+        colorRich = this.color;
+      colorRich.forEach((v, i) => {
+        result[`hr${i}`] = {
+          backgroundColor: colorRich[i],
+          borderRadius: 6,
+          width: 1,
+          height: 1,
+          padding: [-6, -6, -6, -6],
+        };
+      });
+      return result;
     },
   },
 };
