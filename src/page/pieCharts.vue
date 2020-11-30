@@ -8,11 +8,12 @@
 </template>
 
 <script>
-import pie from "./pie/pie";
-import stereoscopicPie from "./pie/3dPie";
+import pie from "./pie";
+import stereoscopicPie from "./3dPie";
 export default {
   data() {
     return {
+      index:this.$route.params.index,     //  index值
       color: ["#328ff6", "#f56e6b", "#c956d7"],
       data: [
         { value: 1438, name: "违纪行为" },

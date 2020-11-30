@@ -82,27 +82,27 @@ export default {
           secondList: [
             {
               name: "饼图",
-              Vrouter: "/pieCharts",
+              Vrouter: "/pieCharts/1",
               iconCls: "el-icon-i el-icon-location",
             },
             {
               name: "环形图",
-              Vrouter: "/",
+              Vrouter: "/pieCharts/2",
               iconCls: "el-icon-i el-icon-location",
             },
             {
               name: "玫瑰图",
-              Vrouter: "/",
+              Vrouter: "/pieCharts/3",
               iconCls: "el-icon-i el-icon-location",
             },
             {
               name: "环饼嵌套图",
-              Vrouter: "/",
+              Vrouter: "/pieCharts/4",
               iconCls: "el-icon-i el-icon-location",
             },
             {
               name: "旭日图",
-              Vrouter: "/",
+              Vrouter: "/pieCharts/5",
               iconCls: "el-icon-i el-icon-location",
             },
           ],
@@ -139,7 +139,7 @@ export default {
         { title: "矩阵图相关图例", iconCls: "el-icon-i el-icon-location" },
       ],
       //选中二级菜单的index值
-      clickIndex: "0-0",
+      clickIndex: "-1",
     };
   },
   mounted() {
