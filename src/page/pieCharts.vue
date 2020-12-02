@@ -44,9 +44,17 @@
     </div>
     <!-- 玫瑰图 -->
     <div class="content-box flex-box" v-if="index == 3">
-      <!-- 普通玫瑰图 -->
+      <!-- 普通玫瑰饼图 -->
       <div class="pie-box">
-        <annularPie :data="data" :color="gradients"></annularPie>
+        <rosePie :data="data" :color="gradients"></rosePie>
+      </div>
+      <!-- 普通玫瑰环图 -->
+      <div class="pie-box">
+        <roseAnnularPie :data="data" :color="color"></roseAnnularPie>
+      </div>
+      <!-- 鸡冠玫瑰图 -->
+      <div class="pie-box">
+        <cockScombPie :data="data" :color="color"></cockScombPie>
       </div>
     </div>
     <!-- 环饼嵌套图 -->
@@ -64,6 +72,9 @@ import dotAnnularPie from "components/pie/dotAnnularPie";
 import innerBorderAnnularPie from "components/pie/InnerBorderAnnularPie";
 import annularStereoscopicPie from "components/pie/3dAnnularPie";
 import motionAnnularPie from "components/pie/motionAnnularPie";
+import rosePie from "components/pie/rosePie";
+import roseAnnularPie from "components/pie/roseAnnularPie";
+import cockScombPie from "components/pie/cockScombPie";
 export default {
   data() {
     return {
@@ -163,7 +174,7 @@ export default {
       ],
       data: [
         { value: 1438, name: "违纪行为" },
-        { value: 109, name: "职务违法犯罪行为" },
+        { value: 1090, name: "职务违法犯罪行为" },
         { value: 2865, name: "其他违法犯罪行为" },
       ],
     };
@@ -183,6 +194,9 @@ export default {
     innerBorderAnnularPie,
     annularStereoscopicPie,
     motionAnnularPie,
+    rosePie,
+    roseAnnularPie,
+    cockScombPie,
   },
 };
 </script>

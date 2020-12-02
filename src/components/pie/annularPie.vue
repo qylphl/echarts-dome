@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import chartsUtils from "utils/chartsClass";
+import {setHighlight} from "utils/chartsClass";
 export default {
   props: {
     title: {
@@ -130,7 +130,7 @@ export default {
         annularChart.resize();
       });
       annularChart.setOption(option, true);
-      new chartsUtils().setHighlight(
+      setHighlight(
         annularChart,
         that.data.map((v) => v.value)
       );

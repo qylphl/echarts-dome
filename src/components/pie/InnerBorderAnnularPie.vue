@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import chartsUtils from "utils/chartsClass";
+import {setBorderPieHighlight} from "utils/chartsClass";
 export default {
   props: {
     title: {
@@ -151,7 +151,7 @@ export default {
         innerBorderAnnularChart.resize();
       });
       innerBorderAnnularChart.setOption(option, true);
-      new chartsUtils().setBorderPieHighlight(
+      setBorderPieHighlight(
         innerBorderAnnularChart,
         that.data.map((v) => v.value)
       );

@@ -11,6 +11,9 @@
         带内边框的环形图        ----- src/components/pie/InnerBorderAnnularPie 
         3D环形图              ----- src/components/pie/3dAnnularPie 
         动态环形图             ----- src/components/pie/motionAnnularPie 
+        玫瑰饼图                ----- src/components/pie/rosePie 
+        玫瑰环图                ----- src/components/pie/roseAnnularPie 
+        鸡冠图                ----- src/components/pie/cockScombPie 
 
 > A Vue.js project
 
