@@ -1,9 +1,6 @@
 <template>
   <div class="content flex-box">
-    <!-- 普通饼状图 -->
-    <div class="pie-box"><pie :data="data" :color='color'></pie></div>
-    <!-- 3D饼图 -->
-    <div class="pie-box"><stereoscopicPie :data="data" :color='color'></stereoscopicPie></div>
+    
   </div>
 </template>
 
@@ -32,18 +29,16 @@ export default {
 .content {
   width: 100%;
   height: 100%;
-  padding: 40px;
-  background-color: #fff;
   box-sizing: border-box;
   overflow: visible;
   .pie-box {
     width: 30%;
     height: 500px;
-    background: #fff;
+    background-color: transparent;
     border-radius: 7px;
     box-shadow: 5px 5px 20px #b3b3b4;
     margin-left: 5%;
-    &:first-child{
+    &:first-child {
       margin-left: 0;
     }
   }

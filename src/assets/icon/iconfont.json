@@ -1,0 +1,100 @@
+{
+  "id": "2242392",
+  "name": "charts",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "18576350",
+      "name": "饼图",
+      "font_class": "bingtu",
+      "unicode": "e626",
+      "unicode_decimal": 58918
+    },
+    {
+      "icon_id": "18576351",
+      "name": "气泡",
+      "font_class": "qipao",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "18576352",
+      "name": "水滴图",
+      "font_class": "shuiditu",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    },
+    {
+      "icon_id": "18576353",
+      "name": "地图",
+      "font_class": "ditu",
+      "unicode": "e629",
+      "unicode_decimal": 58921
+    },
+    {
+      "icon_id": "18576354",
+      "name": "漏斗图",
+      "font_class": "loudoutu",
+      "unicode": "e62a",
+      "unicode_decimal": 58922
+    },
+    {
+      "icon_id": "18576355",
+      "name": "雷达图",
+      "font_class": "leidatu",
+      "unicode": "e62b",
+      "unicode_decimal": 58923
+    },
+    {
+      "icon_id": "18576356",
+      "name": "双轴图",
+      "font_class": "shuangzhoutu",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "18576357",
+      "name": "柱状图",
+      "font_class": "zhuzhuangtu",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "18576358",
+      "name": "词云",
+      "font_class": "ciyun",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "18576359",
+      "name": "仪表盘",
+      "font_class": "yibiaopan",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
+    },
+    {
+      "icon_id": "18576360",
+      "name": "热力图",
+      "font_class": "relitu",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    },
+    {
+      "icon_id": "18576361",
+      "name": "矩阵图",
+      "font_class": "juzhentu",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "18576363",
+      "name": "折线图",
+      "font_class": "zhexiantu",
+      "unicode": "e632",
+      "unicode_decimal": 58930
+    }
+  ]
+}

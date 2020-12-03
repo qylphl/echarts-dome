@@ -27,17 +27,21 @@ export default new Router({
       component: Main
     },
     {
-      path: '/index',
-      name: 'Index',
-      component: Index,
+      path: '/main',
+      name: 'Main',
+      component: Main,
       children: [
         {
-          path: '/pieCharts/:index',
-          component: PieCharts,
+          path: '/',
+          component: BarCharts,
         },
         {
-          path: '/barCharts/:index',
+          path: 'barCharts',
           component: BarCharts,
+        },
+        {
+          path: 'pieCharts',
+          component: PieCharts,
         },
       ]
     }

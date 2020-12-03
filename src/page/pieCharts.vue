@@ -207,7 +207,6 @@ export default {
 .content-box {
   width: 100%;
   height: 100%;
-  background-color: #fff;
   box-sizing: border-box;
   overflow: hidden;
 }
@@ -219,7 +218,7 @@ export default {
   .pie-box {
     width: 30%;
     height: 500px;
-    background: #fff;
+    background-color: transparent;
     border-radius: 7px;
     box-shadow: 5px 5px 20px #b3b3b4;
     margin-bottom: 40px;
