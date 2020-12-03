@@ -72,7 +72,7 @@ a{
 .clear{
   zoom:1;   /*用css中的zoom属性可以让网页实现IE7中的放大缩小功能。 zoom：1就是和原来一样大小*/
 }
-/*  清除浮动开始结束  */
+/*  清除浮动结束  */
 .flex-box{
   display: flex;
   align-items: flex-start;
