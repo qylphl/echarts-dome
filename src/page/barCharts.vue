@@ -1,6 +1,7 @@
 <template>
   <div class="content flex-box">
-    
+    <div class="left-box"></div>
+    <div class="right-box" :style="{'border-color': themeType==1 ? '#082b7d' : '#b6b6b6'}"></div>
   </div>
 </template>
 
@@ -18,6 +19,11 @@ export default {
       ],
     };
   },
+  computed: {
+    themeType() {
+      return this.$store.getters.getThemeTyle;
+    },
+  },
   mounted() {},
   methods: {},
   components: { pie, stereoscopicPie },
@@ -31,16 +37,25 @@ export default {
   height: 100%;
   box-sizing: border-box;
   overflow: visible;
-  .pie-box {
-    width: 30%;
-    height: 500px;
-    background-color: transparent;
-    border-radius: 7px;
-    box-shadow: 5px 5px 20px #b3b3b4;
-    margin-left: 5%;
-    &:first-child {
-      margin-left: 0;
+  .left-box {
+    flex: 1;
+    height: 100%;
+    .pie-box {
+      width: 30%;
+      height: 500px;
+      background-color: transparent;
+      border-radius: 7px;
+      box-shadow: 5px 5px 20px #b3b3b4;
+      margin-left: 5%;
+      &:first-child {
+        margin-left: 0;
+      }
     }
+  }
+  .right-box {
+    width: 185px;
+    height: 100%;
+    border-left: 1px solid transparent;
   }
 }
 </style>

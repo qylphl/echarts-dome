@@ -6,6 +6,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import App from './App';
 import router from './router';
 import Router from 'vue-router';
+import store from './store/store';
 import './assets/icon/iconfont.css';
 // 使用echarts
 import echarts from 'echarts'
@@ -31,6 +32,7 @@ highcharts3d(highcharts)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 });

@@ -19,10 +19,6 @@ export default {
       default: '#333',
       type: String,
     },
-    themeType: {
-      default: 0,
-      type: Number,
-    },
     defaultNavType: {
       default: 0,
       type: Number,

@@ -87,6 +87,7 @@ export default {
   methods: {
     themeChoose(v) {
       this.themeType = v;
+      this.$store.commit('changeThemType',this.themeType);
     },
   },
   components: { "v-head": head, "v-nav": nav },
@@ -98,14 +99,12 @@ export default {
     width: 100%;
     height: calc(100vh - 70px);
     overflow: hidden;
-    transition: all .3s ease-in-out;
     .inner-content {
       flex: 1;
       height: calc(100% - 32px);
       margin: 16px;
       padding: 24px;
       box-sizing: border-box;
-      transition: all .3s ease-in-out;
     }
   }
 }
