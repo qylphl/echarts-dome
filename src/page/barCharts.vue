@@ -4,8 +4,8 @@
       <!-- 柱状（条形）图 -->
       <div class="content-box flex-box">
         <!-- 普通柱状（条形）图 -->
-        <div class="pie-box" v-for="(option,index) in ordinaryBarOption" :key="index">
-          <bar :data="data" :color="color" :option="option"></bar>
+        <div class="pie-box" v-for="(item, index) in ordinaryBarOption" :key="index" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <Bar :color="color" :deploy="item"></Bar>
         </div>
       </div>
       <!-- 堆积柱状（条形）图 -->
@@ -15,14 +15,13 @@
       <!-- 3D柱状图 -->
       <div class="content-box flex-box"></div>
     </div>
-    <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }"
-    ></div>
+    <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }"></div>
   </div>
 </template>
 
 <script>
-import bar from "components/bar/bar";
-import barOption from "utils/barOption";
+import Bar from "components/bar/bar";
+import BarChart from "utils/barOption";
 export default {
   data() {
     return {
@@ -41,7 +40,7 @@ export default {
         { name: "重大责任事故类行为", value: "15" },
         { name: "其他违法犯罪行为", value: "85" },
       ],
-      ordinaryBarOption: {},
+      ordinaryBarOption: [],
     };
   },
   computed: {
@@ -50,10 +49,10 @@ export default {
     },
   },
   mounted() {
-    this.ordinaryBarOption.push(barOption.ORDINARY_BAR_CHARTS);
+    this.ordinaryBarOption = new BarChart(this.data).ORDINARY_BAR_CHARTS;
   },
   methods: {},
-  components: { bar },
+  components: { Bar },
 };
 </script>
 

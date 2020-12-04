@@ -6,26 +6,30 @@
     .left-box {
         flex: 1;
         height: 100%;
-        .pie-box {
-            width: 30%;
-            height: 500px;
-            background-color: transparent;
-            border-radius: 4px;
-	        border: 1px solid #eaeaea;
-            margin-left: 5%;
-            transition: all .3s ease-in-out;
-            &:first-child {
-                margin-left: 0;
+        overflow: auto;
+        padding-right: 15px;
+        box-sizing: border-box;
+        .content-box{
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .pie-box {
+                width: 32%;
+                height: 500px;
+                margin-bottom: 24px;
+                background-color: transparent;
+                border-radius: 4px;
+                border: 1px solid #eaeaea;
+                overflow: hidden;
+                &:hover{
+                    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.12);
+                }
             }
-            &:hover{
-                box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.12);
-            }
-        }
+        }   
     }
     .right-box {
         width: 185px;
         height: 100%;
         border-left: 1px solid transparent;
-        margin-left: 24px;
+        margin-left: 9px;
     }
 }

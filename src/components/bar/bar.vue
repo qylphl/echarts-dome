@@ -1,7 +1,7 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
-    <div class="chart-box" ref="barChart"></div>
+    <navBar :title="title" ></navBar>
+    <div class="chart-box" ref="barChart" :style="{'background-color': themeType==1?'#07124a':'#fff'}"></div>
   </div>
 </template>
 
@@ -13,18 +13,17 @@ export default {
       default: "普通饼图",
       type: String,
     },
-    option: {
-        type: Object
-    },
-    data: {
-      type: Array,
-    },
-    color: {
-      type: Array,
+    deploy: {
+        type: Object,
     },
   },
   data() {
     return {};
+  },
+  computed: {
+    themeType() {
+      return this.$store.getters.getThemeTyle;
+    },
   },
   mounted() {
     this.initChart();
@@ -32,9 +31,8 @@ export default {
   methods: {
     initChart() {
       let that = this,
-        barChart = this.$echarts.init(this.$refs.barChart),
-        data = this.data;
-        option = this.option;
+        barChart = that.$echarts.init(that.$refs.barChart),
+        option = that.deploy;
       window.addEventListener("resize", function () {
         barChart.resize();
       });

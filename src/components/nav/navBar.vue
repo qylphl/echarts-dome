@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-bar-box flex-box">
+  <div :class="{'nav-bar-box flex-box':true,'nav-bar-box-1': themeType==1}">
     <p class="title">{{ title }}</p>
     <p class="btn" @click="viewCode">查看代码</p>
   </div>
@@ -15,6 +15,11 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    themeType() {
+      return this.$store.getters.getThemeTyle;
+    },
+  },
   mounted() {},
   methods: {
     viewCode() {
@@ -29,7 +34,6 @@ export default {
   width: 100%;
   height: 64px;
   padding: 0 16px;
-  background-color: #f4faff;
   border-bottom: 1px solid #eaeaea;
   box-sizing: border-box;
   align-items: center;
@@ -45,6 +49,13 @@ export default {
     border-radius: 4px;
     border: 1px solid #2878ff;
     cursor: pointer;
+  }
+}
+.nav-bar-box-1{
+  background-color: #010c45;
+  border-color: #082b7d;
+  .title{
+    color: #fff;
   }
 }
 </style>
