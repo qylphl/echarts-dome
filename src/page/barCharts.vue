@@ -49,9 +49,17 @@ export default {
     },
   },
   mounted() {
-    this.ordinaryBarOption = new BarChart(this.data).ORDINARY_BAR_CHARTS;
+    this.initBarOption()
   },
-  methods: {},
+  methods: {
+    initBarOption(){
+      let info = {
+        data: this.data,
+        color: this.color
+      };
+      this.ordinaryBarOption = new BarChart(info).ORDINARY_BAR_CHARTS;
+    }
+  },
   components: { Bar },
 };
 </script>

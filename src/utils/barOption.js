@@ -1,11 +1,13 @@
+/**
+ * 柱状（条形）图配置项
+ * @param info echart图表的配置项总和，对象格式，里面包含{color，data，title}
+ */
 export default class BarChart {
     // 普通柱状（条形）图
-    constructor(data){
+    constructor(info){
         this.ORDINARY_BAR_CHARTS={
             bar_charts_option: {
-                title: {
-                    text: '行政级别',
-                },
+                // title: {text: '行政级别',},
                 tooltip: {
                     trigger: 'axis',
                     show: true,
@@ -18,15 +20,15 @@ export default class BarChart {
                     },
                 },
                 grid: {
-                    left: '8%', // 默认10%，给24就挺合适的。
+                    left: '10%', // 默认10%，给24就挺合适的。
                     right: '5%', // 默认10%
-                    top: '15%',
-                    bottom: '30%',
+                    top: '10%',
+                    bottom: '25%',
                 },
                 calculable: true,
                 xAxis: [{
                     type: 'category',
-                    data: data.map(v => v.name),
+                    data: info.data.map(v => v.name),
                     axisTick: {       //刻度线
                         show: false
                     },
@@ -53,12 +55,12 @@ export default class BarChart {
                         normal: {
                             show: true,
                             position: 'top',
-                            color: '#B6B6B6',
+                            color: info.color,
                         }
                     },
-                    data: data.map(v => v.value),
+                    data: info.data.map(v => v.value),
                     itemStyle: {
-                        normal: { color: '#CB7F83', barBorderRadius: [20, 20, 0, 0], },
+                        normal: { color: info.color[0], barBorderRadius: [20, 20, 0, 0], },
                     },
                 }]
             }

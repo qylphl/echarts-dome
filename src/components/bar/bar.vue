@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title" ></navBar>
+    <navBar :title="title"></navBar>
     <div class="chart-box" ref="barChart" :style="{'background-color': themeType==1?'#07124a':'#fff'}"></div>
   </div>
 </template>
