@@ -65,6 +65,10 @@ export default {
       box-sizing: border-box;
       border-right: 6px solid transparent;
       transition: all .3s ease-in-out;
+      cursor: pointer;
+      &:hover span{
+        color: #2f7ef6;
+      }
       i{
         display: inline-block;
         font-size: 24px;

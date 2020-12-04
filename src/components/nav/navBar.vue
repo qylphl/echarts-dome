@@ -32,6 +32,8 @@ export default {
   background-color: #f4faff;
   border-bottom: 1px solid #eaeaea;
   box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
   .title {
     font-size: 18px;
     color: #000;

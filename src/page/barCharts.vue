@@ -1,22 +1,47 @@
 <template>
   <div class="content flex-box">
-    <div class="left-box"></div>
-    <div class="right-box" :style="{'border-color': themeType==1 ? '#082b7d' : '#b6b6b6'}"></div>
+    <div class="left-box">
+      <!-- 柱状（条形）图 -->
+      <div class="content-box flex-box">
+        <!-- 普通柱状（条形）图 -->
+        <div class="pie-box" v-for="(option,index) in ordinaryBarOption" :key="index">
+          <bar :data="data" :color="color" :option="option"></bar>
+        </div>
+      </div>
+      <!-- 堆积柱状（条形）图 -->
+      <div class="content-box flex-box"></div>
+      <!-- 分组柱状图 -->
+      <div class="content-box flex-box"></div>
+      <!-- 3D柱状图 -->
+      <div class="content-box flex-box"></div>
+    </div>
+    <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }"
+    ></div>
   </div>
 </template>
 
 <script>
-import pie from "components/pie/pie";
-import stereoscopicPie from "components/pie/3dPie";
+import bar from "components/bar/bar";
+import barOption from "utils/barOption";
 export default {
   data() {
     return {
       color: ["#328ff6", "#f56e6b", "#c956d7"],
       data: [
-        { value: 1438, name: "违纪行为" },
-        { value: 109, name: "职务违法犯罪行为" },
-        { value: 2865, name: "其他违法犯罪行为" },
+        { name: "违反政治纪律行为", value: "150" },
+        { name: "违反组织纪律行为", value: "208" },
+        { name: "违反廉洁纪律行为", value: "644" },
+        { name: "违反群众纪律行为", value: "205" },
+        { name: "违反工作纪律行为", value: "125" },
+        { name: "违反生活纪律行为", value: "63" },
+        { name: "贪污贿赂类行为", value: "121" },
+        { name: "滥用职权类行为", value: "45" },
+        { name: "玩忽职守类行为", value: "22" },
+        { name: "徇私舞弊类行为", value: "21" },
+        { name: "重大责任事故类行为", value: "15" },
+        { name: "其他违法犯罪行为", value: "85" },
       ],
+      ordinaryBarOption: {},
     };
   },
   computed: {
@@ -24,38 +49,15 @@ export default {
       return this.$store.getters.getThemeTyle;
     },
   },
-  mounted() {},
+  mounted() {
+    this.ordinaryBarOption.push(barOption.ORDINARY_BAR_CHARTS);
+  },
   methods: {},
-  components: { pie, stereoscopicPie },
+  components: { bar },
 };
 </script>
 
 <style lang="scss">
 @import "style/charts.scss";
-.content {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  overflow: visible;
-  .left-box {
-    flex: 1;
-    height: 100%;
-    .pie-box {
-      width: 30%;
-      height: 500px;
-      background-color: transparent;
-      border-radius: 7px;
-      box-shadow: 5px 5px 20px #b3b3b4;
-      margin-left: 5%;
-      &:first-child {
-        margin-left: 0;
-      }
-    }
-  }
-  .right-box {
-    width: 185px;
-    height: 100%;
-    border-left: 1px solid transparent;
-  }
-}
+@import "style/innerContent.scss";
 </style>
