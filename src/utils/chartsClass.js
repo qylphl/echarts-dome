@@ -61,3 +61,23 @@ export function setBorderPieHighlight(myChart, data) {
         }
     });
 }
+/**
+ * 数组从大到小排序
+ * @param {*} a 
+ * @param {*} b 
+ */ 
+export function sortNumber(a, b) {
+    return a - b
+}
+/**
+ * 数组对象方法从大到小排序:
+ * @param array 数组名字 
+ * @param key 根据哪个字段排序
+ */
+export function sortByKey(array, key) {
+    return array.sort(function (a, b) {
+        var x = a[key];
+        var y = b[key];
+        return ((x > y) ? -1 : ((x < y) ? 0 : 1));
+    });
+}

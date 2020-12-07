@@ -99,3 +99,17 @@ a{
 .hidden{
   visibility:hidden;
 }
+/* 提示文字 */
+.el-tooltip__popper.is-light{
+  border-color: #2878ff;
+  color: #2878ff;
+  background-color: transparent !important;
+  text-align: center;
+}
+.el-tooltip__popper[x-placement^=right] .popper__arrow::after {
+  border-right-color: #fff !important;
+}
+
+.el-tooltip__popper[x-placement^=right] .popper__arrow{
+  border-right-color: #2878ff !important;
+}

@@ -10,7 +10,7 @@ import navBar from 'components/nav/navBar'
 export default {
   props: {
     title: {
-      default: "普通饼图",
+      default: "普通柱状图",
       type: String,
     },
     deploy: {
