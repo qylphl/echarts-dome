@@ -80,14 +80,14 @@ a{
 }
 /*  滚动条样式  */
 ::-webkit-scrollbar-track-piece {
-	background-color: #f5f5f5;
+	background-color:  #b8b7b718;
 }
 ::-webkit-scrollbar {
 	width: 6px;
 	height: 6px;
 }
 ::-webkit-scrollbar-thumb {
-	background-color: #d6d6d6;
+	background-color: #97979762;
 	background-clip: padding-box;
 	min-height: 28px;
 	border-radius: 5px;
@@ -109,7 +109,6 @@ a{
 .el-tooltip__popper[x-placement^=right] .popper__arrow::after {
   border-right-color: #fff !important;
 }
-
 .el-tooltip__popper[x-placement^=right] .popper__arrow{
   border-right-color: #2878ff !important;
 }
