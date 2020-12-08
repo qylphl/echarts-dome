@@ -2,7 +2,8 @@
   <div class="height-box">
     <!-- 头部 -->
     <div class="header flex-box" :style="{'height': height+'px'}">
-      <div class="header-left">
+      <div class="header-left flex-box">
+        <img class="echart-logo" src="../../../src/assets/img/echarts_logo.png" alt="">
         <p class="header-title">{{ headerTitle }}</p>
       </div>
       <div class="header-right flex-box">
@@ -79,10 +80,12 @@ export default {
     align-items: center;
     justify-content: space-between;
     .header-left {
+      align-items: center;
       .header-title {
         font-size: 28px;
         letter-spacing: 1px;
         color: #fff;
+        padding-left: 17px;
       }
     }
     .header-right {

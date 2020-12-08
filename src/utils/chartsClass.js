@@ -76,8 +76,8 @@ export function sortNumber(a, b) {
  */
 export function sortByKey(array, key) {
     return array.sort(function (a, b) {
-        var x = a[key];
-        var y = b[key];
+        var x = Number(a[key]);
+        var y = Number(b[key]);
         return ((x > y) ? -1 : ((x < y) ? 0 : 1));
     });
 }

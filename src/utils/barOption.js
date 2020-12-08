@@ -322,103 +322,6 @@ export default class BarChart {
                     },
                 ]
             },
-            // 渐变柱状图
-            gradients_charts_option: {
-                boxTitle: '渐变柱状图', // 给图表父元素定义的title，不用于echarts中的option
-                boxWidth: '66.3%',  // 给图表父元素定义的宽，不用于echarts中的option
-                color: '#fb8168',
-                grid: {
-                    left: 21,
-                    top: 37,
-                    right: 23,
-                    bottom: 0,
-                    containLabel: true,
-                },
-                tooltip: {
-                    show: true,
-                    extraCssText: 'width:max-content;height:auto;',
-                },
-                xAxis: {
-                    type: 'category',
-                    data: [
-                        "福建省", "安徽省", "浙江省", "广东省", "河南省", "湖北省", "宁夏回族自治区", "广西壮族自治区", "湖南省",
-                        "福建省", "安徽省", "浙江省", "广东省", "河南省", "湖北省", "宁夏回族自治区", "广西壮族自治区", "湖南省",
-                        "福建省", "安徽省", "浙江省", "广东省", "河南省", "湖北省", "宁夏回族自治区", "广西壮族自治区", "湖南省",
-                        "福建省", "安徽省", "浙江省", "广东省", "河南省", "湖北省", "宁夏回族自治区", "广西壮族自治区", "湖南省"
-                    ],
-                    axisLine: {
-                        lineStyle: {
-                            fontSize: 16,
-                            color: '#c9c6c6'
-                        }
-                    },
-                    axisTick: {
-                        show: false,
-                    },
-                    axisLabel: {
-                        fontSize: 12,
-                        color: '#333',
-                        interval: 0,
-                        rotate: 50
-                    },
-                },
-                yAxis: {
-                    axisLine: {
-                        show: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    axisLabel: {
-                        textStyle: {
-                            fontSize: 16,
-                            color: '#666'
-                        }
-                    },
-                    splitLine: {
-                        lineStyle: {
-                            color: '#ced3dc',
-                            width: 1,
-                            type: 'solid'
-                        }
-                    }
-                },
-                series: [
-                    {
-                        type: 'bar',
-                        barWidth: 16,
-                        itemStyle: {
-                            barBorderRadius: 30,
-                            emphasis: {
-                                barBorderRadius: 30,
-                            },
-                            normal: {
-                                barBorderRadius: 7,
-                                color: function (params) {
-                                    // build a color map as your need.
-                                    var colorList = [
-                                        '#4c6be9', '#5266e8', '#5866e8', '#5f66ea', '#6866ec',
-                                        '#6f66ef', '#7a66f2', '#8266f4', '#8c66f7', '#9466f8',
-                                        '#9d66f8', '#a465f7', '#ab62f6', '#b25ff4', '#ba5af1',
-                                        '#c056ee', '#c552ea', '#d04de0', '#d64dd9', '#da4dd3',
-                                        '#de50cb', '#e153c4', '#e457bc', '#e457bc', '#e75cb1',
-                                        '#ea61a8', '#ed679e', '#f37487', '#f87d75', '#fb8167',
-                                        '#fb8167', '#fb8168', '#fb8167', '#fe7e5f', '#fe7b5c',
-                                        '#fe765b', '#fe705a', '#fe6b59'
-                                    ];
-                                    return colorList[params.dataIndex]
-                                },
-                            }
-                        },
-                        data: [
-                            7500, 3800, 4800, 3500, 2800, 6800, 1800, 5800, 3800,
-                            7500, 3800, 4800, 3500, 2800, 6800, 1800, 5800, 3800,
-                            7500, 3800, 4800, 3500, 2800, 6800, 1800, 5800, 3800,
-                            7500, 3800, 4800, 3500, 2800, 6800, 1800, 5800, 3800
-                        ],
-                    }
-                ],
-            },
             // 渐变立体条形图
             solid_transverse_charts_option: {
                 boxTitle: '立体条形图', // 给图表父元素定义的title，不用于echarts中的option
@@ -505,7 +408,7 @@ export default class BarChart {
                         itemStyle: {
                             normal: {
                                 color: function (params) {
-                                    return [
+                                    let colorList = [
                                         {
                                             type: 'linear', x: 0, y: 0, x2: 1, y2: 1,
                                             colorStops: [{
@@ -558,7 +461,9 @@ export default class BarChart {
                                             ],
                                             globalCoord: false // 缺省为 false
                                         },
-                                    ][params.dataIndex];
+                                    ],
+                                        color = params.dataIndex < colorList.length ? colorList[params.dataIndex] : colorList[params.dataIndex - colorList.length];
+                                    return color;
                                 },
                                 barBorderRadius: [0, 5, 5, 0],
                             },
@@ -593,7 +498,7 @@ export default class BarChart {
                         itemStyle: {
                             normal: {
                                 color: function (params) {
-                                    return [
+                                    let colorList = [
                                         {
                                             type: 'linear', x: 0, y: 0, x2: 1, y2: 1,
                                             colorStops: [{
@@ -646,7 +551,9 @@ export default class BarChart {
                                             ],
                                             globalCoord: false // 缺省为 false
                                         },
-                                    ][params.dataIndex];
+                                    ],
+                                        color = params.dataIndex < colorList.length ? colorList[params.dataIndex] : colorList[params.dataIndex - colorList.length];
+                                    return color;
                                 }
                             }
                         },
@@ -658,139 +565,6 @@ export default class BarChart {
                         data: info.data.map(v => v.value),
                         z: 3
                     },
-                ]
-            },
-            // 排行榜
-            ranking_charts_optiom: {
-                boxTitle: '排行榜柱状图', // 给图表父元素定义的title，不用于echarts中的option
-                boxWidth: '66.3%',  // 给图表父元素定义的宽，不用于echarts中的option
-                tooltip: {
-                    trigger: 'axis',
-                    axisPointer: {
-                        type: 'shadow'
-                    }
-                },
-                legend: {
-                    show: false
-                },
-                grid: {
-                    left: 100
-                },
-                toolbox: {
-                    show: true,
-                    feature: {
-                        saveAsImage: {}
-                    }
-                },
-                xAxis: {
-                    type: 'value',
-                    splitLine: {
-                        show: false
-                    },
-                    axisLabel: {
-                        show: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    axisLine: {
-                        show: false
-                    }
-                },
-                yAxis: {
-                    type: 'category',
-                    inverse: true,
-                    axisLine: {
-                        show: false
-                    },
-                    axisTick: {
-                        show: false
-                    },
-                    axisPointer: {
-                        label: {
-                            show: true,
-                            margin: 30
-                        }
-                    },
-                    data: info.data.map(v => v.name),
-                    axisLabel: {
-                        margin: 100,
-                        fontSize: 14,
-                        align: 'left',
-                        color: '#333',
-                        rich: {
-                            a1: {
-                                color: '#fff',
-                                backgroundColor: info.color[0],
-                                width: 20,
-                                height: 20,
-                                align: 'center',
-                                borderRadius: 2
-                            },
-                            a2: {
-                                color: '#fff',
-                                backgroundColor: info.color[1],
-                                width: 20,
-                                height: 20,
-                                align: 'center',
-                                borderRadius: 2
-                            },
-                            a3: {
-                                color: '#fff',
-                                backgroundColor: info.color[2],
-                                width: 20,
-                                height: 20,
-                                align: 'center',
-                                borderRadius: 2
-                            },
-                            b: {
-                                color: '#fff',
-                                backgroundColor: info.color[3],
-                                width: 20,
-                                height: 20,
-                                align: 'center',
-                                borderRadius: 2
-                            }
-                        },
-                        formatter: function (params) {
-                            if (index == 7) {
-                                index = 0;
-                            }
-                            index++;
-                            if (index - 1 < 3) {
-                                return [
-                                    '{a' + index + '|' + index + '}' + '  ' + params
-                                ].join('\n')
-                            } else {
-                                return [
-                                    '{b|' + index + '}' + '  ' + params
-                                ].join('\n')
-                            }
-                        }
-                    }
-                },
-                series: [{
-                    z: 2,
-                    name: 'value',
-                    type: 'bar',
-                    barWidth: 20,
-                    data: info.data.map(v => v.value).map((item, i) => {
-                        var itemStyle = {
-                            color: i > 3 ? info.color[3] : info.color[i]
-                        }
-                        return {
-                            value: item,
-                            itemStyle: itemStyle
-                        };
-                    }),
-                    label: {
-                        show: true,
-                        position: 'right',
-                        color: '#333',
-                        fontSize: 14,
-                        offset: [10, 0]
-                    }
-                }
                 ]
             },
             // 立体带样式柱状图
@@ -1095,60 +869,30 @@ export default class BarChart {
                     z: 10
                 }]
             },
-            // 带阴影的柱状图
-            shadow_charts_option: {
-                color: [
-                    "rgba(80,136,249,1)", "rgba(80,136,249,1)", "rgba(80,136,249,1)", "rgba(80,136,249,1)", "rgba(80,136,249,1)", "rgba(80,136,249,1)",
-                    "rgba(180,67,233,1)", "rgba(180,67,233,1)", "rgba(180,67,233,1)", "rgba(180,67,233,1)", "rgba(180,67,233,1)", "rgba(180,67,233,1)",
-                    "rgba(253,125,124,1)"
-                ],
-                title: {
-                    text: '问题性质数量排行',
-                    left: 0,
-                    top: '0',
-                    textStyle: {
-                        color: '#333',
-                        fontStyle: 'normal',
-                        fontWeight: 'normal',
-                        fontSize: 16
-                    }
-                },
+            // 渐变柱状图
+            gradients_charts_option: {
+                boxTitle: '渐变柱状图', // 给图表父元素定义的title，不用于echarts中的option
+                boxWidth: '100%',  // 给图表父元素定义的宽，不用于echarts中的option
+                color: '#fb8168',
                 grid: {
-                    left: 10,
-                    top: '12%',
-                    right: 5,
-                    bottom: 5,
+                    left: 21,
+                    top: 37,
+                    right: 23,
+                    bottom: 0,
                     containLabel: true,
                 },
                 tooltip: {
-                    // trigger: 'item',
-                    trigger: 'axis',
-                    padding: [10, 20],    // 内边距
-                    backgroundColor: 'rgba(255,255,255,0.9)',//通过设置rgba调节背景颜色与透明度
-                    color: '#0f0f0f',
-                    textStyle: {
-                        color: 'black',
-                    },
-                    formatter: function (params, ticket, callback) {
-                        var htmlStr = "<div style='color: #0f0f0f;'>";
-                        htmlStr += "<p style='font-size:15px;'>" + params[0].name + "</p>";
-                        htmlStr += "<p style='font-size:15px;padding:5px 0;'><span style='dispaly:inline-block;color:#0b73ec;padding-right:8px;font-size:20px;font-weight: bold;'>" + params[0].value + "</span>件</p>"
-                        htmlStr += "<p style='font-size:15px;'></p>"
-                        htmlStr += "</div>"
-                        return htmlStr;
-                    }
+                    show: true,
+                    extraCssText: 'width:max-content;height:auto;',
                 },
                 xAxis: {
                     type: 'category',
-                    boundaryGap: true,
-                    data: sortByKey(info.data, 'value').map(v => v.name),
-                    axisPointer: {
-                        show: true,
-                        type: 'line',
-                        lineStyle: {
-                            color: 'rgba(230,212,254,.8)'
-                        }
-                    },
+                    data: [
+                        "福建省", "安徽省", "浙江省", "广东省", "河南省", "湖北省", "宁夏回族自治区", "广西壮族自治区", "湖南省",
+                        "福建省", "安徽省", "浙江省", "广东省", "河南省", "湖北省", "宁夏回族自治区", "广西壮族自治区", "湖南省",
+                        "福建省", "安徽省", "浙江省", "广东省", "河南省", "湖北省", "宁夏回族自治区", "广西壮族自治区", "湖南省",
+                        "福建省", "安徽省", "浙江省", "广东省", "河南省", "湖北省", "宁夏回族自治区", "广西壮族自治区", "湖南省"
+                    ],
                     axisLine: {
                         lineStyle: {
                             fontSize: 16,
@@ -1159,17 +903,13 @@ export default class BarChart {
                         show: false,
                     },
                     axisLabel: {
-                        fontSize: 16,
+                        fontSize: 12,
                         color: '#333',
                         interval: 0,
-                        show: true,
-                        formatter: function (value, index) {
-                            return (index + 1);
-                        }
+                        rotate: 50
                     },
                 },
                 yAxis: {
-                    type: 'value',
                     axisLine: {
                         show: false
                     },
@@ -1178,7 +918,7 @@ export default class BarChart {
                     },
                     axisLabel: {
                         textStyle: {
-                            fontSize: 14,
+                            fontSize: 16,
                             color: '#666'
                         }
                     },
@@ -1186,90 +926,45 @@ export default class BarChart {
                         lineStyle: {
                             color: '#ced3dc',
                             width: 1,
-                            type: 'dashed'
+                            type: 'solid'
                         }
                     }
                 },
                 series: [
-                    // 柱状图上的小圆点
-                    {
-                        type: 'line',
-                        smooth: true,
-                        symbol: "circle",      // 默认是空心圆（中间是白色的），改成实心圆
-                        showAllSymbol: true,
-                        symbolSize: 7,
-                        z: 4,
-                        itemStyle: {
-                            normal: {
-                                color: '#bcc1eb', //折点颜色
-                                borderColor: '#fffffb',
-                                lineStyle: {
-                                    color: 'rgba(0,0,0,0)' //折线颜色
-                                }
-                            }
-                        },
-                        data: sortByKey(info.data, 'value').map(v => v.value),
-                    },
-                    // 柱状图
                     {
                         type: 'bar',
-                        xAxisIndex: 0,
-                        yAxisIndex: 0,
-                        data: sortByKey(info.data, 'value').map(v => v.value),
-                        barWidth: '30',
-                        z: 3,
+                        barWidth: 16,
                         itemStyle: {
-                            barBorderRadius: [5, 5, 2, 2],
+                            barBorderRadius: 30,
                             emphasis: {
-                                barBorderRadius: [5, 5, 2, 2],
+                                barBorderRadius: 30,
                             },
                             normal: {
-                                barBorderRadius: [5, 5, 2, 2],
+                                barBorderRadius: 7,
                                 color: function (params) {
-                                    return info.colorList[params.dataIndex]
+                                    // build a color map as your need.
+                                    var colorList = [
+                                        '#4c6be9', '#5266e8', '#5866e8', '#5f66ea', '#6866ec',
+                                        '#6f66ef', '#7a66f2', '#8266f4', '#8c66f7', '#9466f8',
+                                        '#9d66f8', '#a465f7', '#ab62f6', '#b25ff4', '#ba5af1',
+                                        '#c056ee', '#c552ea', '#d04de0', '#d64dd9', '#da4dd3',
+                                        '#de50cb', '#e153c4', '#e457bc', '#e457bc', '#e75cb1',
+                                        '#ea61a8', '#ed679e', '#f37487', '#f87d75', '#fb8167',
+                                        '#fb8167', '#fb8168', '#fb8167', '#fe7e5f', '#fe7b5c',
+                                        '#fe765b', '#fe705a', '#fe6b59'
+                                    ];
+                                    return colorList[params.dataIndex]
                                 },
                             }
                         },
-                    },
-                    // 柱状图后面的阴影背景部分
-                    {
-                        type: 'line',
-                        smooth: true,
-                        symbol: 'none',  //取消折点圆圈
-                        clickable: false,
-                        areaStyle: {
-                            normal: {
-                                color: {
-                                    type: "linear",
-                                    x: 0,
-                                    y: 0,
-                                    x2: 1,
-                                    y2: 1,
-                                    colorStops: [
-                                        {
-                                            offset: 0,
-                                            color: "rgba(80,163,255,.6)", // 0% 处的颜色
-                                        },
-                                        {
-                                            offset: 1,
-                                            color: "rgba(80,163,255,.1)", // 100% 处的颜色
-                                        },
-                                    ],
-                                    globalCoord: false, // 缺省为 false
-                                },
-                                shadowColor: 'rgba(80,163,255,.2)',
-                            }
-                        },
-                        itemStyle: {
-                            normal: {
-                                lineStyle: {
-                                    color: 'rgba(0,0,0,0)' //折线颜色
-                                }
-                            }
-                        },
-                        data: sortByKey(info.data, 'value').map(v => +v.value + +100),
-                    },
-                ]
+                        data: [
+                            7500, 3800, 4800, 3500, 2800, 6800, 1800, 5800, 3800,
+                            7500, 3800, 4800, 3500, 2800, 6800, 1800, 5800, 3800,
+                            7500, 3800, 4800, 3500, 2800, 6800, 1800, 5800, 3800,
+                            7500, 3800, 4800, 3500, 2800, 6800, 1800, 5800, 3800
+                        ],
+                    }
+                ],
             },
         }
     }

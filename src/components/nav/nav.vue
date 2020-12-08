@@ -5,7 +5,7 @@
         <i :class="item.iconCls"></i>
         <span>{{item.title}}</span>
       </li>
-      <p class="copyright">行业推广一部版权所有</p>
+      <p class="copyright flex-box"><img class="logo-icon" src="../../../src/assets/img/logo.png" alt=""><span>行业推广一部版权所有</span></p>
     </ul>
   </div>
 </template>
@@ -89,6 +89,10 @@ export default {
       bottom: 21px;
       font-size: 18px;
       padding-left: 20px;
+      align-items: center;
+      .logo-icon{
+        margin-right: 7px;
+      }
     }
   }
 }

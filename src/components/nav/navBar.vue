@@ -38,6 +38,7 @@ export default {
   box-sizing: border-box;
   align-items: center;
   justify-content: space-between;
+  background-color: #f4faff;
   .title {
     font-size: 18px;
     color: #000;
