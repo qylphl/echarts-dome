@@ -77,7 +77,7 @@ export default {
           grid: {
             left: '3%',
             top: "12%",
-            right: '5%',
+            right: '8%',
             bottom: 5,
             containLabel: true,
           },
@@ -251,13 +251,12 @@ export default {
 .chart-content {
   .shadow-charts-box {
     position: relative;
-    height: 100%;
     .echarts_legend {
       cursor: default;
       position: absolute;
       z-index: 99;
-      right: 20px;
-      top: 14px; 
+      right: 5px;
+      top: 10px; 
       padding-left: 15px;
       border-left: 2px solid #333;
       border-image: -webkit-linear-gradient(
@@ -401,7 +400,7 @@ export default {
       }
       .legend_content {
         align-items: flex-start;
-        padding-top: 15px;
+        padding-top: 8px;
         &:nth-child(3) {
           padding-top: 0;
           height: 18px;
@@ -434,7 +433,7 @@ export default {
     }
     .chart-box-content {
       width: 100%;
-      height: 600px;
+      height: 100%;
     }
   }
 }

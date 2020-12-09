@@ -1,32 +1,50 @@
 <template>
   <div class="content flex-box">
-    <div class="left-box">
+    <div class="left-box" ref="leftBox">
       <!-- 柱状（条形）图 -->
-      <div class="content-box flex-box">
-        <!-- 普通柱状（条形）图 -->
-        <div class="pie-box" v-for="(item, index) in ordinaryBarOption" :key="index" :style="{width: item.boxWidth ? item.boxWidth : '32.8%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <Bar :color="color" :deploy="item" :title="item.boxTitle"></Bar>
-        </div>
-        <!-- 带阴影柱状图 -->
-        <div class="pie-box" :style="{'width': '100%','height':'max-content','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <ShadowBar :data="shadowData" :color="shadowColor"></ShadowBar>
-        </div>
-        <!-- 排行榜柱状图 -->
-        <div class="pie-box" :style="{'width': '100%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+      <div class="content-box flex-box" ref="barCharts">
+         <!-- 排行榜柱状图 -->
+        <div class="pie-box" :style="{'width': '66.15%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
           <RankingBar :data="rankingData" :color="rankingColor"></RankingBar>
+        </div>
+        <!-- 普通柱状（条形）图 -->
+        <div class="pie-box" v-for="(item, index) in ordinaryBarOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <Bar :color="color" :deploy="item" :title="item.boxTitle"></Bar>
+        </div> 
+        <!-- 带阴影柱状图 -->
+        <div class="pie-box" :style="{'width': '66.15%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <ShadowBar :data="shadowData" :color="shadowColor"></ShadowBar>
         </div>
       </div>
       <!-- 堆积柱状（条形）图 -->
-      <div class="content-box flex-box"></div>
+      <div class="content-box flex-box" ref="cumulateCharts">
+        <div class="pie-box" v-for="(item, index) in cumulateBarOption" :key="index" :style="{width: item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <Bar :color="color" :deploy="item" :title="item.boxTitle"></Bar>
+        </div>
+      </div>
       <!-- 分组柱状图 -->
-      <div class="content-box flex-box"></div>
+      <div class="content-box flex-box" ref="groupCharts">
+        <div class="pie-box" v-for="(item, index) in groupBarOption" :key="index" :style="{width: item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <Bar :color="color" :deploy="item" :title="item.boxTitle"></Bar>
+        </div>
+      </div>
       <!-- 3D柱状图 -->
-      <div class="content-box flex-box"></div>
+      <div class="content-box flex-box" ref="solidCharts">
+        <div class="pie-box" v-for="(item, index) in solidBarOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <Bar :color="color" :deploy="item" :title="item.boxTitle"></Bar>
+        </div>
+      </div>
+      <!-- 双向柱状图 -->
+      <div class="content-box flex-box" ref="twoWayCharts">
+        <div class="pie-box" :style="{'width': '100%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <TwoWayBar :data="twoWayData"></TwoWayBar>
+        </div>
+      </div>
     </div>
     <div class="right-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6'}">
       <div :class="{'right-title': true,'choose-item': index == chooseIndex}" v-for="(item, index) in rightList" :key="index" :style="{'color':themeType == 1 ? '#b0c9f0' : '#333'}" @click="chooseRightTitle(index)">
         <el-tooltip :content="item.num" effect="light" placement="right">
-        <p class="right-title-content">{{item.title}}</p>
+          <p class="right-title-content">{{item.title}}</p>
         </el-tooltip>
       </div>
     </div>
@@ -37,6 +55,7 @@
 import Bar from "components/bar/bar";
 import RankingBar from "components/bar/rankingBar";
 import ShadowBar from "components/bar/shadowBar";
+import TwoWayBar from "components/bar/twoWayBar";
 import BarChart from "utils/barOption";
 export default {
   data() {
@@ -72,22 +91,38 @@ export default {
       ],
       rankingColor: ['#f36c6c', '#e6cf4e', '#20d180', '#0093ff'],
       // 带阴影的柱状图数据
-      shadowData: [{ "value": "84", "name": "违反政治纪律行为" }, { "value": "434", "name": "违反组织纪律行为" }, { "value": "1856", "name": "违反廉洁纪律行为" }, { "value": "1715", "name": "违反群众纪律行为" }, { "value": "1152", "name": "违反工作纪律行为" }, { "value": "350", "name": "违反生活纪律行为" }, { "value": "1236", "name": "贪污贿赂类行为" }, { "value": "651", "name": "滥用职权类行为" }, { "value": "178", "name": "玩忽职守类行为" }, { "value": "142", "name": "徇私舞弊类行为" }, { "value": "6", "name": "重大责任事故类行为" }, { "value": "705", "name": "行使公权力过程中发生的其他违法犯罪行为" }, { "value": "678", "name": "其他违法犯罪行为" }],
+      shadowData: [{ "value": "84", "name": "违反政治纪律行为" }, { "value": "434", "name": "违反组织纪律行为" }, { "value": "1856", "name": "违反廉洁纪律行为" }, { "value": "1715", "name": "违反群众纪律行为" }, { "value": "1152", "name": "违反工作纪律行为" }, { "value": "350", "name": "违反生活纪律行为" }, { "value": "1236", "name": "贪污贿赂类行为" }, { "value": "651", "name": "滥用职权类行为" }, { "value": "178", "name": "玩忽职守类行为" }, { "value": "142", "name": "徇私舞弊类行为" }, { "value": "6", "name": "重大责任事故类行为" }, { "value": "678", "name": "其他违法犯罪行为" }],
       shadowColor: [
         '#13d2de', '#09adf1', '#127bf2', '#2748ef', '#5627ef',
         '#8527ef', '#be27ef', '#ed27ef', '#ef27af', '#ef277c',
         '#ef273f', '#ef4d27', '#ef6427',
       ],
+      cumulateData: { "personCountList": ["0", "7", "47", "51", "720", "704", "754"], "caseLinkRelativeRatio": ["--", "--", "642.86", "5.77", "1470.91", "12.96", "51.64"], "personLinkRelativeRatio": ["--", "--", "571.43", "8.51", "1311.76", "-2.22", "7.10"], "category": [1, 2, 3, 4, 5, 6, 7], "caseCountList": ["0", "7", "52", "55", "864", "976", "1480"] },
+      groupData: {
+        xAxisData: [],
+        data1: [],
+        data2: []
+      },
+      // 双向柱状图数据
+      twoWayData: {
+        female: { name: '女性', data: [{ value: 5, label: '小于1岁' }, { value: 12, label: '1 ～ 9 岁' }, { value: 10, label: '10 ～ 19 岁' }, { value: 7, label: '20 ～ 29 岁' }, { value: 32, label: '30 ～ 39 岁' }, { value: 40, label: '40 ～ 49 岁' }, { value: 28, label: '50 ～ 59 岁' }, { value: 34, label: '大于60岁' }] },
+        male: { name: '男性', data: [{ value: 5, label: '小于1岁' }, { value: 19, label: '1 ～ 9 岁' }, { value: 23, label: '10 ～ 19 岁' }, { value: 43, label: '20 ～ 29 岁' }, { value: 34, label: '30 ～ 39 岁' }, { value: 53, label: '40 ～ 49 岁' }, { value: 12, label: '50 ～ 59 岁' }, { value: 34, label: '大于60岁' }] }
+      },
       // 右侧导航菜单
       rightList: [
         {title: "柱状图",num: '2'},
         {title: "堆积柱状图",num: '2'},
         {title: "分组柱状图",num: '2'},
-        {title: "双向柱状图",num: '1'},
         {title: "3D柱状图",num: '1'},
+        {title: "双向柱状图",num: '1'},
       ],
-      ordinaryBarOption: [],
+      scroll: '',
       chooseIndex: 0,    // 选中右侧导航的index值
+      differ: 0,
+      ordinaryBarOption: [],   // 普通柱状（条形）图
+      cumulateBarOption: [],   // 堆积柱状图
+      groupBarOption: [],      // 分组柱状图
+      solidBarOption: [],      // 3D柱状图
     };
   },
   computed: {
@@ -95,7 +130,15 @@ export default {
       return this.$store.getters.getThemeTyle;
     },
   },
+  watch: {
+    scroll() {
+      this.loadSroll()
+    }
+  },
   mounted() {
+    this.differ = document.getElementsByClassName('content-box')[0].offsetTop + 18;
+    this.$refs.leftBox.addEventListener('scroll', this.dataScroll);
+    this.initGroupData();
     this.initBarOption();
   },
   methods: {
@@ -103,15 +146,53 @@ export default {
       let info = {
         data: this.data,
         color: this.color,
-        colorList: this.colorList
+        colorList: this.colorList,
+        cumulateData: this.cumulateData,
+        groupData: this.groupData,
       };
       this.ordinaryBarOption = new BarChart(info).ORDINARY_BAR_CHARTS;
+      this.cumulateBarOption = new BarChart(info).CUMULATE_BAR_CHARTS;
+      this.groupBarOption = new BarChart(info).GROUP_BAR_CHARTS;
+      this.solidBarOption = new BarChart(info).SOLID_BAR_CHARTS;
+    },
+    // 初始化分组柱状图的数据
+    initGroupData(){
+      for (var i = 0; i < 100; i++) {
+        this.groupData.xAxisData.push(i);
+        this.groupData.data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
+        this.groupData.data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
+      }
+    },
+    // 锚点双向监听
+    dataScroll() {
+      this.scroll = this.$refs.leftBox.scrollTop;
+    },
+    loadSroll() {
+      var that = this,
+          $navs = document.getElementsByClassName("right-title"),
+          sections = document.getElementsByClassName('content-box'),
+          leftBoxscollHeight = this.$refs.leftBox.scrollHeight - this.$refs.leftBox.clientHeight;
+      for (var i = sections.length - 1; i >= 0; i--) {
+        if (that.scroll >= sections[i].offsetTop - that.differ) {
+          if(that.scroll == leftBoxscollHeight){
+            that.chooseIndex = sections.length - 1;
+            break;
+          }else{
+            that.chooseIndex = i;
+          }
+          break;
+        }
+      }
     },
     chooseRightTitle(index) {
+      let jump = document.getElementsByClassName('content-box'),
+          total = jump[index].offsetTop - this.differ; // 获取需要滚动的距离
+      this.$refs.leftBox.scrollTop = total;
+      this.$refs.leftBox.pageYOffset = total;
       this.chooseIndex = index;
     },
   },
-  components: { Bar,RankingBar,ShadowBar },
+  components: { Bar,RankingBar,ShadowBar,TwoWayBar },
 };
 </script>
 
