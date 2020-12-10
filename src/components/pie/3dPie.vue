@@ -39,7 +39,7 @@ export default {
           type: "pie",
           options3d: {
             enabled: true,
-            alpha: 45,
+            alpha: 55,
             beta: 0,
           },
           backgroundColor: "rgba(0,0,0,0)",
@@ -94,13 +94,7 @@ export default {
               enabled: false,
               // format: '{point.name}{point.y}',
               formatter: function () {
-                return (
-                  '<span style="display:block;width:7px;height:7px;background-color:' +
-                  this.color +
-                  '"></span>' +
-                  this.key +
-                  this.y
-                );
+                return ('<span style="display:block;width:7px;height:7px;background-color:' + this.color + '"></span>' + this.key + this.y);
               },
               style: {
                 color: "#333",

@@ -29,9 +29,7 @@ export default {
   },
   methods: {
     initChart() {
-      var newData = JSON.parse(
-        JSON.stringify(this.data).replace(/value/g, "y")
-      );
+      var newData = JSON.parse(JSON.stringify(this.data).replace(/value/g, "y"));
       newData.forEach((item) => {
         item.y = +item.y;
       });
@@ -41,7 +39,7 @@ export default {
           type: "pie",
           options3d: {
             enabled: true,
-            alpha: 45,
+            alpha: 55,
             beta: 0,
           },
           backgroundColor: "rgba(0,0,0,0)",
@@ -88,7 +86,7 @@ export default {
         },
         plotOptions: {
           pie: {
-            size: "55%",
+            size: "65%",
             allowPointSelect: true,
             cursor: "pointer",
             innerSize: 100,
@@ -114,7 +112,7 @@ export default {
             //   },
             // },
             // borderWidth: 0.5,
-            center: ["50%", "45%"],
+            center: ["50%", "40%"],
             // showInLegend: true,
           },
         },

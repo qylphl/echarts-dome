@@ -4,45 +4,27 @@
       <!-- 饼图 -->
       <div class="content-box flex-box">
         <!-- 普通饼状图 -->
-        <div
-          class="pie-box"
-          v-for="(item, index) in ordinaryPieOption"
-          :key="index"
-          :style="{
-            width: item.boxWidth ? item.boxWidth : '32.4%',
-            'border-color': themeType == 1 ? '#082b7d' : '#eaeaea',
-          }"
-        >
-          <Pie
-            :data="data"
-            :deploy="item"
-            :title="item.boxTitle"
-            :isCheck="item.isCheck"
-          ></Pie>
+        <div class="pie-box" v-for="(item, index) in ordinaryPieOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea',}">
+          <Pie :data="data" :deploy="item" :title="item.boxTitle" :isCheck="item.isCheck"></Pie>
         </div>
         <!-- 动画环状图 -->
-        <div
-          class="pie-box"
-          :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }"
-        >
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <MotionAnnularPie :data="80"></MotionAnnularPie>
         </div>
       </div>
       <!-- 3D饼(环)状图 -->
       <div class="content-box flex-box">
         <!-- 3d饼状图 -->
-        <div
-          class="pie-box"
-          :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }"
-        >
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <StereoscopicPie :data="data" :color="color"></StereoscopicPie>
         </div>
-        <!-- 3环状图 -->
-        <div
-          class="pie-box"
-          :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }"
-        >
+        <!-- 3d环状图 -->
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <AnnularStereoscopicPie :data="data" :color="color"></AnnularStereoscopicPie>
+        </div>
+        <!-- 3d立体环状图 -->
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <SolidPie :data="data" :color="color"></SolidPie>
         </div>
       </div>
       <!-- 玫瑰图 -->
@@ -69,9 +51,11 @@
 <script>
 import Subnuv from "components/nav/subnav";
 import Pie from "components/pie/pie";
+import MotionAnnularPie from "components/pie/motionAnnularPie";
 import StereoscopicPie from "components/pie/3dPie";
 import AnnularStereoscopicPie from "components/pie/3dAnnularPie";
-import MotionAnnularPie from "components/pie/motionAnnularPie";
+import SolidPie from "components/pie/3dSolidPie";
+
 import rosePie from "components/pie/rosePie";
 import roseAnnularPie from "components/pie/roseAnnularPie";
 import cockScombPie from "components/pie/cockScombPie";
@@ -248,7 +232,7 @@ export default {
         color: this.color,
         gradients: this.gradients,
         petalData: this.petalData,
-        petalColor: this.petalColor
+        petalColor: this.petalColor,
       };
       this.ordinaryPieOption = new PieChart(info).ORDINARY_PIE_CHARTS;
     },
@@ -276,13 +260,14 @@ export default {
       }
     },
     chooseRightTitle(index) {
-      let total = document.getElementsByClassName("content-box")[index].offsetTop - this.differ; // 获取需要滚动的距离
+      let total =
+        document.getElementsByClassName("content-box")[index].offsetTop - this.differ; // 获取需要滚动的距离
       this.$refs.leftBox.scrollTop = total;
       this.$refs.leftBox.pageYOffset = total;
       this.chooseIndex = index;
     },
   },
-  components: { Pie, StereoscopicPie, AnnularStereoscopicPie, MotionAnnularPie, Subnuv },
+  components: { Pie, MotionAnnularPie, StereoscopicPie, AnnularStereoscopicPie, SolidPie, Subnuv },
 };
 </script>
 
