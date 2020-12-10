@@ -1,84 +1,84 @@
 <template>
-  <div class="content">
-    <!-- 饼图 -->
-    <div class="content-box flex-box" v-if="index == 1">
-      <!-- 普通饼状图 -->
-      <div class="pie-box">
-        <pie :data="data" :color="color"></pie>
+  <div class="content flex-box">
+    <div class="left-box" ref="leftBox">
+      <!-- 饼图 -->
+      <div class="content-box flex-box">
+        <!-- 普通饼状图 -->
+        <div
+          class="pie-box"
+          v-for="(item, index) in ordinaryPieOption"
+          :key="index"
+          :style="{
+            width: item.boxWidth ? item.boxWidth : '32.4%',
+            'border-color': themeType == 1 ? '#082b7d' : '#eaeaea',
+          }"
+        >
+          <Pie
+            :data="data"
+            :deploy="item"
+            :title="item.boxTitle"
+            :isCheck="item.isCheck"
+          ></Pie>
+        </div>
+        <!-- 动画环状图 -->
+        <div
+          class="pie-box"
+          :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }"
+        >
+          <MotionAnnularPie :data="80"></MotionAnnularPie>
+        </div>
       </div>
-      <!-- 3D饼图 -->
-      <div class="pie-box">
-        <stereoscopicPie :data="data" :color="color"></stereoscopicPie>
+      <!-- 3D饼(环)状图 -->
+      <div class="content-box flex-box">
+        <!-- 3d饼状图 -->
+        <div
+          class="pie-box"
+          :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }"
+        >
+          <StereoscopicPie :data="data" :color="color"></StereoscopicPie>
+        </div>
+        <!-- 3环状图 -->
+        <div
+          class="pie-box"
+          :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }"
+        >
+          <AnnularStereoscopicPie :data="data" :color="color"></AnnularStereoscopicPie>
+        </div>
       </div>
-      <div class="pie-box hidden"></div>
+      <!-- 玫瑰图 -->
+      <div class="content-box flex-box"></div>
+      <!-- 环饼嵌套图 -->
+      <div class="content-box flex-box"></div>
+      <!-- 旭日图 -->
+      <div class="content-box flex-box"></div>
     </div>
-    <!-- 环形图 -->
-    <div class="content-box flex-box" v-if="index == 2">
-      <!-- 普通环形图 -->
-      <div class="pie-box">
-        <annularPie :data="data" :color="gradients"></annularPie>
-      </div>
-      <!-- 带小圆点环形图 -->
-      <div class="pie-box">
-        <dotAnnularPie :data="data" :color="color"></dotAnnularPie>
-      </div>
-      <!-- 带内边框环形图 -->
-      <div class="pie-box">
-        <innerBorderAnnularPie
-          :data="data"
-          :color="gradients"
-        ></innerBorderAnnularPie>
-      </div>
-      <!-- 3D环形图 -->
-      <div class="pie-box">
-        <annularStereoscopicPie
-          :data="data"
-          :color="color"
-        ></annularStereoscopicPie>
-      </div>
-      <!-- 动态环形图 -->
-      <div class="pie-box">
-        <motionAnnularPie :data="80"></motionAnnularPie>
-      </div>
-      <div class="pie-box hidden"></div>
+    <div
+      class="right-box"
+      :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }"
+    >
+      <Subnuv
+        ref="subnuv"
+        :dataList="rightList"
+        :titleColor="themeType == 1 ? '#b0c9f0' : '#333'"
+        @chooseTitle="chooseRightTitle"
+      ></Subnuv>
     </div>
-    <!-- 玫瑰图 -->
-    <div class="content-box flex-box" v-if="index == 3">
-      <!-- 普通玫瑰饼图 -->
-      <div class="pie-box">
-        <rosePie :data="data" :color="gradients"></rosePie>
-      </div>
-      <!-- 普通玫瑰环图 -->
-      <div class="pie-box">
-        <roseAnnularPie :data="data" :color="color"></roseAnnularPie>
-      </div>
-      <!-- 鸡冠玫瑰图 -->
-      <div class="pie-box">
-        <cockScombPie :data="data" :color="color"></cockScombPie>
-      </div>
-    </div>
-    <!-- 环饼嵌套图 -->
-    <div class="content-box flex-box" v-if="index == 4"></div>
-    <!-- 旭日图 -->
-    <div class="content-box flex-box" v-if="index == 5"></div>
   </div>
 </template>
 
 <script>
-import pie from "components/pie/pie";
-import stereoscopicPie from "components/pie/3dPie";
-import annularPie from "components/pie/annularPie";
-import dotAnnularPie from "components/pie/dotAnnularPie";
-import innerBorderAnnularPie from "components/pie/InnerBorderAnnularPie";
-import annularStereoscopicPie from "components/pie/3dAnnularPie";
-import motionAnnularPie from "components/pie/motionAnnularPie";
+import Subnuv from "components/nav/subnav";
+import Pie from "components/pie/pie";
+import StereoscopicPie from "components/pie/3dPie";
+import AnnularStereoscopicPie from "components/pie/3dAnnularPie";
+import MotionAnnularPie from "components/pie/motionAnnularPie";
 import rosePie from "components/pie/rosePie";
 import roseAnnularPie from "components/pie/roseAnnularPie";
 import cockScombPie from "components/pie/cockScombPie";
+import PieChart from "utils/pieOption";
 export default {
   data() {
     return {
-      index: this.$route.params.index, //  index值
       color: ["#328ff6", "#f56e6b", "#c956d7"],
       gradients: [
         {
@@ -177,54 +177,116 @@ export default {
         { value: 1090, name: "职务违法犯罪行为" },
         { value: 2865, name: "其他违法犯罪行为" },
       ],
+      // 花瓣饼图数据
+      petalData: [
+        {
+          name: "工程建设",
+          value: 10,
+        },
+        {
+          name: "产权交易",
+          value: 10,
+        },
+        {
+          name: "土地交易",
+          value: 10,
+        },
+        {
+          name: "其他交易",
+          value: 10,
+        },
+        {
+          name: "土地交易",
+          value: 10,
+        },
+        {
+          name: "其他交易",
+          value: 10,
+        },
+      ],
+      petalColor: [
+        "rgb(255, 153, 153)",
+        "rgb(255, 176, 63)",
+        "rgb(61, 186, 45)",
+        "rgb(43, 166, 254)",
+        "rgb(255,222,0)",
+        "rgb(255,0,0)",
+      ],
+      // 右侧导航菜单
+      rightList: [
+        { title: "饼(环)状图", num: "9" },
+        { title: "3D饼(环)状图", num: "9" },
+        { title: "玫瑰图", num: "2" },
+        { title: "环饼嵌套图", num: "2" },
+        { title: "旭日图", num: "2" },
+      ],
+      scroll: "",
+      chooseIndex: 0, // 选中右侧导航的index值
+      differ: 0, // 差值
+      ordinaryPieOption: [], // 普通饼（环）状图数据
     };
   },
-  watch: {
-    $route(to, from) {
-      this.index = this.$route.params.index;
+  computed: {
+    themeType() {
+      return this.$store.getters.getThemeTyle;
     },
   },
-  mounted() {},
-  methods: {},
-  components: {
-    pie,
-    stereoscopicPie,
-    annularPie,
-    dotAnnularPie,
-    innerBorderAnnularPie,
-    annularStereoscopicPie,
-    motionAnnularPie,
-    rosePie,
-    roseAnnularPie,
-    cockScombPie,
+  watch: {
+    scroll() {
+      this.loadSroll();
+    },
   },
+  mounted() {
+    this.differ = document.getElementsByClassName("content-box")[0].offsetTop;
+    this.$refs.leftBox.addEventListener("scroll", this.dataScroll);
+    this.initPieOption();
+  },
+  methods: {
+    initPieOption() {
+      let info = {
+        data: this.data,
+        color: this.color,
+        gradients: this.gradients,
+        petalData: this.petalData,
+        petalColor: this.petalColor
+      };
+      this.ordinaryPieOption = new PieChart(info).ORDINARY_PIE_CHARTS;
+    },
+    // 锚点双向监听
+    dataScroll() {
+      this.scroll = this.$refs.leftBox.scrollTop;
+    },
+    loadSroll() {
+      var that = this,
+        sections = document.getElementsByClassName("content-box"),
+        leftBoxscollHeight =
+          this.$refs.leftBox.scrollHeight - this.$refs.leftBox.clientHeight;
+      for (var i = sections.length - 1; i >= 0; i--) {
+        if (that.scroll >= sections[i].offsetTop - that.differ) {
+          if (that.scroll == leftBoxscollHeight) {
+            that.chooseIndex = sections.length - 1;
+            that.$refs.subnuv.chooseIndex = that.chooseIndex;
+            break;
+          } else {
+            that.chooseIndex = i;
+            that.$refs.subnuv.chooseIndex = that.chooseIndex;
+            break;
+          }
+        }
+      }
+    },
+    chooseRightTitle(index) {
+      let total = document.getElementsByClassName("content-box")[index].offsetTop - this.differ; // 获取需要滚动的距离
+      this.$refs.leftBox.scrollTop = total;
+      this.$refs.leftBox.pageYOffset = total;
+      this.chooseIndex = index;
+    },
+  },
+  components: { Pie, StereoscopicPie, AnnularStereoscopicPie, MotionAnnularPie, Subnuv },
 };
 </script>
 
 <style lang="scss">
 @import "style/charts.scss";
-.content,
-.content-box {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-.content-box {
-  padding: 40px 40px 0;
-  overflow-y: visible;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  .pie-box {
-    width: 30%;
-    height: 500px;
-    background-color: transparent;
-    border-radius: 7px;
-    box-shadow: 5px 5px 20px #b3b3b4;
-    margin-bottom: 40px;
-    &:first-child {
-      margin-left: 0;
-    }
-  }
-}
+@import "style/innerContent.scss";
 </style>

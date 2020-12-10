@@ -9,7 +9,7 @@
         </div>
         <!-- 普通柱状（条形）图 -->
         <div class="pie-box" v-for="(item, index) in ordinaryBarOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <Bar :color="color" :deploy="item" :title="item.boxTitle"></Bar>
+          <Bar :deploy="item" :title="item.boxTitle"></Bar>
         </div> 
         <!-- 带阴影柱状图 -->
         <div class="pie-box" :style="{'width': '66.15%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
@@ -19,19 +19,19 @@
       <!-- 堆积柱状（条形）图 -->
       <div class="content-box flex-box" ref="cumulateCharts">
         <div class="pie-box" v-for="(item, index) in cumulateBarOption" :key="index" :style="{width: item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <Bar :color="color" :deploy="item" :title="item.boxTitle"></Bar>
+          <Bar :deploy="item" :title="item.boxTitle"></Bar>
         </div>
       </div>
       <!-- 分组柱状图 -->
       <div class="content-box flex-box" ref="groupCharts">
         <div class="pie-box" v-for="(item, index) in groupBarOption" :key="index" :style="{width: item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <Bar :color="color" :deploy="item" :title="item.boxTitle"></Bar>
+          <Bar :deploy="item" :title="item.boxTitle"></Bar>
         </div>
       </div>
       <!-- 3D柱状图 -->
       <div class="content-box flex-box" ref="solidCharts">
         <div class="pie-box" v-for="(item, index) in solidBarOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <Bar :color="color" :deploy="item" :title="item.boxTitle"></Bar>
+          <Bar :deploy="item" :title="item.boxTitle"></Bar>
         </div>
       </div>
       <!-- 双向柱状图 -->
@@ -107,10 +107,10 @@ export default {
       },
       // 右侧导航菜单
       rightList: [
-        {title: "柱状图",num: '2'},
+        {title: "柱状(条形)图",num: '9'},
         {title: "堆积柱状图",num: '2'},
         {title: "分组柱状图",num: '2'},
-        {title: "3D柱状图",num: '1'},
+        {title: "3D柱状图",num: '2'},
         {title: "双向柱状图",num: '1'},
       ],
       scroll: '',

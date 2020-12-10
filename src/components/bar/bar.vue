@@ -1,20 +1,20 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
+    <navBar :title="title ? title : '柱状图'"></navBar>
     <div class="chart-box" ref="barChart" :style="{'background-color': themeType==1?'#07124a':'#fff'}"></div>
   </div>
 </template>
 
 <script>
-import navBar from 'components/nav/navBar'
+import navBar from 'components/nav/navBar';
 export default {
   props: {
     title: {
-      default: "普通柱状图",
+      default: "柱状图",
       type: String,
     },
     deploy: {
-        type: Object,
+      type: Object,
     },
   },
   data() {
@@ -31,8 +31,8 @@ export default {
   methods: {
     initChart() {
       let that = this,
-        barChart = that.$echarts.init(that.$refs.barChart),
-        option = that.deploy;
+          barChart = that.$echarts.init(that.$refs.barChart),
+          option = that.deploy;
       window.addEventListener("resize", function () {
         barChart.resize();
       });

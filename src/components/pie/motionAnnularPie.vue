@@ -1,11 +1,12 @@
 <template>
   <div class="chart-content">
-    <p class="title-bar">{{ title }}</p>
+    <navBar :title="title"></navBar>
     <div class="chart-box" ref="motionAnnularChart"></div>
   </div>
 </template>
 
 <script>
+import navBar from 'components/nav/navBar';
 export default {
   props: {
     title: {
@@ -372,7 +373,6 @@ export default {
       window.addEventListener("resize", function () {
         motionAnnularChart.resize();
       });
-      
       setInterval(function () {
         //用setInterval做动画感觉有问题
         that.angle = that.angle + 3;
@@ -388,6 +388,7 @@ export default {
       };
     },
   },
+  components:{navBar}
 };
 </script>
 

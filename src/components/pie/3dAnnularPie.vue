@@ -1,11 +1,12 @@
 <template>
   <div class="chart-content">
-    <p class="title-bar">{{ title }}</p>
+    <navBar :title="title"></navBar>
     <div class="chart-box" ref="stereoscopicPie"></div>
   </div>
 </template>
 
 <script>
+import navBar from 'components/nav/navBar';
 import HighCharts from "highcharts";
 export default {
   props: {
@@ -144,6 +145,7 @@ export default {
       HighCharts.chart(this.$refs.stereoscopicPie, option);
     },
   },
+  components:{navBar}
 };
 </script>
 

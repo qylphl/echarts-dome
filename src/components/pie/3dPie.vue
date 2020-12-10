@@ -1,16 +1,17 @@
 <template>
   <div class="chart-content">
-    <p class="title-bar">{{ title }}</p>
+    <navBar :title="title"></navBar>
     <div class="chart-box" ref="stereoscopicPie"></div>
   </div>
 </template>
 
 <script>
+import navBar from 'components/nav/navBar';
 import HighCharts from "highcharts";
 export default {
   props: {
     title: {
-      default: "3D饼图",
+      default: "3D饼状图",
       type: String,
     },
     data: {
@@ -28,9 +29,7 @@ export default {
   },
   methods: {
     initChart() {
-      var newData = JSON.parse(
-        JSON.stringify(this.data).replace(/value/g, "y")
-      );
+      var newData = JSON.parse(JSON.stringify(this.data).replace(/value/g, "y"));
       newData.forEach((item) => {
         item.y = +item.y;
       });
@@ -148,6 +147,7 @@ export default {
       HighCharts.chart(this.$refs.stereoscopicPie, option);
     },
   },
+  components:{navBar}
 };
 </script>
 

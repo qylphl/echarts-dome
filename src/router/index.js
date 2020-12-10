@@ -24,7 +24,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Main
+      component: Main,
+      children: [
+        {
+          path: '/',
+          component: BarCharts,
+        },
+      ]
     },
     {
       path: '/main',

@@ -1,79 +1,64 @@
 <template>
   <div class="chart-content">
-    <p class="title-bar">{{ title }}</p>
-    <div class="chart-box" ref="pieChart"></div>
+    <navBar :title="title ? title : '饼状图'"></navBar>
+    <div class="chart-box" ref="pieChart" :style="{'background-color': themeType==1?'#07124a':'#fff'}"></div>
   </div>
 </template>
 
 <script>
+import navBar from 'components/nav/navBar';
+import {setHighlight,setBorderPieHighlight} from "utils/chartsClass";
 export default {
   props: {
     title: {
-      default: "普通饼图",
+      default: "饼状图",
       type: String,
+    },
+    deploy: {
+      type: Object,
     },
     data: {
       type: Array,
     },
-    color: {
-      type: Array,
-    },
+    isCheck: {    // 是否默认选中高亮
+      default: 0,
+      type: Number,
+    }
   },
   data() {
     return {};
+  },
+  computed: {
+    themeType() {
+      return this.$store.getters.getThemeTyle;
+    },
   },
   mounted() {
     this.initChart();
   },
   methods: {
     initChart() {
-      let pieChart = this.$echarts.init(this.$refs.pieChart);
-      let option = {
-        color: this.color,
-        tooltip: {
-          trigger: "item",
-          formatter: "{a} <br/>{b} : {c} ({d}%)",
-        },
-        legend: {
-          icon: "roundRect",
-          orient: "horizontal",
-          bottom: "10%",
-          itemGap: 20,
-          align: "left",
-          padding: [5, 25, 5, 10],
-          itemWidth: 17,
-          itemHeight: 8,
-          selectedMode: false,
-          textStyle: {
-            color: "#666",
-            fontSize: 12, //字体大小
-            padding: [0, 15, 0, 0],
-          },
-          data: this.data.map((v) => v.name),
-        },
-        series: [
-          {
-            name: "访问来源",
-            type: "pie",
-            radius: "55%",
-            center: ["50%", "40%"],
-            data: this.data,
-            emphasis: {
-              itemStyle: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: "rgba(0, 0, 0, 0.5)",
-              },
-            },
-          },
-        ],
-      };
+      let that = this,
+          pieChart = that.$echarts.init(that.$refs.pieChart),
+          option = that.deploy;
       window.addEventListener("resize", function () {
         pieChart.resize();
       });
       pieChart.setOption(option, true);
+      if(this.isCheck == 1){ // 设置默认选中高亮
+        setHighlight(
+          pieChart,
+          that.data.map((v) => v.value)
+        );
+      }else if(this.isCheck == 2){  // 带虚线边框饼图的默认高亮
+        setBorderPieHighlight(
+          pieChart,
+          that.data.map((v) => v.value)
+        );
+      }
     },
   },
+  components:{navBar}
 };
 </script>
 
