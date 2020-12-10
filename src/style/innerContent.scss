@@ -37,27 +37,5 @@
         border-left: 1px solid transparent;
         margin-left: 9px;
         box-sizing: border-box;
-        cursor: pointer;
-        .right-title{
-            height: 28px;
-            line-height: 28px;
-            padding-left: 16px;
-            font-size: 20px;
-            color: #333;
-            margin-top: 18px;
-            margin-left: -2.5px;
-            border-left: 5px solid transparent;
-            transition: all .3s ease-in-out;
-            &:hover{
-                color: #2878ff !important;
-            }
-            .right-title-content{
-                width: max-content;
-            }
-        }
-        .choose-item{
-            border-left-color: #2878ff;
-            color: #2878ff !important;
-        }
     }
 }

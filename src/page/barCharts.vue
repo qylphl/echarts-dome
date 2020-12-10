@@ -42,16 +42,13 @@
       </div>
     </div>
     <div class="right-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6'}">
-      <div :class="{'right-title': true,'choose-item': index == chooseIndex}" v-for="(item, index) in rightList" :key="index" :style="{'color':themeType == 1 ? '#b0c9f0' : '#333'}" @click="chooseRightTitle(index)">
-        <el-tooltip :content="item.num" effect="light" placement="right">
-          <p class="right-title-content">{{item.title}}</p>
-        </el-tooltip>
-      </div>
+      <Subnuv ref="subnuv" :dataList="rightList" :titleColor="themeType == 1 ? '#b0c9f0' : '#333'" @chooseTitle="chooseRightTitle"></Subnuv>
     </div>
   </div>
 </template>
 
 <script>
+import Subnuv from "components/nav/subnav";
 import Bar from "components/bar/bar";
 import RankingBar from "components/bar/rankingBar";
 import ShadowBar from "components/bar/shadowBar";
@@ -136,7 +133,7 @@ export default {
     }
   },
   mounted() {
-    this.differ = document.getElementsByClassName('content-box')[0].offsetTop + 18;
+    this.differ = document.getElementsByClassName('content-box')[0].offsetTop;
     this.$refs.leftBox.addEventListener('scroll', this.dataScroll);
     this.initGroupData();
     this.initBarOption();
@@ -169,30 +166,30 @@ export default {
     },
     loadSroll() {
       var that = this,
-          $navs = document.getElementsByClassName("right-title"),
           sections = document.getElementsByClassName('content-box'),
           leftBoxscollHeight = this.$refs.leftBox.scrollHeight - this.$refs.leftBox.clientHeight;
       for (var i = sections.length - 1; i >= 0; i--) {
         if (that.scroll >= sections[i].offsetTop - that.differ) {
           if(that.scroll == leftBoxscollHeight){
             that.chooseIndex = sections.length - 1;
+            that.$refs.subnuv.chooseIndex = that.chooseIndex;
             break;
           }else{
             that.chooseIndex = i;
-          }
-          break;
+            that.$refs.subnuv.chooseIndex = that.chooseIndex;
+            break;
+          } 
         }
       }
     },
     chooseRightTitle(index) {
-      let jump = document.getElementsByClassName('content-box'),
-          total = jump[index].offsetTop - this.differ; // 获取需要滚动的距离
+      let total = document.getElementsByClassName('content-box')[index].offsetTop - this.differ; // 获取需要滚动的距离
       this.$refs.leftBox.scrollTop = total;
       this.$refs.leftBox.pageYOffset = total;
       this.chooseIndex = index;
     },
   },
-  components: { Bar,RankingBar,ShadowBar,TwoWayBar },
+  components: { Bar,RankingBar,ShadowBar,TwoWayBar,Subnuv },
 };
 </script>
 

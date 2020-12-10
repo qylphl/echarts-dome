@@ -258,6 +258,7 @@ export default {
       right: 5px;
       top: 10px; 
       padding-left: 15px;
+      border: 0;
       border-left: 2px solid #333;
       border-image: -webkit-linear-gradient(
           #30c0ff,
