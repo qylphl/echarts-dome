@@ -27,23 +27,32 @@
           <SolidPie :data="data" :color="color"></SolidPie>
         </div>
       </div>
-      <!-- 玫瑰图 -->
-      <div class="content-box flex-box"></div>
+      <!-- 玫瑰饼图 -->
+      <div class="content-box flex-box">
+          <!-- 普通玫瑰饼图 -->
+        <div class="pie-box" v-for="(item, index) in rosePieOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea',}">
+          <Pie :data="data" :deploy="item" :title="item.boxTitle" :isCheck="item.isCheck"></Pie>
+        </div>
+        <!-- 鸡冠玫瑰饼图 -->
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <CockScombPie :data="cockScombData" :color="cockScombColor"></CockScombPie>
+        </div>
+      </div>
       <!-- 环饼嵌套图 -->
-      <div class="content-box flex-box"></div>
+      <div class="content-box flex-box">
+        <div class="pie-box" v-for="(item, index) in nestPieOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea',}">
+          <Pie :data="data" :deploy="item" :title="item.boxTitle" :isCheck="item.isCheck"></Pie>
+        </div>
+      </div>
       <!-- 旭日图 -->
-      <div class="content-box flex-box"></div>
+      <div class="content-box flex-box">
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <CockScombPie :data="cockScombData" :color="cockScombColor"></CockScombPie>
+        </div>
+      </div>
     </div>
-    <div
-      class="right-box"
-      :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }"
-    >
-      <Subnuv
-        ref="subnuv"
-        :dataList="rightList"
-        :titleColor="themeType == 1 ? '#b0c9f0' : '#333'"
-        @chooseTitle="chooseRightTitle"
-      ></Subnuv>
+    <div class="right-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6'}">
+      <Subnuv ref="subnuv" :dataList="rightList" :titleColor="themeType == 1 ? '#b0c9f0' : '#333'" @chooseTitle="chooseRightTitle"></Subnuv>
     </div>
   </div>
 </template>
@@ -55,10 +64,8 @@ import MotionAnnularPie from "components/pie/motionAnnularPie";
 import StereoscopicPie from "components/pie/3dPie";
 import AnnularStereoscopicPie from "components/pie/3dAnnularPie";
 import SolidPie from "components/pie/3dSolidPie";
+import CockScombPie from "components/pie/cockScombPie";
 
-import rosePie from "components/pie/rosePie";
-import roseAnnularPie from "components/pie/roseAnnularPie";
-import cockScombPie from "components/pie/cockScombPie";
 import PieChart from "utils/pieOption";
 export default {
   data() {
@@ -196,6 +203,9 @@ export default {
         "rgb(255,222,0)",
         "rgb(255,0,0)",
       ],
+      // 鸡冠玫瑰饼图数据
+      cockScombData:[{ value: 14, name: "违纪行为2" }, { value: 19, name: "职务违法犯罪行为2" }, { value: 148, name: "违纪行为" }, { value: 109, name: "职务违法犯罪行为" }, { value: 165, name: "其他违法犯罪行为" }, { value: 265, name: "其他" }],
+      cockScombColor:['#e37474', '#a885e8', '#9c746d', '#4ea9ff', '#20ccdc', '#f1e907', '#fec283', '#95c14c', '#f2925e'],
       // 右侧导航菜单
       rightList: [
         { title: "饼(环)状图", num: "9" },
@@ -208,6 +218,8 @@ export default {
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
       ordinaryPieOption: [], // 普通饼（环）状图数据
+      rosePieOption: [], // 玫瑰图数据
+      nestPieOption: [], // 环饼嵌套图数据
     };
   },
   computed: {
@@ -235,6 +247,8 @@ export default {
         petalColor: this.petalColor,
       };
       this.ordinaryPieOption = new PieChart(info).ORDINARY_PIE_CHARTS;
+      this.rosePieOption = new PieChart(info).ROSE_PIE_CHARTS;
+      this.nestPieOption = new PieChart(info).NEST_PIE_CHARTS;
     },
     // 锚点双向监听
     dataScroll() {
@@ -267,7 +281,7 @@ export default {
       this.chooseIndex = index;
     },
   },
-  components: { Pie, MotionAnnularPie, StereoscopicPie, AnnularStereoscopicPie, SolidPie, Subnuv },
+  components: { Pie, MotionAnnularPie, StereoscopicPie, AnnularStereoscopicPie, SolidPie, CockScombPie, Subnuv },
 };
 </script>
 

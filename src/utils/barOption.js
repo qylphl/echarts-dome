@@ -972,7 +972,6 @@ export default class BarChart {
             // 普通堆积柱状图
             cumulate_charts_option: {
                 boxTitle: '堆积柱状图', // 给图表父元素定义的title，不用于echarts中的option
-                boxWidth: '66.15%',  // 给图表父元素定义的宽，不用于echarts中的option
                 title: {
                     top: '10',
                     left: '10',
@@ -1297,6 +1296,65 @@ export default class BarChart {
                         data: info.cumulateData.personCountList.map(v => { return 0 }),
                     },
                 ]
+            },
+            // 极坐标系下堆积柱状图
+            ring_column_charts_option: {
+                boxTitle: '极坐标系下堆积柱状图', // 给图表父元素定义的title，不用于echarts中的option
+                legend: {
+                    show: false,
+                    icon: "roundRect",
+                    orient: "horizontal",
+                    bottom: "20",
+                    itemGap: 20,
+                    align: "left",
+                    padding: [5, 25, 5, 10],
+                    itemWidth: 17,
+                    itemHeight: 8,
+                    selectedMode: false,
+                    textStyle: {
+                        color: "#666",
+                        fontSize: 12, //字体大小
+                        padding: [0, 15, 0, 0],
+                    },
+                    data: ["价格范围"]
+                },
+                tooltip: {
+                    show: true,
+                    formatter: function (params) {
+                        var id = params.dataIndex;
+                        return info.ringColumnData.map((v) => v.name)[id] + '<br>最低：' + info.ringColumnData.map((v) => v.value)[id][0] + '<br>最高：' + info.ringColumnData.map((v) => v.value)[id][1];
+                    }
+                },
+                angleAxis: {
+                    type: "category",
+                    data: info.ringColumnData.map((v) => v.name),
+                    color: "#333"
+                },
+                radiusAxis: {},
+                polar: {},
+                color: info.color,
+                series: [
+                    {
+                        barWidth: 15,
+                        type: "bar",
+                        itemStyle: { color: "transparent" },
+                        data: info.ringColumnData.map((d) => d.value[0]),
+                        coordinateSystem: "polar",
+                        stack: "最大最小值",
+                        silent: true
+                    },
+                    {
+                        barWidth: 15,
+                        type: "bar",
+                        data: info.ringColumnData.map((d) => d.value[1] - d.value[0]),
+                        coordinateSystem: "polar",
+                        name: "价格范围",
+                        stack: "最大最小值"
+                    }
+                ],
+                textStyle: {
+                    color: "#333" // 改变标示文字的颜色
+                }
             }
         };
         // 分组柱状图
@@ -1795,7 +1853,7 @@ export default class BarChart {
                                 {
                                     offset: 0.6,
                                     color: "#138CEB" // 60% 处的颜色
-                                }, 
+                                },
                                 {
                                     offset: 1,
                                     color: "#17AAFE" // 100% 处的颜色
@@ -1823,7 +1881,7 @@ export default class BarChart {
                                 {
                                     offset: 0.6,
                                     color: "#0761C0" // 60% 处的颜色
-                                }, 
+                                },
                                 {
                                     offset: 1,
                                     color: "#0575DE" // 100% 处的颜色

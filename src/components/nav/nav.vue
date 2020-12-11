@@ -48,7 +48,7 @@ export default {
   methods: {
     chooseNav(index, router) {
       this.chooseNavType = index;
-      this.$router.replace("/main/" + router);
+      this.$router.push("/main/" + router);
       this.$emit("chooseNav", this.chooseNavType);
     },
     // 刷新页面路由和导航菜单同步

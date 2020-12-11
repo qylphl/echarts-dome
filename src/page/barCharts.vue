@@ -100,6 +100,21 @@ export default {
         data1: [],
         data2: []
       },
+      // 极坐标系下堆积柱状图数据
+      ringColumnData:[
+        { value: [38, 78], name: "北京" }, 
+        { value: [38, 76], name: "上海" }, 
+        { value: [38, 70], name: "深圳" },
+        { value: [32, 68], name: "江苏" },
+        { value: [24, 52], name: "重庆" }, 
+        { value: [20, 43], name: "广东" },
+        { value: [16, 32], name: "湖南" },
+        { value: [14.4, 32], name: "湖北" },
+        { value: [20, 32], name: "河北" },
+        { value: [16, 32], name: "河南" },
+        { value: [16, 24], name: "辽宁" },
+        { value: [14, 30], name: "黑龙江" },
+      ],
       // 双向柱状图数据
       twoWayData: {
         female: { name: '女性', data: [{ value: 5, label: '小于1岁' }, { value: 12, label: '1 ～ 9 岁' }, { value: 10, label: '10 ～ 19 岁' }, { value: 7, label: '20 ～ 29 岁' }, { value: 32, label: '30 ～ 39 岁' }, { value: 40, label: '40 ～ 49 岁' }, { value: 28, label: '50 ～ 59 岁' }, { value: 34, label: '大于60岁' }] },
@@ -145,6 +160,7 @@ export default {
         color: this.color,
         colorList: this.colorList,
         cumulateData: this.cumulateData,
+        ringColumnData: this.ringColumnData,
         groupData: this.groupData,
       };
       this.ordinaryBarOption = new BarChart(info).ORDINARY_BAR_CHARTS;

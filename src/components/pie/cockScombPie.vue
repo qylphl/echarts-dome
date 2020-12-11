@@ -1,11 +1,13 @@
 <template>
   <div class="chart-content">
-    <p class="title-bar">{{ title }}</p>
+    <navBar :title="title"></navBar>
     <div class="chart-box" ref="cockScombPie"></div>
   </div>
 </template>
 
 <script>
+import navBar from "components/nav/navBar";
+import { sortByKey, setHighlight } from "utils/chartsClass";
 export default {
   props: {
     title: {
@@ -32,79 +34,21 @@ export default {
   },
   methods: {
     initChart() {
-      for (var i = 0; i < this.data.length; i++) {
-        this.newData.push(this.data[i]);
-      }
-      this.newData = this.newData.sort(this.object());
+      this.newData = sortByKey(this.data, "value");
       let that = this,
         cockScombPie = this.$echarts.init(this.$refs.cockScombPie),
-        alist = this.newData.map(v => v.value),
-        tcname = sortdata.map(v => v.name),
-        msg = new Array(),
-        option = {
-          legend: {
-            icon: "roundRect",
-            orient: "horizontal",
-            bottom: "10%",
-            itemGap: 20,
-            align: "left",
-            padding: [5, 25, 5, 10],
-            itemWidth: 17,
-            itemHeight: 8,
-            selectedMode: false,
-            textStyle: {
-              color: "#666",
-              fontSize: 12, //字体大小
-              padding: [0, 15, 0, 0],
-            },
-            data: this.data.map((v) => v.name),
-          },
-          tooltip: {
-            trigger: "item",
-            formatter: "{a} <br/>{b} : {c} ({d}%)",
-            textStyle: {
-              fontSize: 18,
-            },
-          },
-          series: [
-            {
-              type: "pie",
-              radius: ["20%", "50%"],
-              center: ["50%", "40%"],
-              roseType: "radius",
-              label: {
-                show: true,
-                normal: {
-                  position: "outside",
-                  fontSize: 16,
-                },
-              },
-              labelLine: {
-                length: 2,
-                length2: 7,
-              },
-              data: that.data.map((it, i) => {
-                return {
-                  value: it.value,
-                  name: it.name,
-                  itemStyle: {
-                    color: `${that.color[i]}`,
-                    borderColor: `${that.color[i]}`,
-                    borderWidth: 1,
-                  },
-                };
-              }),
-            },
-          ],
-        };
-      for (i = 0; i < alist.length; i++) {
+        alist = that.newData.map((v) => v.value),
+        tcname = that.newData.map((v) => v.name),
+        msg = new Array();
+      for (var i = 0; i < alist.length; i++) {
         var ms = new Array();
         if (i == 0) {
           //添加一组标题数据
           var ns = new Array();
-          for (j = 0; j < alist.length; j++) {
+          for (var j = 0; j < alist.length; j++) {
             ns.push({
               value: alist[j],
+              name: tcname[j],
               hoverAnimation: false,
               itemStyle: {
                 color: that.color[j],
@@ -112,9 +56,10 @@ export default {
             });
           }
           msg.push({
+            name: '',
             type: "pie",
             radius: [0, 0],
-            center: ["50%", "40%"],
+            center: ["50%", "50%"],
             data: ns,
             label: {
               show: false,
@@ -126,11 +71,12 @@ export default {
             },
           });
         }
-        for (j = 0; j < alist.length; j++) {
+        for (var j = 0; j < alist.length; j++) {
           //封装构造数据
           if (i == j) {
             ms.push({
               value: alist[j],
+              name: tcname[j],
               hoverAnimation: false,
               // itemStyle: {
               // color: colorlist[i],
@@ -159,9 +105,9 @@ export default {
           }
         }
         msg.push({
-          name: pname,
+          name: '',
           type: "pie",
-          radius: [55, 55 + blist[i] * length],
+          radius: [56, 68 + that.blist[i] * that.length],
           center: ["50%", "45%"],
           hoverAnimation: false,
           label: {
@@ -208,16 +154,57 @@ export default {
           },
           data: ms,
         });
-      }
+      };
+      let option = {
+        color: that.color,
+        legend: {
+          icon: "roundRect",
+          orient: "horizontal",
+          bottom: 20,
+          itemGap: 10,
+          align: "left",
+          padding: [5, 25, 5, 0],
+          itemWidth: 17,
+          itemHeight: 8,
+          textStyle: {
+            color: "#666",
+            fontSize: 12, //字体大小
+            padding: [0, 10, 0, 0],
+          },
+          selectedMode: false,
+          data: tcname,
+        },
+        calculable: true,
+        tooltip: {
+          trigger: "item",
+          show: true,
+          alwaysShowContent: true,
+          position: ["38%", "36%"],
+          textStyle: {
+            color: "#333",
+            fontSize: 13,
+            align: "center",
+          },
+          backgroundColor: "rgba(0,0,0,0)",
+          formatter:
+            "<div style='width: 100px;text-align: center;display: flex;align-items: center;justify-content: center;flex-direction: column;'>{b}<br/><span style='display: block;padding-top: 3px;'><strong style='font-size:20px;font-weight: bold;'>{c}</strong>人</span><br/><span style='display:block;margin-top: -20px;'>占比{d}%</span></div>",
+        },
+        toolbox: {
+          show: true,
+        },
+        series: msg,
+      };
       window.addEventListener("resize", function () {
         cockScombPie.resize();
       });
       cockScombPie.setOption(option, true);
-    },
-    object(a, b) {
-      return b.value - a.value;
+      setHighlight(
+        cockScombPie,
+        that.newData.map((v) => v.value)
+      );
     },
   },
+  components: { navBar },
 };
 </script>
 
