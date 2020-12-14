@@ -292,7 +292,7 @@ export default class LineChart {
                     },//线条样式
                     areaStyle: {
                         normal: {
-                            color:{ type: "linear", x: 0, y: 0, x2: 1, y2: 1, colorStops: [{ offset: 0, color: "rgba(60,158,249,1)" }, { offset: 1, color: "rgba(60,158,249,0.1)" },], globalCoord: false }, 
+                            color: { type: "linear", x: 0, y: 0, x2: 1, y2: 1, colorStops: [{ offset: 0, color: "rgba(60,158,249,1)" }, { offset: 1, color: "rgba(60,158,249,0.1)" },], globalCoord: false },
                         }
                     },
                 }],
@@ -468,9 +468,5 @@ export default class LineChart {
                     }]
             }
         };
-        // 环饼嵌套图
-        this.NEST_PIE_CHARTS = {
-
-        }
     }
 }

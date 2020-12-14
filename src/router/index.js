@@ -3,9 +3,11 @@ import Router from 'vue-router'
 
 const Index = r => require.ensure([], () => r(require('@/page/index')), 'Index');
 const Main = r => require.ensure([], () => r(require('@/page/main')), 'Main');
-const PieCharts = r => require.ensure([], () => r(require('@/page/pieCharts')), 'PieCharts');
-const BarCharts = r => require.ensure([], () => r(require('@/page/barCharts')), 'BarCharts');
-const LineCharts = r => require.ensure([], () => r(require('@/page/lineCharts')), 'LineCharts');
+const PieCharts = r => require.ensure([], () => r(require('@/page/pieCharts')), 'PieCharts');   // 饼状图
+const BarCharts = r => require.ensure([], () => r(require('@/page/barCharts')), 'BarCharts');   // 柱状图
+const LineCharts = r => require.ensure([], () => r(require('@/page/lineCharts')), 'LineCharts');  // 折线图
+const FunnelCharts = r => require.ensure([], () => r(require('@/page/funnelCharts')), 'FunnelCharts');  // 漏斗图
+const MapCharts = r => require.ensure([], () => r(require('@/page/mapCharts')), 'MapCharts');  // 地图
 
 Vue.use(Router)
 
@@ -53,6 +55,14 @@ export default new Router({
         {
           path: 'lineCharts',
           component: LineCharts,
+        },
+        {
+          path: 'funnelCharts',
+          component: FunnelCharts,
+        },
+        {
+          path: 'mapCharts',
+          component: MapCharts,
         },
       ]
     }
