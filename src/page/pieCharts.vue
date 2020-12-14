@@ -8,7 +8,7 @@
           <Pie :data="data" :deploy="item" :title="item.boxTitle" :isCheck="item.isCheck"></Pie>
         </div>
         <!-- 动画环状图 -->
-        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
           <MotionAnnularPie :data="80"></MotionAnnularPie>
         </div>
       </div>
@@ -34,7 +34,7 @@
           <Pie :data="data" :deploy="item" :title="item.boxTitle" :isCheck="item.isCheck"></Pie>
         </div>
         <!-- 鸡冠玫瑰饼图 -->
-        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
           <CockScombPie :data="cockScombData" :color="cockScombColor"></CockScombPie>
         </div>
       </div>
@@ -46,8 +46,8 @@
       </div>
       <!-- 旭日图 -->
       <div class="content-box flex-box">
-        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
-          <CockScombPie :data="cockScombData" :color="cockScombColor"></CockScombPie>
+        <div class="pie-box" :style="{'width': '66.15%','height': '900px','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <SunrisePie></SunrisePie>
         </div>
       </div>
     </div>
@@ -65,7 +65,7 @@ import StereoscopicPie from "components/pie/3dPie";
 import AnnularStereoscopicPie from "components/pie/3dAnnularPie";
 import SolidPie from "components/pie/3dSolidPie";
 import CockScombPie from "components/pie/cockScombPie";
-
+import SunrisePie from "components/pie/sunrisePie";
 import PieChart from "utils/pieOption";
 export default {
   data() {
@@ -208,11 +208,11 @@ export default {
       cockScombColor:['#e37474', '#a885e8', '#9c746d', '#4ea9ff', '#20ccdc', '#f1e907', '#fec283', '#95c14c', '#f2925e'],
       // 右侧导航菜单
       rightList: [
-        { title: "饼(环)状图", num: "9" },
-        { title: "3D饼(环)状图", num: "9" },
-        { title: "玫瑰图", num: "2" },
-        { title: "环饼嵌套图", num: "2" },
-        { title: "旭日图", num: "2" },
+        { title: "饼(环)状图", num: "6" },
+        { title: "3D饼(环)状图", num: "3" },
+        { title: "玫瑰图", num: "3" },
+        { title: "环饼嵌套图", num: "3" },
+        { title: "旭日图", num: "1" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
@@ -281,7 +281,7 @@ export default {
       this.chooseIndex = index;
     },
   },
-  components: { Pie, MotionAnnularPie, StereoscopicPie, AnnularStereoscopicPie, SolidPie, CockScombPie, Subnuv },
+  components: { Pie, MotionAnnularPie, StereoscopicPie, AnnularStereoscopicPie, SolidPie, CockScombPie, SunrisePie, Subnuv },
 };
 </script>
 

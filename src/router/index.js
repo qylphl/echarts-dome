@@ -5,6 +5,7 @@ const Index = r => require.ensure([], () => r(require('@/page/index')), 'Index')
 const Main = r => require.ensure([], () => r(require('@/page/main')), 'Main');
 const PieCharts = r => require.ensure([], () => r(require('@/page/pieCharts')), 'PieCharts');
 const BarCharts = r => require.ensure([], () => r(require('@/page/barCharts')), 'BarCharts');
+const LineCharts = r => require.ensure([], () => r(require('@/page/lineCharts')), 'LineCharts');
 
 Vue.use(Router)
 
@@ -48,6 +49,10 @@ export default new Router({
         {
           path: 'pieCharts',
           component: PieCharts,
+        },
+        {
+          path: 'lineCharts',
+          component: LineCharts,
         },
       ]
     }

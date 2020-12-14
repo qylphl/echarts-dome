@@ -36,7 +36,7 @@ export default {
       menuList: [
         { title: "柱状图", iconCls: "iconfont iconzhuzhuangtu", Vrouter: "barCharts" },
         { title: "饼状图", iconCls: "iconfont iconbingtu", Vrouter: "pieCharts" },
-        { title: "折线图", iconCls: "iconfont iconzhexiantu", Vrouter: "" },
+        { title: "折线图", iconCls: "iconfont iconzhexiantu", Vrouter: "lineCharts" },
         { title: "漏斗图", iconCls: "iconfont iconloudoutu", Vrouter: "" },
         { title: "地图", iconCls: "iconfont iconditu", Vrouter: "" },
         { title: "雷达图", iconCls: "iconfont iconleidatu", Vrouter: "" },

@@ -123,7 +123,7 @@ export default {
       // 右侧导航菜单
       rightList: [
         {title: "柱状(条形)图",num: '9'},
-        {title: "堆积柱状图",num: '2'},
+        {title: "堆积柱状图",num: '3'},
         {title: "分组柱状图",num: '2'},
         {title: "3D柱状图",num: '2'},
         {title: "双向柱状图",num: '1'},
