@@ -8,6 +8,7 @@ const BarCharts = r => require.ensure([], () => r(require('@/page/barCharts')), 
 const LineCharts = r => require.ensure([], () => r(require('@/page/lineCharts')), 'LineCharts');  // 折线图
 const FunnelCharts = r => require.ensure([], () => r(require('@/page/funnelCharts')), 'FunnelCharts');  // 漏斗图
 const MapCharts = r => require.ensure([], () => r(require('@/page/mapCharts')), 'MapCharts');  // 地图
+const RadarCharts = r => require.ensure([], () => r(require('@/page/radarCharts')), 'RadarCharts');  // 雷达图
 
 Vue.use(Router)
 
@@ -63,6 +64,10 @@ export default new Router({
         {
           path: 'mapCharts',
           component: MapCharts,
+        },
+        {
+          path: 'radarCharts',
+          component: RadarCharts,
         },
       ]
     }

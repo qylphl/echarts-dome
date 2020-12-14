@@ -3,14 +3,8 @@
     <div class="left-box" ref="leftBox">
       <!-- 漏斗图 -->
       <div class="content-box flex-box">
-        <div class="pie-box" v-for="(item, index) in funnelOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <Funnel :deploy="item" :title="item.boxTitle"></Funnel>
-        </div>
-      </div>
-      <!-- 3d立体漏斗图 -->
-      <div class="content-box flex-box">
-        <div class="pie-box" v-for="(item, index) in solidFunnelOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <Funnel :deploy="item" :title="item.boxTitle"></Funnel>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <Radar :data="data" :color="color"></Radar>
         </div>
       </div>
     </div>
@@ -27,25 +21,20 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-import Funnel from "components/funnel/funnel";
-import FunnelOption from "utils/funnelOption";
+import Radar from "components/radar/radar";
 import constant from "utils/constant";
 export default {
   data() {
     return {
       color: constant.COLOR,
-      data: [{ value: 40, name: "违纪行为" }, { value: 30, name: "违法行为" }, { value: 20, name: "违法乱纪" }, { value: 10, name: "其他" }],
-      nailData: [{ value: 30, name: '挪用资金' }, { value: 30, name: '行使权利过程中发生的其他违法犯罪行为' }, { value: 30, name: '破坏选举' }, { value: 30, name: '造谣传播丑化党和国家形象' }, { value: 120, name: '非法转让、倒卖土地使用权' }],
+      data: [{value: [83, 100, 78, 65, 90, 79],name: '预算分配'},{value: [50, 74, 98, 71, 62, 81],name: '实际开销'}],
       // 右侧导航菜单
       rightList: [
-        { title: "漏斗图", num: "3" },
-        { title: "3d漏斗图", num: "3" },
+        { title: "雷达图", num: "1" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
-      funnelOption: [], // 折线图配置项
-      solidFunnelOption: [], // 3d立体漏斗图配置项
     };
   },
   computed: {
@@ -61,18 +50,8 @@ export default {
   mounted() {
     this.differ = document.getElementsByClassName("content-box")[0].offsetTop;
     this.$refs.leftBox.addEventListener("scroll", this.dataScroll);
-    this.initPieOption();
   },
   methods: {
-    initPieOption() {
-      let info = {
-        data: this.data,
-        nailData: this.nailData,
-        color: this.color,
-      };
-      this.funnelOption = new FunnelOption(info).FUNNEL_CHARTS;
-      this.solidFunnelOption = new FunnelOption(info).SOLID_FUNNEL_CHARTS;
-    },
     // 锚点双向监听
     dataScroll() {
       this.scroll = this.$refs.leftBox.scrollTop;
@@ -105,7 +84,7 @@ export default {
   },
   components: {
     Subnuv,
-    Funnel,
+    Radar
   },
 };
 </script>

@@ -39,7 +39,7 @@ export default {
         { title: "折线图", iconCls: "iconfont iconzhexiantu", Vrouter: "lineCharts" },
         { title: "漏斗图", iconCls: "iconfont iconloudoutu", Vrouter: "funnelCharts" },
         { title: "地图", iconCls: "iconfont iconditu", Vrouter: "mapCharts" },
-        { title: "雷达图", iconCls: "iconfont iconleidatu", Vrouter: "" },
+        { title: "雷达图", iconCls: "iconfont iconleidatu", Vrouter: "radarCharts" },
         { title: "词云图", iconCls: "iconfont iconciyun", Vrouter: "" },
         { title: "气泡散点图", iconCls: "iconfont iconqipao", Vrouter: "" },
         { title: "双轴图", iconCls: "iconfont iconshuangzhoutu", Vrouter: "" },
