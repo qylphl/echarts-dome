@@ -10,6 +10,7 @@ import store from './store/store';
 import './assets/icon/iconfont.css';
 // 使用echarts
 import echarts from 'echarts'
+import 'echarts-liquidfill'
 Vue.prototype.$echarts = echarts;
 
 // 使用highcharts

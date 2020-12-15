@@ -1,21 +1,15 @@
 <template>
   <div class="content flex-box">
     <div class="left-box" ref="leftBox">
-      <!-- 散点气泡图 -->
+      <!-- 双轴图 -->
       <div class="content-box flex-box">
-        <!-- 散点气泡图 -->
-        <div class="pie-box" v-for="(item, index) in scatterOption" :key="index" :style="{ 'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+        <!-- 双轴图 -->
+        <div class="pie-box" v-for="(item, index) in biaxialOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
           <LineArea :deploy="item" :title="item.boxTitle"></LineArea>
         </div>
       </div>
-      <!-- 3d散点气泡图 -->
-      <div class="content-box flex-box">
-        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <SolidScatter :color="color"></SolidScatter>
-        </div> 
-      </div>
     </div>
-    <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
+    <div class="right-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6'}">
       <Subnuv
         ref="subnuv"
         :dataList="rightList"
@@ -29,40 +23,21 @@
 <script>
 import Subnuv from "components/nav/subnav";
 import LineArea from "components/line/line";
-import SolidScatter from "components/scatter/3dScatter";
-import scatterCharts from "utils/scatterOption";
+import BiaxialChart from "utils/biaxialOption";
 import constant from "utils/constant";
 export default {
   data() {
     return {
       color: constant.COLOR,
-      data: {
-        2010: [
-          {
-            name: ["SCI", "SSCI", "EI", "ISTP", "AHCI", "ISSHP", "其他"],
-            value: [1811, 868, 320, 208, 190, 120, 100],
-            amount: [1.8, 1.0, 0.65, 0.52, 0.33, 0.25, 0.11],
-            orderCount: [65000, 45000, 23000, 10000, 9000, 74000, 52121],
-          },
-        ],
-        2020: [
-          {
-            name: ["SCI", "SSCI", "EI", "ISTP", "AHCI", "ISSHP", "其他"],
-            value: [2811,1568,420,308,290,220,190],
-            amount: [2.3,1.2,0.95,0.82,0.73,0.35,0.18],
-            orderCount: [105000,90000,49000,34000,25000,20000,19121],
-          },
-        ],
-      },
+      data: {},
       // 右侧导航菜单
       rightList: [
-        { title: "散点气泡图", num: "4" },
-        { title: "3d散点气泡图", num: "1" },
+        { title: "双轴图", num: "1" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
-      scatterOption: [], // 散点气泡图配置项
+      biaxialOption: [], // 双轴图配置项
     };
   },
   computed: {
@@ -86,7 +61,7 @@ export default {
         data: this.data,
         color: this.color,
       };
-      this.scatterOption = new scatterCharts(info).SCATTER_CHARTS;
+      this.biaxialOption = new BiaxialChart(info).BIAXIAL_CHARTS;
     },
     // 锚点双向监听
     dataScroll() {
@@ -123,7 +98,6 @@ export default {
   components: {
     Subnuv,
     LineArea,
-    SolidScatter
   },
 };
 </script>
