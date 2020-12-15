@@ -9,6 +9,8 @@ const LineCharts = r => require.ensure([], () => r(require('@/page/lineCharts'))
 const FunnelCharts = r => require.ensure([], () => r(require('@/page/funnelCharts')), 'FunnelCharts');  // 漏斗图
 const MapCharts = r => require.ensure([], () => r(require('@/page/mapCharts')), 'MapCharts');  // 地图
 const RadarCharts = r => require.ensure([], () => r(require('@/page/radarCharts')), 'RadarCharts');  // 雷达图
+const WordCharts = r => require.ensure([], () => r(require('@/page/wordCharts')), 'WordCharts');  // 词云图
+const ScatterCharts = r => require.ensure([], () => r(require('@/page/scatterCharts')), 'ScatterCharts');  // 散点气泡图
 
 Vue.use(Router)
 
@@ -68,6 +70,14 @@ export default new Router({
         {
           path: 'radarCharts',
           component: RadarCharts,
+        },
+        {
+          path: 'wordCharts',
+          component: WordCharts,
+        },
+        {
+          path: 'scatterCharts',
+          component: ScatterCharts,
         },
       ]
     }

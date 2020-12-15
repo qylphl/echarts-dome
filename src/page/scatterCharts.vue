@@ -1,14 +1,21 @@
 <template>
   <div class="content flex-box">
     <div class="left-box" ref="leftBox">
-      <!-- 雷达图 -->
+      <!-- 散点气泡图 -->
       <div class="content-box flex-box">
-        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <Radar :data="data" :color="color"></Radar>
+        <!-- 散点气泡图 -->
+        <div class="pie-box" v-for="(item, index) in scatterOption" :key="index" :style="{ 'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+          <LineArea :deploy="item" :title="item.boxTitle"></LineArea>
         </div>
       </div>
+      <!-- 3d散点气泡图 -->
+      <div class="content-box flex-box">
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <SolidScatter :color="color"></SolidScatter>
+        </div> 
+      </div>
     </div>
-    <div class="right-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6'}">
+    <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
       <Subnuv
         ref="subnuv"
         :dataList="rightList"
@@ -21,20 +28,41 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-import Radar from "components/radar/radar";
+import LineArea from "components/line/line";
+import SolidScatter from "components/scatter/3dScatter";
+import scatterCharts from "utils/scatterOption";
 import constant from "utils/constant";
 export default {
   data() {
     return {
       color: constant.COLOR,
-      data: [{value: [83, 100, 78, 65, 90, 79],name: '预算分配'},{value: [50, 74, 98, 71, 62, 81],name: '实际开销'}],
+      data: {
+        2010: [
+          {
+            name: ["SCI", "SSCI", "EI", "ISTP", "AHCI", "ISSHP", "其他"],
+            value: [1811, 868, 320, 208, 190, 120, 100],
+            amount: [1.8, 1.0, 0.65, 0.52, 0.33, 0.25, 0.11],
+            orderCount: [65000, 45000, 23000, 10000, 9000, 74000, 52121],
+          },
+        ],
+        2020: [
+          {
+            name: ["SCI", "SSCI", "EI", "ISTP", "AHCI", "ISSHP", "其他"],
+            value: [2811,1568,420,308,290,220,190],
+            amount: [2.3,1.2,0.95,0.82,0.73,0.35,0.18],
+            orderCount: [105000,90000,49000,34000,25000,20000,19121],
+          },
+        ],
+      },
       // 右侧导航菜单
       rightList: [
-        { title: "雷达图", num: "1" },
+        { title: "散点气泡图", num: "2" },
+        { title: "3d散点气泡图", num: "2" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
+      scatterOption: [], // 散点气泡图配置项
     };
   },
   computed: {
@@ -50,8 +78,16 @@ export default {
   mounted() {
     this.differ = document.getElementsByClassName("content-box")[0].offsetTop;
     this.$refs.leftBox.addEventListener("scroll", this.dataScroll);
+    this.initPieOption();
   },
   methods: {
+    initPieOption() {
+      let info = {
+        data: this.data,
+        color: this.color,
+      };
+      this.scatterOption = new scatterCharts(info).SCATTER_CHARTS;
+    },
     // 锚点双向监听
     dataScroll() {
       this.scroll = this.$refs.leftBox.scrollTop;
@@ -76,7 +112,9 @@ export default {
       }
     },
     chooseRightTitle(index) {
-      let total = document.getElementsByClassName("content-box")[index].offsetTop - this.differ; // 获取需要滚动的距离
+      let total =
+        document.getElementsByClassName("content-box")[index].offsetTop -
+        this.differ; // 获取需要滚动的距离
       this.$refs.leftBox.scrollTop = total;
       this.$refs.leftBox.pageYOffset = total;
       this.chooseIndex = index;
@@ -84,7 +122,8 @@ export default {
   },
   components: {
     Subnuv,
-    Radar
+    LineArea,
+    SolidScatter
   },
 };
 </script>
