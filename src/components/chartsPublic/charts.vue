@@ -1,7 +1,7 @@
 <template>
   <div class="chart-content">
     <navBar :title="title"></navBar>
-    <div class="chart-box" ref="funnelChart" :style="{'background-color': themeType==1?'#07124a':'#fff'}"></div>
+    <div class="chart-box" ref="chartsContainer" :style="{'background-color': themeType==1?'#07124a':'#fff'}"></div>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import navBar from 'components/nav/navBar';
 export default {
   props: {
     title: {
-      default: "漏斗图",
+      default: "echart图",
       type: String,
     },
     deploy: {
@@ -31,12 +31,12 @@ export default {
   methods: {
     initChart() {
       let that = this,
-          funnelChart = that.$echarts.init(that.$refs.funnelChart),
+          chartsContainer = that.$echarts.init(that.$refs.chartsContainer),
           option = that.deploy;
       window.addEventListener("resize", function () {
-        funnelChart.resize();
+        chartsContainer.resize();
       });
-      funnelChart.setOption(option, true);
+      chartsContainer.setOption(option, true);
     },
   },
   components:{navBar}

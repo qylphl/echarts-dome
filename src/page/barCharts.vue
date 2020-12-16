@@ -49,7 +49,7 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-import Bar from "components/bar/bar";
+import Bar from "components/chartsPublic/charts";
 import RankingBar from "components/bar/rankingBar";
 import ShadowBar from "components/bar/shadowBar";
 import TwoWayBar from "components/bar/twoWayBar";

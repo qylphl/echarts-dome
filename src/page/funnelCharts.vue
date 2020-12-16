@@ -27,7 +27,7 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-import Funnel from "components/funnel/funnel";
+import Funnel from "components/chartsPublic/charts";
 import FunnelOption from "utils/funnelOption";
 import constant from "utils/constant";
 export default {

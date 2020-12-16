@@ -4,7 +4,7 @@
       <!-- 热力图 -->
       <div class="content-box flex-box">
         <div class="pie-box" v-for="(item, index) in heatOption" :key="index" :style="{ 'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-          <LineArea :deploy="item" :title="item.boxTitle"></LineArea>
+          <Heat :deploy="item" :title="item.boxTitle"></Heat>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-import LineArea from "components/line/line";
+import Heat from "components/chartsPublic/charts";
 import HeatChart from "utils/heatOption";
 import constant from "utils/constant";
 export default {
@@ -94,7 +94,7 @@ export default {
   },
   components: {
     Subnuv,
-    LineArea,
+    Heat,
   },
 };
 </script>

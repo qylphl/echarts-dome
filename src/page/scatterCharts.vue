@@ -5,7 +5,7 @@
       <div class="content-box flex-box">
         <!-- 散点气泡图 -->
         <div class="pie-box" v-for="(item, index) in scatterOption" :key="index" :style="{ 'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-          <LineArea :deploy="item" :title="item.boxTitle"></LineArea>
+          <Scatter :deploy="item" :title="item.boxTitle"></Scatter>
         </div>
       </div>
       <!-- 3d散点气泡图 -->
@@ -28,7 +28,7 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-import LineArea from "components/line/line";
+import Scatter from "components/chartsPublic/charts";
 import SolidScatter from "components/scatter/3dScatter";
 import scatterCharts from "utils/scatterOption";
 import constant from "utils/constant";
@@ -122,7 +122,7 @@ export default {
   },
   components: {
     Subnuv,
-    LineArea,
+    Scatter,
     SolidScatter
   },
 };

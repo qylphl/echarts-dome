@@ -1,10 +1,10 @@
 <template>
   <div class="content flex-box">
     <div class="left-box" ref="leftBox">
-      <!-- 漏斗图 -->
+      <!-- 地图 -->
       <div class="content-box flex-box">
-        <div class="pie-box" v-for="(item, index) in funnelOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <Funnel :deploy="item" :title="item.boxTitle"></Funnel>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <Map></Map>
         </div>
       </div>
     </div>
@@ -21,8 +21,7 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-import Funnel from "components/funnel/funnel";
-import FunnelOption from "utils/funnelOption";
+import Map from "components/map/map";
 import constant from "utils/constant";
 export default {
   data() {
@@ -37,8 +36,6 @@ export default {
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
-      funnelOption: [], // 折线图配置项
-      areaOption: [], // 面积图配置项
     };
   },
   computed: {
@@ -54,17 +51,8 @@ export default {
   mounted() {
     this.differ = document.getElementsByClassName("content-box")[0].offsetTop;
     this.$refs.leftBox.addEventListener("scroll", this.dataScroll);
-    this.initPieOption();
   },
   methods: {
-    initPieOption() {
-      let info = {
-        data: this.data,
-        nailData: this.nailData,
-        color: this.color,
-      };
-      this.funnelOption = new FunnelOption(info).FUNNEL_CHARTS;
-    },
     // 锚点双向监听
     dataScroll() {
       this.scroll = this.$refs.leftBox.scrollTop;
@@ -97,7 +85,7 @@ export default {
   },
   components: {
     Subnuv,
-    Funnel,
+    Map,
   },
 };
 </script>

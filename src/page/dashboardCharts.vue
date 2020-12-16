@@ -4,7 +4,7 @@
       <!-- 仪表盘 -->
       <div class="content-box flex-box">
         <div class="pie-box" v-for="(item, index) in dashboardOption" :key="index" :style="{ 'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-          <LineArea :deploy="item" :title="item.boxTitle"></LineArea>
+          <Dashboard :deploy="item" :title="item.boxTitle"></Dashboard>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-import LineArea from "components/line/line";
+import Dashboard from "components/chartsPublic/charts";
 import DashboardChart from "utils/dashboardOption";
 import constant from "utils/constant";
 export default {
@@ -94,7 +94,7 @@ export default {
   },
   components: {
     Subnuv,
-    LineArea,
+    Dashboard,
   },
 };
 </script>

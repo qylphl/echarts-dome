@@ -31,7 +31,7 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-import LineArea from "components/line/line";
+import LineArea from "components/chartsPublic/charts";
 import BarLine from "components/line/barLine";
 import LineChart from "utils/lineOption";
 import constant from "utils/constant";

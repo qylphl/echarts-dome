@@ -593,6 +593,7 @@ export default class funnelChart {
                 }]
             },
             solid_funnel_charts_option3: {
+                boxTitle: '3d金字塔漏斗图', // 给图表父元素定义的title，不用于echarts中的option
                 // backgroundColor: {type: 'linear',x: 0,y: 0,x2: 0,y2: 1,colorStops: [{offset: 0,color: '#0c0d2b'},{offset: 0.5,color: '#0a0c3d'},{offset: 1,color: '#111629'}],globalCoord: false},
                 title: {
                     text: '转化率',

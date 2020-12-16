@@ -5,7 +5,7 @@
       <div class="content-box flex-box">
         <!-- 双轴图 -->
         <div class="pie-box" v-for="(item, index) in biaxialOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <LineArea :deploy="item" :title="item.boxTitle"></LineArea>
+          <Biaxial :deploy="item" :title="item.boxTitle"></Biaxial>
         </div>
       </div>
     </div>
@@ -22,7 +22,7 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-import LineArea from "components/line/line";
+import Biaxial from "components/chartsPublic/charts";
 import BiaxialChart from "utils/biaxialOption";
 import constant from "utils/constant";
 export default {
@@ -97,7 +97,7 @@ export default {
   },
   components: {
     Subnuv,
-    LineArea,
+    Biaxial,
   },
 };
 </script>

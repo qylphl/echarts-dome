@@ -10,6 +10,7 @@ export default class BarChart {
         this.ORDINARY_BAR_CHARTS = {
             // 普通柱状图
             bar_charts_option: {
+                boxTitle: '柱状图', // 给图表父元素定义的title，不用于echarts中的option
                 // title: {text: '行政级别',},
                 tooltip: {
                     trigger: 'axis',
