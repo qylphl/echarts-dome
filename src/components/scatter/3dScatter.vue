@@ -32,6 +32,7 @@ export default {
       var option = {
         colors: this.color,
         chart: {
+          backgroundColor: "rgba(0,0,0,0)",//改变背景颜色
           renderTo: "container",
           margin: 30,
           type: "scatter",
