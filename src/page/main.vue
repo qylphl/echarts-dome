@@ -44,9 +44,9 @@ export default {
         { title: "气泡散点图", iconCls: "iconfont iconqipao", Vrouter: "scatterCharts" },
         { title: "双轴图", iconCls: "iconfont iconshuangzhoutu", Vrouter: "biaxialCharts" },
         { title: "水滴图", iconCls: "iconfont iconshuiditu", Vrouter: "waterCharts" },
-        { title: "矩阵图", iconCls: "iconfont iconjuzhentu", Vrouter: "" },
-        { title: "热力图", iconCls: "iconfont iconrelitu", Vrouter: "" },
-        { title: "仪表盘", iconCls: "iconfont iconyibiaopan", Vrouter: "" },
+        { title: "矩阵图", iconCls: "iconfont iconjuzhentu", Vrouter: "matrixCharts" },
+        { title: "热力图", iconCls: "iconfont iconrelitu", Vrouter: "heatCharts" },
+        { title: "仪表盘", iconCls: "iconfont iconyibiaopan", Vrouter: "dashboardCharts" },
       ],
     };
   },

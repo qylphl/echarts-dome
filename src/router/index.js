@@ -13,6 +13,9 @@ const WordCharts = r => require.ensure([], () => r(require('@/page/wordCharts'))
 const ScatterCharts = r => require.ensure([], () => r(require('@/page/scatterCharts')), 'ScatterCharts');  // 散点气泡图
 const BiaxialCharts = r => require.ensure([], () => r(require('@/page/biaxialCharts')), 'BiaxialCharts');  // 双轴图
 const WaterCharts = r => require.ensure([], () => r(require('@/page/waterCharts')), 'WaterCharts');  // 水滴图
+const MatrixCharts = r => require.ensure([], () => r(require('@/page/matrixCharts')), 'MatrixCharts');  // 矩阵图
+const HeatCharts = r => require.ensure([], () => r(require('@/page/heatCharts')), 'HeatCharts');  // 热力图
+const DashboardCharts = r => require.ensure([], () => r(require('@/page/dashboardCharts')), 'DashboardCharts');  // 仪表盘
 
 Vue.use(Router)
 
@@ -88,6 +91,18 @@ export default new Router({
         {
           path: 'waterCharts',
           component: WaterCharts,
+        },
+        {
+          path: 'matrixCharts',
+          component: MatrixCharts,
+        },
+        {
+          path: 'heatCharts',
+          component: HeatCharts,
+        },
+        {
+          path: 'dashboardCharts',
+          component: DashboardCharts,
         },
       ]
     }
