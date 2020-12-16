@@ -278,7 +278,7 @@ export default {
           },
           geo: {
             map: "china",
-            height: '95%',
+            width: '96%',
             label: {
               emphasis: {
                 show: true,

@@ -3,7 +3,7 @@
     <div class="left-box" ref="leftBox">
       <!-- 地图 -->
       <div class="content-box flex-box">
-        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }" >
           <Map :data="data" :color="color"></Map>
         </div>
         <!-- 区域地图 -->
@@ -17,8 +17,14 @@
       </div>
       <!-- 轨迹地图 -->
       <div class="content-box flex-box">
-        <div class="pie-box" :style="{ 'width': '66.15%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <TrajectoryMap :data="trajectoryData" :yxData="yxData" :color="color"></TrajectoryMap>
+        </div>
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <TrajectoryMapTwo :data="trajectoryData2" :yxData="yxData" :LableData="LableData"></TrajectoryMapTwo>
+        </div>
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <TrajectoryMapThree></TrajectoryMapThree>
         </div>
       </div>
     </div>
@@ -39,6 +45,8 @@ import Map from "components/map/map";
 import AreaMap from "components/map/areaMap";
 import RunInMap from "components/map/runInMap";
 import TrajectoryMap from "components/map/trajectoryMap";
+import TrajectoryMapTwo from "components/map/trajectoryMap2";
+import TrajectoryMapThree from "components/map/trajectoryMap3";
 import constant from "utils/constant";
 export default {
   data() {
@@ -114,11 +122,64 @@ export default {
         [{ name: "赣州" }, { name: "西安", value: 100 }],
         [{ name: "赣州" }, { name: "西宁", value: 100 }],
       ],
+      trajectoryData2: [
+        {
+          name: "北京",
+          value: [116.24, 39.55, 100],
+        },
+        {
+          name: "深圳",
+          value: [114.271522, 22.753644],
+        },
+
+        {
+          name: "重庆",
+          value: [106.54, 29.59],
+        },
+        {
+          name: "浙江",
+          value: [120.19, 30.26],
+        },
+      ],
+      LableData: [
+        {
+          name: "北京",
+          coords: [
+            [116.24, 39.55, 100],
+            [120.24, 46.55, 100],
+          ], // 线条位置[开始位置，结束位置]
+          value: [10.21, 1.2],
+        },
+        {
+          name: "深圳",
+          coords: [
+            [114.271522, 22.753644],
+            [118.24, 18.55, 100],
+          ], // 线条位置[开始位置，结束位置]
+          value: [10.21, 1.2],
+        },
+        {
+          name: "重庆",
+          coords: [
+            [106.54, 29.59],
+            [100.24, 40.55],
+          ], // 线条位置[开始位置，结束位置]
+          value: [10.21, 1.2],
+        },
+        {
+          name: "浙江",
+          coords: [
+            [120.19, 30.26],
+            [128.24, 35.55, 100],
+          ], // 线条位置[开始位置，结束位置]
+          value: [10.21, 1.2],
+        },
+      ],
       // 右侧导航菜单
       rightList: [
         { title: "地图", num: "3" },
         { title: "轨迹地图", num: "3" },
-        ],
+      ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -179,7 +240,9 @@ export default {
     Map,
     AreaMap,
     RunInMap,
-    TrajectoryMap
+    TrajectoryMap,
+    TrajectoryMapTwo,
+    TrajectoryMapThree,
   },
 };
 </script>
@@ -187,16 +250,4 @@ export default {
 <style lang="scss">
 @import "style/charts.scss";
 @import "style/innerContent.scss";
-.map-content {
-  .left-box {
-    .content-box {
-      &:nth-child(2){
-        .pie-box {
-        // width: 49.3%;
-        height: 600px;
-      }
-      }
-    }
-  }
-}
 </style>
