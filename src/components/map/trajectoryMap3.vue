@@ -16,7 +16,7 @@ import "echarts/map/js/china.js"; // 引入中国地图数据
 export default {
   props: {
     title: {
-      default: "地图",
+      default: "轨迹地图",
       type: String,
     },
     data: {
@@ -183,8 +183,7 @@ export default {
                 { value: [127.9688, 45.368], itemStyle: { color: "#4fb6d2" } },
                 { value: [125.8154, 44.2584], itemStyle: { color: "#5abead" } },
                 { value: [116.4551, 40.2539], itemStyle: { color: "#f34e2b" } },
-                { value: [117.4219, 39.4189], itemStyle: { color: "#f58414" } },
-                { value: [101.4038, 36.8207], itemStyle: { color: "#d5b314" } }, 
+                { value: [117.4219, 39.4189], itemStyle: { color: "#f58414" } },    
                 { value: [102.9199, 25.46639], itemStyle: { color: "#96cc34" } },
                 { value: [119.4543, 25.9222] },
               ],
@@ -244,20 +243,6 @@ export default {
                     [119.4543, 25.9222],
                   ],
                   lineStyle: { color: "#f34e2b" },
-                },
-                {
-                  coords: [
-                    [112.3352, 37.9413],
-                    [119.4543, 25.9222],
-                  ],
-                  lineStyle: { color: "#f58f0e" },
-                },
-                {
-                  coords: [
-                    [113.0823, 28.2568],
-                    [119.4543, 25.9222],
-                  ],
-                  lineStyle: { color: "#a6c62c" },
                 },
                 {
                   coords: [

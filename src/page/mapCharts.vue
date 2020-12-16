@@ -27,6 +27,18 @@
           <TrajectoryMapThree></TrajectoryMapThree>
         </div>
       </div>
+      <!-- 散点气泡地图 -->
+      <div class="content-box flex-box">
+        <div class="pie-box" :style="{ 'width': '100%','height': '800px','border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <ScatterMap></ScatterMap>
+        </div>
+      </div>
+      <!-- 多功能混合地图 -->
+      <div class="content-box flex-box">
+        <div class="pie-box" :style="{ 'width': '100%','height': '1200px','border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <BlendMap></BlendMap>
+        </div>
+      </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
       <Subnuv
@@ -47,6 +59,8 @@ import RunInMap from "components/map/runInMap";
 import TrajectoryMap from "components/map/trajectoryMap";
 import TrajectoryMapTwo from "components/map/trajectoryMap2";
 import TrajectoryMapThree from "components/map/trajectoryMap3";
+import ScatterMap from "components/map/scatterMap";
+import BlendMap from "components/map/blendMap";
 import constant from "utils/constant";
 export default {
   data() {
@@ -179,6 +193,8 @@ export default {
       rightList: [
         { title: "地图", num: "3" },
         { title: "轨迹地图", num: "3" },
+        { title: "散点气泡地图", num: "1" },
+        { title: "多功能地图", num: "1" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
@@ -243,6 +259,8 @@ export default {
     TrajectoryMap,
     TrajectoryMapTwo,
     TrajectoryMapThree,
+    ScatterMap,
+    BlendMap,
   },
 };
 </script>
