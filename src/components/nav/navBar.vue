@@ -1,7 +1,24 @@
 <template>
-  <div :class="{'nav-bar-box flex-box':true,'nav-bar-box-1': themeType==1}">
+  <div :class="{ 'nav-bar-box flex-box': true, 'nav-bar-box-1': themeType == 1 }">
     <p class="title">{{ title }}</p>
     <p class="btn" @click="viewCode">查看代码</p>
+    <el-dialog
+      title="查看代码"
+      :visible.sync="dialogVisible"
+      width="30%"
+      :before-close="handleClose"
+    >
+      <div class="dialog-content">
+        <p class="tip">以下代码为option配置项：</p>
+        <textarea readonly="readonly" v-html="optionString"></textarea>
+      </div>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" @click="dialogVisible = false"
+          >确 定</el-button
+        >
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -11,9 +28,14 @@ export default {
     title: {
       type: String,
     },
+    optionString: {
+      type: Object,
+    },
   },
   data() {
-    return {};
+    return {
+      dialogVisible: false,
+    };
   },
   computed: {
     themeType() {
@@ -23,7 +45,11 @@ export default {
   mounted() {},
   methods: {
     viewCode() {
-        this.$emit("viewCode");
+      this.dialogVisible = true;
+      this.$emit("viewCode");
+    },
+    handleClose(done) {
+      done();
     },
   },
 };
@@ -52,11 +78,23 @@ export default {
     cursor: pointer;
   }
 }
-.nav-bar-box-1{
+.nav-bar-box-1 {
   background-color: #010c45;
   border-color: #082b7d;
-  .title{
+  .title {
     color: #fff;
+  }
+}
+.dialog-content {
+  color: #333;
+  .tip{
+    font-size: 16px;
+    padding-bottom: 10px;
+  }
+  textarea {
+    width: 100%;
+    height: 500px;
+    font-size: 14px;
   }
 }
 </style>

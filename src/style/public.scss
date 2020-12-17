@@ -112,3 +112,16 @@ a{
 .el-tooltip__popper[x-placement^=right] .popper__arrow{
   border-right-color: #2878ff !important;
 }
+.el-dialog__header {
+  padding: 15px 20px;
+  background-color: #2094fb;
+  color: #fff;
+  .el-dialog__title {
+    color: #fff;
+  }
+  .el-dialog__headerbtn {
+    .el-dialog__close {
+      color: #fff;
+    }
+  }
+}

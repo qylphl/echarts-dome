@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
+    <navBar :title="title" :optionString="deploy"></navBar>
     <div class="chart-box" ref="chartsContainer" :style="{'background-color': themeType==1?'#07124a':'#fff'}"></div>
   </div>
 </template>
@@ -18,7 +18,9 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      optionString: 'option='+JSON.stringify(this.deploy),
+    };
   },
   computed: {
     themeType() {
