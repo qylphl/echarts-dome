@@ -1,22 +1,22 @@
 <template>
   <div :class="{ 'nav-bar-box flex-box': true, 'nav-bar-box-1': themeType == 1 }">
-    <p class="title">{{ title }}</p>
+    <p class="title" v-html="title"></p>
     <p class="btn" @click="viewCode">查看代码</p>
     <el-dialog
       title="查看代码"
       :visible.sync="dialogVisible"
-      width="30%"
+      width="35%"
       :before-close="handleClose"
     >
       <div class="dialog-content">
-        <p class="tip">以下代码为option配置项：</p>
+        <p class="tip">
+          以下代码为option配置项：<br/><span style="color: red;" v-html="'( '+tipTitle+' )'"></span>
+        </p>
         <textarea readonly="readonly" v-html="optionString"></textarea>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" @click="dialogVisible = false"
-          >确 定</el-button
-        >
+        <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
       </span>
     </el-dialog>
   </div>
@@ -25,6 +25,10 @@
 <script>
 export default {
   props: {
+    tipTitle: {
+      default: '注："boxTitle"和"boxWidth"不是echart中option所需要的属性，可以删掉。',
+      type: String,
+    },
     title: {
       type: String,
     },
@@ -90,6 +94,7 @@ export default {
   .tip{
     font-size: 16px;
     padding-bottom: 10px;
+    line-height: 25px;
   }
   textarea {
     width: 100%;

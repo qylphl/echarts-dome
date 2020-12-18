@@ -1,11 +1,12 @@
 <template>
   <div class="chart-content">
-    <p class="title-bar">{{ title }}</p>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div class="chart-box" ref="rosePieChart"></div>
   </div>
 </template>
 
 <script>
+import navBar from 'components/nav/navBar';
 export default {
   props: {
     title: {
@@ -20,7 +21,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      optionString: {},
+      tipTitle: '注：请注意该图表使用的是highcharts，可以在src/components/pie/rosePie.vue中找到直接使用。'
+    };
   },
   mounted() {
     this.initChart();
@@ -109,6 +113,7 @@ export default {
             },
           ],
         };
+      that.optionString = option;
       window.addEventListener("resize", function () {
         rosePieChart.resize();
       });
@@ -139,6 +144,7 @@ export default {
       return result;
     },
   },
+  components:{navBar}
 };
 </script>
 

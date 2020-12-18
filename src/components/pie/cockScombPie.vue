@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div class="chart-box" ref="cockScombPie"></div>
   </div>
 </template>
@@ -27,6 +27,8 @@ export default {
       blist: [1, 2, 3, 4, 5, 6, 7, 8, 9], // 扇形高度为blist数值决定
       length: 8,
       clist: [4.05, 2.95, 5, 2.1, 1.62, 2.25],
+      optionString: {},
+      tipTitle: '注：该组件可以在src/components/pie/cockScombPie.vue找到直接使用。'
     };
   },
   mounted() {
@@ -194,6 +196,7 @@ export default {
         },
         series: msg,
       };
+      that.optionString = option;
       window.addEventListener("resize", function () {
         cockScombPie.resize();
       });

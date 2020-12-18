@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div class="chart-box" ref="barChart" :style="{'background-color': themeType == 1 ? '#07124a' : '#fff'}"></div>
   </div>
 </template>
@@ -23,7 +23,9 @@ export default {
   data() {
     return {
       yAxisData: [],
-      legendData: []
+      legendData: [],
+      optionString: {},
+      tipTitle: '注：该组件可以在src/components/bar/twoWayBar.vue找到直接使用。'
     };
   },
   computed: {
@@ -228,6 +230,7 @@ export default {
             },
           ],
         };
+      that.optionString = option;
       window.addEventListener("resize", function () {
         barChart.resize();
       });

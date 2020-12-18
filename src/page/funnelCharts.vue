@@ -38,7 +38,7 @@ export default {
       nailData: [{ value: 30, name: '挪用资金' }, { value: 30, name: '行使权利过程中发生的其他违法犯罪行为' }, { value: 30, name: '破坏选举' }, { value: 30, name: '造谣传播丑化党和国家形象' }, { value: 120, name: '非法转让、倒卖土地使用权' }],
       // 右侧导航菜单
       rightList: [
-        { title: "漏斗图", num: "3" },
+        { title: "漏斗图", num: "15" },
         { title: "3d漏斗图", num: "3" },
       ],
       scroll: "",

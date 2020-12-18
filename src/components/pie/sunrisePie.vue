@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div
       class="chart-box"
       ref="sunrisePie"
@@ -26,7 +26,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      optionString: {},
+      tipTitle: '注：请注意该图表使用的是highcharts，可以在src/components/pie/sunrisePie.vue中找到直接使用。'
+    };
   },
   computed: {
     themeType() {
@@ -668,6 +671,7 @@ export default {
             ],
           },
         };
+      that.optionString = option;
       window.addEventListener("resize", function () {
         sunrisePie.resize();
       });

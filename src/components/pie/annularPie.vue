@@ -1,11 +1,12 @@
 <template>
   <div class="chart-content">
-    <p class="title-bar">{{ title }}</p>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div class="chart-box" ref="annularChart"></div>
   </div>
 </template>
 
 <script>
+import navBar from 'components/nav/navBar';
 import {setHighlight} from "utils/chartsClass";
 export default {
   props: {
@@ -21,7 +22,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      optionString: {},
+      tipTitle: '注：该组件可以在src/components/pie/annularPie.vue找到直接使用。'
+    };
   },
   mounted() {
     this.initChart();
@@ -126,6 +130,7 @@ export default {
             },
           ],
         };
+      that.optionString = option;
       window.addEventListener("resize", function () {
         annularChart.resize();
       });
@@ -136,6 +141,7 @@ export default {
       );
     },
   },
+  components:{navBar}
 };
 </script>
 

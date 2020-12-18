@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div class="chart-box" ref="stereoscopicPie"></div>
   </div>
 </template>
@@ -22,7 +22,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      optionString: {},
+      tipTitle: '注：请注意该图表使用的是highcharts，可以在src/components/pie/3dPie.vue中找到直接使用。'
+    };
   },
   mounted() {
     this.initChart();
@@ -138,6 +141,7 @@ export default {
           },
         ],
       };
+      this.optionString = option;
       HighCharts.chart(this.$refs.stereoscopicPie, option);
     },
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div class="chart-box" ref="motionAnnularChart"></div>
   </div>
 </template>
@@ -23,6 +23,8 @@ export default {
   data() {
     return {
         angle: 0,//角度，用来做简单的动画效果的
+        optionString: {},
+        tipTitle: '注：该组件可以在src/components/pie/motionAnnularPie.vue找到直接使用。'
     };
   },
   mounted() {
@@ -370,6 +372,7 @@ export default {
             },
           ],
         };
+      that.optionString = option;
       window.addEventListener("resize", function () {
         motionAnnularChart.resize();
       });

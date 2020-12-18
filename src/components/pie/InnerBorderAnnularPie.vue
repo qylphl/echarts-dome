@@ -1,11 +1,12 @@
 <template>
   <div class="chart-content">
-    <p class="title-bar">{{ title }}</p>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div class="chart-box" ref="innerBorderAnnularChart"></div>
   </div>
 </template>
 
 <script>
+import navBar from 'components/nav/navBar';
 import {setBorderPieHighlight} from "utils/chartsClass";
 export default {
   props: {
@@ -22,7 +23,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      optionString: {},
+      tipTitle: '注：该组件可以在src/components/pie/InnerBorderAnnularPie.vue找到直接使用。'
+    };
   },
   mounted() {
     this.initChart();
@@ -147,6 +151,7 @@ export default {
             },
           ],
         };
+        that.optionString = option;
       window.addEventListener("resize", function () {
         innerBorderAnnularChart.resize();
       });
@@ -157,6 +162,7 @@ export default {
       );
     },
   },
+  components:{navBar}
 };
 </script>
 

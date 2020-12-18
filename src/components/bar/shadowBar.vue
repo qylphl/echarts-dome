@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div class="chart-box shadow-charts-box" :style="{ 'background-color': themeType == 1 ? '#07124a' : '#fff' }">
       <div class="echarts_legend" v-if="data.length > 0">
         <span class="legend_sort_tip sort_tip_top">高</span>
@@ -32,7 +32,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      optionString: {},
+      tipTitle: '注：该代码只是柱状图区域的，并不包含右侧图例，如果需要全部，请找到src/components/bar/shadowBar.vue组件直接使用。'
+    };
   },
   computed: {
     themeType() {
@@ -237,6 +240,7 @@ export default {
             },
           ],
         };
+      this.optionString = option;
       window.addEventListener("resize", function () {
         barChart.resize();
       });

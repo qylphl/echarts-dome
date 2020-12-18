@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title ? title : '饼状图'"></navBar>
+    <navBar :title="title ? title : '饼状图'" :optionString="deploy"></navBar>
     <div class="chart-box" ref="pieChart" :style="{'background-color': themeType==1?'#07124a':'#fff'}"></div>
   </div>
 </template>

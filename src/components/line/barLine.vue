@@ -1,11 +1,7 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
-    <div
-      class="chart-box"
-      ref="lineChart"
-      :style="{ 'background-color': themeType == 1 ? '#07124a' : '#fff' }"
-    ></div>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
+    <div class="chart-box" ref="lineChart" :style="{ 'background-color': themeType == 1 ? '#07124a' : '#fff' }"></div>
   </div>
 </template>
 
@@ -23,7 +19,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      optionString: {},
+      tipTitle: '注：该代码只是柱状图区域的，并不包含右侧图例，如果需要全部，请找到src/components/line/barLine.vue组件直接使用。'
+    };
   },
   computed: {
     themeType() {
@@ -202,6 +201,7 @@ export default {
             },
           ],
         };
+      that.optionString = option;
       window.addEventListener("resize", function () {
         lineChart.resize();
       });
