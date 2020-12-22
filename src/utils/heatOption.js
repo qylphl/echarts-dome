@@ -8,14 +8,14 @@ export default class MatrixChart {
         this.HEAT_CHARTS = {
             heat_charts_option: {
                 boxTitle: '热力图', // 给图表父元素定义的title，不用于echarts中的option
-                boxWidth: '100%',  // 给图表父元素定义的宽，不用于echarts中的option
+                boxWidth: '66.15%',  // 给图表父元素定义的宽，不用于echarts中的option
                 tooltip: {
                     position: 'top'
                 },
                 animation: false,
                 grid: {
-                    height: '50%',
-                    top: '10%'
+                    height: '70%',
+                    top: '5%'
                 },
                 xAxis: {
                     type: 'category',
@@ -37,7 +37,7 @@ export default class MatrixChart {
                     calculable: true,
                     orient: 'horizontal',
                     left: 'center',
-                    bottom: '15%'
+                    bottom: '5%'
                 },
                 series: [{
                     name: 'Punch Card',

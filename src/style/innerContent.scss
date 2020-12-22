@@ -7,7 +7,8 @@
         flex: 1;
         height: 100%;
         overflow: auto;
-        padding-right: 15px;
+        padding: 0 15px;
+        margin-left: -15px;
         box-sizing: border-box;
         .content-box{
             flex-wrap: wrap;
@@ -37,5 +38,16 @@
         border-left: 1px solid transparent;
         margin-left: 9px;
         box-sizing: border-box;
+    }
+}
+.one-content-charts-content {
+    .left-box {
+        .content-box{
+            &:last-child {
+                .pie-box {
+                    margin-bottom: 18px !important;
+                }
+            }
+        }
     }
 }
