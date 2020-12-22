@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content water-content-box">
-    <navBar :title="title"></navBar>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div class="chart-box water-bg flex-box" :style="{ 'background-color': themeType == 1 ? '#07124a' : '#fff' }">
       <div class="water-content" ref="waterChart"></div>
     </div>
@@ -28,7 +28,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      optionString: {},
+      tipTitle: '注：该组件可以在src/components/water/bgWater.vue找到直接使用。'
+    };
   },
   computed: {
     themeType() {
@@ -98,6 +101,7 @@ export default {
             },
           ],
         };
+      that.optionString = option;
       window.addEventListener("resize", function () {
         waterChart.resize();
       });

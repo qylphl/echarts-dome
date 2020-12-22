@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div class="chart-box" ref="mapChart" :style="{ 'background-color': themeType == 1 ? '#07124a' : '#fff' }"></div>
   </div>
 </template>
@@ -1395,6 +1395,8 @@ export default {
           value: [131.157, 46.6434, 1867],
         },
       ],
+      optionString: {},
+      tipTitle: '注：该组件可以在src/components/map/scatterMap.vue找到直接使用。'
     };
   },
   computed: {
@@ -1569,6 +1571,7 @@ export default {
             },
           ],
         };
+      this.optionString = option;
       window.addEventListener("resize", function () {
         mapChart.resize();
       });

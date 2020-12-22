@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div
       class="chart-box"
       ref="mapChart"
@@ -27,7 +27,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      optionString: {},
+      tipTitle: '注：该组件可以在src/components/map/trajectoryMap3.vue找到直接使用。'
+    };
   },
   computed: {
     themeType() {
@@ -255,6 +258,7 @@ export default {
             },
           ],
         };
+      that.optionString = option;
       window.addEventListener("resize", function () {
         mapChart.resize();
       });

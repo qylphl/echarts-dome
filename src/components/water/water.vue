@@ -1,10 +1,7 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
-    <div
-      class="chart-box"
-      ref="waterChart"
-      :style="{ 'background-color': themeType == 1 ? '#07124a' : '#fff' }"
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
+    <div class="chart-box" ref="waterChart" :style="{ 'background-color': themeType == 1 ? '#07124a' : '#fff' }"
     ></div>
   </div>
 </template>
@@ -38,7 +35,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      optionString: {},
+      tipTitle: '注：该组件可以在src/components/water/water.vue找到直接使用。'
+    };
   },
   computed: {
     themeType() {
@@ -171,6 +171,7 @@ export default {
             },
           ],
         };
+      that.optionString = option;
       window.addEventListener("resize", function () {
         waterChart.resize();
       });

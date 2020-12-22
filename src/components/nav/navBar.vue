@@ -5,7 +5,7 @@
     <el-dialog
       title="查看代码"
       :visible.sync="dialogVisible"
-      width="35%"
+      width="37%"
       :before-close="handleClose"
     >
       <div class="dialog-content">

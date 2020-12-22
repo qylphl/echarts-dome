@@ -1,13 +1,13 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div class="chart-box" ref="mapChart" :style="{ 'background-color': themeType == 1 ? '#07124a' : '#fff' }"></div>
   </div>
 </template>
 
 <script>
 import navBar from "components/nav/navBar";
-//   import 'echarts/map/js/world.js'
+//   import 'echarts/map/js/world.js'  // 世界地图
 import "echarts/map/js/china.js"; // 引入中国地图数据
 export default {
   props: {
@@ -20,7 +20,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      optionString: {},
+      tipTitle: '注：该组件可以在src/components/map/areaMap.vue找到直接使用。'
+    };
   },
   computed: {
     themeType() {
@@ -113,6 +116,7 @@ export default {
             },
           ],
         };
+      this.optionString = option;
       window.addEventListener("resize", function () {
         mapChart.resize();
       });

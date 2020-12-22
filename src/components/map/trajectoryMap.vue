@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title"></navBar>
+    <navBar :title="title" :optionString="optionString" :tipTitle="tipTitle"></navBar>
     <div class="chart-box" ref="mapChart" :style="{ 'background-color': themeType == 1 ? '#07124a' : '#fff' }"></div>
   </div>
 </template>
@@ -151,6 +151,8 @@ export default {
         赣州: [115.4651, 25.3373],
         韶关: [113.7964, 24.7028],
       },
+      optionString: {},
+      tipTitle: '注：该组件可以在src/components/map/trajectoryMap.vue找到直接使用。'
     };
   },
   computed: {
@@ -300,6 +302,7 @@ export default {
           },
           series: that.series,
         };
+      that.optionString = option;
       window.addEventListener("resize", function () {
         mapChart.resize();
       });

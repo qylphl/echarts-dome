@@ -21,7 +21,7 @@ export default {
   data() {
     return {
       optionString: {},
-      tipTitle: '注：该代码只是柱状图区域的，并不包含右侧图例，如果需要全部，请找到src/components/line/barLine.vue组件直接使用。'
+      tipTitle: '注：该组件可以在src/components/line/barLine.vue找到直接使用。'
     };
   },
   computed: {
