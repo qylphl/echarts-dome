@@ -4,7 +4,10 @@
       <!-- 雷达图 -->
       <div class="content-box flex-box">
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
-          <Radar :data="data" :color="color"></Radar>
+          <Radar :data="data" :dataInfo="dataInfo" :color="color"></Radar>
+        </div>
+        <div class="pie-box" v-for="(item, index) in radarOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <RadarArea :deploy="item" :title="item.boxTitle"></RadarArea>
         </div>
       </div>
     </div>
@@ -22,19 +25,48 @@
 <script>
 import Subnuv from "components/nav/subnav";
 import Radar from "components/radar/radar";
+import RadarArea from "components/chartsPublic/charts";
+import RadarChart from "utils/radarOption";
 import constant from "utils/constant";
 export default {
   data() {
     return {
       color: constant.COLOR,
-      data: [{value: [83, 100, 78, 65, 90, 79],name: '预算分配'},{value: [50, 74, 98, 71, 62, 81],name: '实际开销'}],
+      data: [{value: [830, 1000, 780, 650, 900, 790],name: '预算分配'},{value: [500, 740, 980, 710, 620, 810],name: '实际开销'}],
+      data2: [[582, 421.2, 622.1, 625.3, 265, 224]],
+      dataInfo: [{
+              name: '套餐1',
+              max: 1000
+          },
+          {
+              name: '套餐2',
+              max: 1000
+          },
+          {
+              name: '套餐3',
+              max: 1000
+          },
+          {
+              name: '套餐4',
+              max: 1000
+          },
+          {
+              name: '套餐5',
+              max: 1000
+          },
+          {
+              name: '套餐6',
+              max: 1000
+          },
+      ],
       // 右侧导航菜单
       rightList: [
-        { title: "雷达图", num: "1" },
+        { title: "雷达图", num: "3" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
+      radarOption: [],  // 雷达图配置
     };
   },
   computed: {
@@ -50,8 +82,17 @@ export default {
   mounted() {
     this.differ = document.getElementsByClassName("content-box")[0].offsetTop;
     this.$refs.leftBox.addEventListener("scroll", this.dataScroll);
+    this.initPieOption();
   },
   methods: {
+    initPieOption() {
+      let info = {
+        data: this.data2,
+        dataTwo: this.data,
+        dataInfo: this.dataInfo,
+      };
+      this.radarOption = new RadarChart(info).RADAR_CHARTS;
+    },
     // 锚点双向监听
     dataScroll() {
       this.scroll = this.$refs.leftBox.scrollTop;
@@ -84,7 +125,8 @@ export default {
   },
   components: {
     Subnuv,
-    Radar
+    Radar,
+    RadarArea
   },
 };
 </script>

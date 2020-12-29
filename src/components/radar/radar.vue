@@ -16,6 +16,9 @@ export default {
     data: {
       type: Array,
     },
+    dataInfo: {
+      type: Array,
+    },
     color: {
       type: Array,
     },
@@ -42,9 +45,7 @@ export default {
           tooltip: {},
           legend: {
             top: 10,
-            data: that.data.map((v) => {
-              return v.name;
-            }),
+            data: that.data.map((v) => {return v.name}),
           },
           color: that.color,
           radar: {
@@ -60,14 +61,7 @@ export default {
                 padding: [3, 5],
               },
             },
-            indicator: [
-              { name: "销售", max: 100 },
-              { name: "管理", max: 100 },
-              { name: "客服", max: 100 },
-              { name: "信息技术", max: 100 },
-              { name: "研发", max: 100 },
-              { name: "市场", max: 100 },
-            ],
+            indicator: that.dataInfo,
           },
           series: [
             {
