@@ -38,15 +38,18 @@
       :before-close="handleClose"
     >
       <div class="dialog-content">
-        <p class="first-title">一、操作步骤</p>
-        <p>找到需要使用的echarts图表组件，点击查看代码，展示的代码均为option设置项，根据自己的项目需要更改color为设计人员提供的颜色组；data改为动态获取的数据，只要数据格式保持一致就可以。其余写法与常规的echarts使用无差别。</p>
+        <p class="first-title">一、简介</p>
+        <p>本图表样式示例主要整理了常用echarts图表的样式及代码，方便开发人员后续使用，提高开发效率。</p>
+        <p>头部右上角可以查看整体配色，也可以进行切换主题颜色，方便查看大数据系统展示的图表样式，从而选择更加合适的图表。</p>
+        <p class="first-title">二、操作步骤</p>
+        <p>找到需要使用的echarts图表组件，点击查看代码，展示的代码均为option设置项，根据自己的项目需要更改‘ color ’配置项为设计人员提供的颜色组；‘ data ’配置项改为动态获取的数据，只要数据格式保持一致就可以（其中‘ 键 ’的名字也尽量保持一致，否则option配置项中也需要同步变更）。其余写法与常规的echarts使用无差别。</p>
         <p style="color: red;">(注：查看代码中的option配置项是通过js渲染出来的，所以动态的color和data也被渲染成字符串了，如果需要动态传值的可以找到对应的组件或者option配置项复制代码。)</p>
-        <p class="first-title">二、注意事项</p>
+        <p class="first-title">三、注意事项</p>
         <p>1、查看代码弹框中展示的仅仅是echarts的option配置项。</p>
         <p>2、option中的data数据需要根据调取接口获取，格式与例子中的保持一致即可（包括对象中的 ‘ 键 ’ 也需要保持一致，如需更改 ‘ 键 ’ ，option配置中也需要同步）。</p>
         <p>3、如果echarts图表用于大数据，需要改变轴线上文字的颜色。</p>
-        <p>4、如果是vue项目的话，可以直接找到相应的组件，直接放入自己的项目父子组件按要求传值即可。</p>
-        <p class="first-title">三、组件存放位置</p>
+        <p>4、如果是vue项目的话，可以直接找到相应的组件，直接放入自己的项目，父子组件按要求传值即可。</p>
+        <p class="first-title">四、组件存放位置</p>
         <p style="color:red;">(注：option配置项跟查看代码中的无太大差别，可直接查看代码复制，如果不想再根据自己项目需要去改动data和color，可以找到一下路径进行复制和传值。)</p>
         <p class="second-level">(一)、通用echarts组件存放位置：</p>
         <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/chartsPublic/charts.vue（这个是普通echarts图表的组件。）</p>
