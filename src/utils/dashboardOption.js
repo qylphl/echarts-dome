@@ -23,7 +23,7 @@ export default class DashboardChart {
                         name: '入库率',
                         type: 'gauge',
                         detail: { formatter: info.dataArr + '%' },
-                        data: [{ value: 85, name: '入库率' }],
+                        data: [{ value: info.dataArr, name: '入库率' }],
                         axisLine: {
                             lineStyle: {
                                 color: [[0.25, '#ef5633'], [0.5, '#f3b962'], [0.75, '#53de42'], [1, '#099c15']]
@@ -826,7 +826,7 @@ export default class DashboardChart {
                         }
                     },
                     data: [{
-                        "value": 100,
+                        value: 100,
                         itemStyle: {
                             normal: {
                                 color: "#072B79"
@@ -1132,6 +1132,107 @@ export default class DashboardChart {
                         }
                     }]
                 }]
+            },
+            dashboard_charts_option7: {
+                boxTitle: '仪表盘--多种形态', // 给图表父元素定义的title，不用于echarts中的option
+                boxWidth: '100%',  // 给图表父元素定义的宽，不用于echarts中的option
+                title: (() => {
+                    let titleData = [];
+                    for (var i = 0; i < info.dataList.length; i++) {
+                        titleData.push({
+                            x: 9.5+25*i+'%',
+                            y: "72%",
+                            subtext: info.dataList[i].name,
+                            subtextStyle: {
+                                fontSize: 14,
+                                color: info.dataList[i].colorList[1]
+                            }
+                        })
+                    }
+                    return titleData;
+                })(),
+                series: (() => {
+                    let dataArr = [];
+                    for (var i = 0; i < info.dataList.length; i++) {
+                        dataArr.push({// 仪表盘
+                            type: 'gauge',
+                            min: 0,
+                            max: 100,
+                            splitNumber: 5,
+                            center: [12.5 + 25 * i + '%', '50%'],
+                            radius: '70%',
+                            axisLine: {
+                                lineStyle: {
+                                    color: [
+                                        [0, info.dataList[i].colorList[0]],
+                                        [info.dataList[i].value / 100, info.dataList[i].colorList[1]],
+                                        [1, info.dataList[i].colorList[2]]
+                                    ],
+                                    width: 8
+                                }
+                            },
+                            axisLabel: {
+                                textStyle: {
+                                    color: '#595959',
+                                    fontSize: '10'
+                                }
+                            },
+                            //分割线
+                            splitLine: {
+                                length: 14,
+                                lineStyle: {
+                                    width: 2,
+                                    color: info.dataList[i].colorList[1],
+                                }
+                            },
+                            itemStyle: {//指针颜色
+                                color: info.dataList[i].colorList[1],
+                            },
+                            pointer: {//指针长短
+                                length: 52,
+                                width: "3",
+                            },
+                            detail: {
+                                offsetCenter: [-1, 50],
+                                formatter: function (param) {
+                                    var x = param / 100;
+                                    return `{a|占比  }` + param + `%`;
+                                },
+                                rich: {
+                                    a: {
+                                        fontSize: 14,
+                                        color: "#666"
+                                    }
+                                },
+                                textStyle: {
+                                    fontSize: 14,
+                                    color: info.dataList[i].colorList[1]
+                                }
+                            },
+                            data: [{ value: info.dataList[i].value }],
+                        }, {//指针外环
+                            type: 'pie',
+                            hoverAnimation: false,
+                            legendHoverLink: false,
+                            radius: ['6%', '8%'],
+                            center: [12.5 + 25 * i + '%', '50%'],
+                            labelLine: {
+                                normal: {
+                                    show: false
+                                }
+                            },
+                            data: [{
+                                value: 100,
+                                itemStyle: {
+                                    normal: {
+                                        color: info.dataList[i].colorList[1]
+                                    }
+                                }
+                            }]
+                        })
+                    }
+                    return dataArr;
+                })()
             }
         };
     }

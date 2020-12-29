@@ -32,6 +32,7 @@ import Scatter from "components/chartsPublic/charts";
 import SolidScatter from "components/scatter/3dScatter";
 import scatterCharts from "utils/scatterOption";
 import constant from "utils/constant";
+import echarts from "echarts/lib/echarts";
 export default {
   data() {
     return {
@@ -54,9 +55,48 @@ export default {
           },
         ],
       },
+      dataList: [
+          { name: '违反政治纪律行为', value: '512' },
+          { name: '违反行为纪律行为', value: '51' },
+          { name: '违反群众纪律行为', value: '134' },
+          { name: '违反组织纪律行为', value: '120' },
+          { name: '违反生活纪律行为', value: '22' },
+          { name: '违反工作纪律行为', value: '20' }
+      ],
+      colorList: [{
+          offset: [28, 19],
+          symbolSize: 100,
+          color: new echarts.graphic.RadialGradient(0.3, 0.5, 0.7,
+              [{ offset: 0, color: '#1ba6fc' }, { offset: 1, color: '#1260f8' }])
+      }, {
+          offset: [31, 6],
+          symbolSize: 80,
+          color: new echarts.graphic.RadialGradient(0.3, 0.5, 0.7,
+              [{ offset: 0, color: '#33d8e7' }, { offset: 1, color: '#0badbc' }])
+      }, {
+          offset: [37, 16],
+          symbolSize: 90,
+          color: new echarts.graphic.RadialGradient(0.3, 0.5, 0.7,
+              [{ offset: 0, color: '#fe8d51' }, { offset: 1, color: '#e83608' }])
+      }, {
+          offset: [43, 7],
+          symbolSize: 70,
+          color: new echarts.graphic.RadialGradient(0.3, 0.5, 0.7,
+              [{ offset: 0, color: '#ffb45a' }, { offset: 1, color: '#e57C00' }])
+      }, {
+          offset: [48, 18],
+          symbolSize: 60,
+          color: new echarts.graphic.RadialGradient(0.3, 0.5, 0.7,
+              [{ offset: 0, color: '#896ffe' }, { offset: 1, color: '#5942f4' }])
+      }, {
+          offset: [50, 12],
+          symbolSize: 60,
+          color: new echarts.graphic.RadialGradient(0.3, 0.5, 0.7,
+              [{ offset: 0, color: '#17dca4' }, { offset: 1, color: '#03b388' }])
+      }],
       // 右侧导航菜单
       rightList: [
-        { title: "散点气泡图", num: "4" },
+        { title: "散点气泡图", num: "5" },
         { title: "3d散点气泡图", num: "1" },
       ],
       scroll: "",
@@ -85,6 +125,8 @@ export default {
       let info = {
         data: this.data,
         color: this.color,
+        dataList: this.dataList,
+        colorList: this.colorList,
       };
       this.scatterOption = new scatterCharts(info).SCATTER_CHARTS;
     },

@@ -2,6 +2,7 @@
  * 散点气泡图配置项
  * @param info echart图表的配置项总和，对象格式，里面包含{color，data，title}
  */
+import echarts from "echarts/lib/echarts";
 export default class scatterChart {
     constructor(info) {
         // 散点气泡图
@@ -272,7 +273,7 @@ export default class scatterChart {
             },
             scatter_charts_option3: {
                 boxTitle: '气泡散点图', // 给图表父元素定义的title，不用于echarts中的option
-                boxWidth: '66.15%',  // 给图表父元素定义的宽，不用于echarts中的option
+                boxWidth: '100%',  // 给图表父元素定义的宽，不用于echarts中的option
                 tooltip: {
                     trigger: 'axis',
                     textStyle: {
@@ -289,18 +290,19 @@ export default class scatterChart {
                 },
                 legend: {
                     show: true,
-                    top: 0,
+                    top: 10,
                     right: 20,
                     itemWidth: 20,
                     itemHeight: 10,
                     textStyle: {
-                        color: "#fff"
+                        fontSize: 14,
+                        color: "#072B79"
                     }
                 },
                 grid: {
                     show: true,
-                    top: 30,
-                    left: '8%',
+                    top: 50,
+                    left: '5%',
                     right: '3%',
                     bottom: 40,
                     borderColor: "#061C61"
@@ -501,6 +503,105 @@ export default class scatterChart {
                     [176.5, 71.8], [164.4, 55.5], [160.7, 48.6], [174.0, 66.4], [163.8, 67.3]
                     ],
                 }]
+            },
+            scatter_charts_option5: {
+                boxTitle: '气泡散点图', // 给图表父元素定义的title，不用于echarts中的option
+                boxWidth: '66.15%',  // 给图表父元素定义的宽，不用于echarts中的option
+                legend: {
+                    icon: 'ract',
+                    bottom: '15',
+                    textStyle: {
+                        color: "#666",
+                        fontSize: 12, //字体大小
+                        padding: [0, 15, 0, 0],
+                    }
+                },
+                grid: {
+                    top: '8%',
+                    left: '4%',
+                    right: '4%',
+                    bottom: '17%',
+                    containLabel: true
+                },
+                xAxis: [{
+                    gridIndex: 0,
+                    type: 'value',
+                    axisTick: { show: false },
+                    axisLabel: { show: true },
+                    axisLine: {
+                        lineStyle: { color: '#ccc' }
+                    },
+                    splitLine: {
+                        lineStyle: { opacity: 0.3 }
+                    },
+                    min: 24,
+                    max: 52
+                }],
+                yAxis: [{
+                    gridIndex: 0,
+                    min: 0,
+                    axisTick: { show: false },
+                    axisLabel: { show: true },
+                    axisLine: {
+                        lineStyle: { color: '#ccc' }
+                    },
+                    splitLine: {
+                        lineStyle: { opacity: 0.3 }
+                    },
+                    max: 25
+                }],
+                series: (() => {
+                    let dataArr = [],
+                        firstObj = {
+                            type: 'scatter',
+                            symbol: 'circle',
+                            label: {
+                                normal: {
+                                    show: true,
+                                    formatter: '{b}',
+                                    textStyle: {
+                                        fontSize: 34,
+                                        fontWeight: 'bold',
+                                        color: '#fff'
+                                    }
+                                },
+                            },
+                            itemStyle: {
+                                normal: {
+                                    opacity: 0.8,
+                                    shadowBlur: 20,
+                                    shadowColor: '#4ea8ff'
+                                }
+                            },
+                            data: (() => {
+                                let datas = [];
+                                for (var i = 0; i < info.dataList.length; i++) {
+                                    datas.push({
+                                        name: info.dataList[i].value,
+                                        value: info.colorList[i].offset,
+                                        symbolSize: info.colorList[i].symbolSize,
+                                        itemStyle: {
+                                            normal: {
+                                                color: info.colorList[i].color,
+                                                // opacity: info.colorList[i].opacity
+                                            }
+                                        },
+                                    });
+                                }
+                                return datas;
+                            })(),
+                        };
+                    dataArr.push(firstObj);
+                    for (var j = 0; j < info.dataList.length; j++) {
+                        dataArr.push({
+                            name: info.dataList[j].name,
+                            type: 'scatter',
+                            color: info.colorList[j].color,
+                            symbolSize: 60,
+                        });
+                    }
+                    return dataArr;
+                })()
             }
         }
     }

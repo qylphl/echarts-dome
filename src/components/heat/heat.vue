@@ -67,8 +67,8 @@ export default {
             show: false,
           },
           calendar: {
-            top: '35%',
-            bottom: '35%',
+            top: '25%',
+            bottom: '25%',
             left: '5%',
             right: '5%',
             cellSize: [14, 14],

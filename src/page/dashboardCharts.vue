@@ -32,8 +32,14 @@ export default {
       colorSet: {color: '#0063E7'},
       dataArr: 50,
       textName: '完成率',
+      dataList: [
+        {value:'50',name: '第一种形态',colorList:['#1ba6fc','#1260f8','#eef5f8']},
+        {value:'60',name: '第二种形态',colorList:['#9f8cff','#7962df','#eef5f8']},
+        {value:'70',name: '第三种形态',colorList:['#ffb45a','#e57C00','#eef5f8']},
+        {value:'80',name: '第四种形态',colorList:['#fe8d51','#e83608','#eef5f8']},
+        ],
       // 右侧导航菜单
-      rightList: [{ title: "仪表盘", num: "6" }],
+      rightList: [{ title: "仪表盘", num: "7" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -63,6 +69,7 @@ export default {
         colorSet: this.colorSet,
         dataArr: this.dataArr,
         name: this.textName,
+        dataList: this.dataList,
       };
       this.dashboardOption = new DashboardChart(info).DASHBOARD_CHARTS;
     },
