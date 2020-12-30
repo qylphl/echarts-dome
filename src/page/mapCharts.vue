@@ -181,7 +181,7 @@ export default {
       rightList: [
         { title: "地图", num: "3" },
         { title: "轨迹地图", num: "3" },
-        { title: "散点气泡地图", num: "1" },
+        { title: "气泡地图", num: "1" },
         { title: "多功能地图", num: "1" },
       ],
       scroll: "",
