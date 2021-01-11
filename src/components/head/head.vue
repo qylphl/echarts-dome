@@ -71,25 +71,25 @@
         <p class="second-level">(七)、雷达图组件存放位置：</p>
         <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/radar</p>
         <p class="second-level-content"><strong>2、option存放位置：</strong>src/utils/radarOption.js</p>
-        <p class="second-level">(八)、词云图组件存放位置：</p>
-        <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/word</p>
-        <p class="second-level">(九)、气泡散点图组件存放位置：</p>
-        <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/scatter</p>
-        <p class="second-level-content"><strong>2、option存放位置：</strong>src/utils/scatterOption.js</p>
-        <p class="second-level">(十)、双轴图组件存放位置：</p>
-        <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/chartsPublic/charts.vue</p>
-        <p class="second-level-content"><strong>2、option存放位置：</strong>src/utils/biaxialOption.js</p>
-        <p class="second-level">(十一)、水滴图组件存放位置：</p>
-        <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/water</p>
-        <p class="second-level">(十二)、矩阵图组件存放位置：</p>
-        <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/chartsPublic/charts.vue</p>
-        <p class="second-level-content"><strong>2、option存放位置：</strong>src/utils/matrixOption.js</p>
-        <p class="second-level">(十三)、热力图组件存放位置：</p>
-        <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/heat</p>
-        <p class="second-level-content"><strong>2、option存放位置：</strong>src/utils/heatOption.js</p>
-        <p class="second-level">(十四)、仪表盘组件存放位置：</p>
+        <p class="second-level">(八)、仪表盘组件存放位置：</p>
         <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/chartsPublic/charts.vue</p>
         <p class="second-level-content"><strong>2、option存放位置：</strong>src/utils/dashboardOption.js</p>
+        <p class="second-level">(九)、词云图组件存放位置：</p>
+        <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/word</p>
+        <p class="second-level">(十)、散点气泡图组件存放位置：</p>
+        <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/scatter</p>
+        <p class="second-level-content"><strong>2、option存放位置：</strong>src/utils/scatterOption.js</p>
+        <p class="second-level">(十一)、双轴图组件存放位置：</p>
+        <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/chartsPublic/charts.vue</p>
+        <p class="second-level-content"><strong>2、option存放位置：</strong>src/utils/biaxialOption.js</p>
+        <p class="second-level">(十二)、水滴图组件存放位置：</p>
+        <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/water</p>
+        <p class="second-level">(十三)、矩阵图组件存放位置：</p>
+        <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/chartsPublic/charts.vue</p>
+        <p class="second-level-content"><strong>2、option存放位置：</strong>src/utils/matrixOption.js</p>
+        <p class="second-level">(十四)、热力图组件存放位置：</p>
+        <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/heat</p>
+        <p class="second-level-content"><strong>2、option存放位置：</strong>src/utils/heatOption.js</p>
       </div>
       <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
