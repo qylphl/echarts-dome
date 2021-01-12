@@ -47,6 +47,7 @@ export default {
         { title: "水滴图", iconCls: "iconfont iconshuiditu", Vrouter: "waterCharts" },
         { title: "矩阵图", iconCls: "iconfont iconjuzhentu", Vrouter: "matrixCharts" },
         { title: "热力图", iconCls: "iconfont iconrelitu", Vrouter: "heatCharts" },
+        { title: "动画效果", iconCls: "iconfont iconrelitu", Vrouter: "animation" },
       ],
     };
   },

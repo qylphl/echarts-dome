@@ -16,6 +16,7 @@ const WaterCharts = r => require.ensure([], () => r(require('@/page/waterCharts'
 const MatrixCharts = r => require.ensure([], () => r(require('@/page/matrixCharts')), 'MatrixCharts');  // 矩阵图
 const HeatCharts = r => require.ensure([], () => r(require('@/page/heatCharts')), 'HeatCharts');  // 热力图
 const DashboardCharts = r => require.ensure([], () => r(require('@/page/dashboardCharts')), 'DashboardCharts');  // 仪表盘
+const Animation = r => require.ensure([], () => r(require('@/page/animation')), 'Animation');  // 动画效果
 
 Vue.use(Router)
 
@@ -103,6 +104,10 @@ export default new Router({
         {
           path: 'dashboardCharts',
           component: DashboardCharts,
+        },
+        {
+          path: 'animation',
+          component: Animation,
         },
       ]
     }
