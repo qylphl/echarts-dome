@@ -13,13 +13,13 @@
     </ul>
     <!-- END dome1 -->
     <!-- dome2 -->
-    <ul class="dome2">
+    <ul :class="{ dome2: true, 'themeType-ul': themeType == 1 ? true : false }">
       <li v-for="(msg, index) in domeList" :key="index" :class="{'choose-list': chooseDomeTwotype == index}" @click="chooseDomeTwotype = index">{{ msg }}</li>
     </ul>
     <!-- END dome2 -->
     <!-- dome3 -->
     <div style="width: max-content;margin: 0 auto;">
-      <ul class="dome3">
+      <ul :class="{ dome3: true, 'themeType-ul': themeType == 1 ? true : false }">
         <li v-for="(msg, index) in domeList" :key="index" @click="chooseDomeThreetype = index">{{ msg }}</li>
         <div id="marker" :style="{'transform': 'translate(' + chooseDomeThreetype * 90 + 'px, 0)'}"></div>
       </ul>
@@ -134,6 +134,7 @@ export default {
     position: relative;
     padding: 20px;
     cursor: pointer;
+    transition: 0.2s all linear;
     &:after {
       content: "";
       width: 0;
@@ -176,6 +177,7 @@ export default {
     min-width: 90px;
     text-align: center;
     box-sizing: border-box;
+    transition: 0.2s all linear;
     &:hover ul div {
       -webkit-transform: translate(0, 0);
       -moz-transform: translate(0, 0);

@@ -5,19 +5,22 @@
     <el-dialog
       title="查看代码"
       :visible.sync="dialogVisible"
-      width="37%"
+      width="40%"
       :before-close="handleClose"
     >
       <div class="dialog-content">
         <p class="tip">
           以下代码为option配置项：<br/><span style="color: red;" v-html="'( '+tipTitle+' )'"></span>
         </p>
-        <textarea readonly="readonly" v-html="optionString"></textarea>
+        <div class="textarea-box">
+          <textarea readonly="readonly" v-html="optionString"></textarea>
+        </div>
+        
       </div>
-      <span slot="footer" class="dialog-footer">
+      <!-- <span slot="footer" class="dialog-footer">
         <el-button @click="dialogVisible = false">取 消</el-button>
         <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
-      </span>
+      </span> -->
     </el-dialog>
   </div>
 </template>
@@ -90,16 +93,29 @@ export default {
   }
 }
 .dialog-content {
+  padding: 10px 30px;
   color: #333;
+  box-sizing: border-box;
   .tip{
-    font-size: 16px;
-    padding-bottom: 10px;
+    font-size: 18px;
+    padding-bottom: 20px;
     line-height: 25px;
   }
-  textarea {
+  .textarea-box {
     width: 100%;
     height: 500px;
-    font-size: 14px;
+    background-color: rgb(30,31,41);
+    padding: 10px 8px 10px 20px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    textarea {
+      width: 100%;
+      height: 100%;
+      font-size: 16px;
+      background-color: rgb(30,31,41);
+      color: #fff;      
+    }
   }
+  
 }
 </style>

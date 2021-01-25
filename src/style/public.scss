@@ -80,14 +80,14 @@ a{
 }
 /*  滚动条样式  */
 ::-webkit-scrollbar-track-piece {
-	background-color:  #b8b7b718;
+	background-color:  #b8b7b705;
 }
 ::-webkit-scrollbar {
-	width: 6px;
+	width: 5px;
 	height: 6px;
 }
 ::-webkit-scrollbar-thumb {
-	background-color: #97979762;
+	background-color: #97979726;
 	background-clip: padding-box;
 	min-height: 28px;
 	border-radius: 5px;
@@ -114,14 +114,17 @@ a{
 }
 .el-dialog__header {
   padding: 15px 20px;
-  background-color: #2094fb;
+  background-color: rgb(14,91,229);
   color: #fff;
   .el-dialog__title {
     color: #fff;
   }
   .el-dialog__headerbtn {
+    margin-top: -2px;
     .el-dialog__close {
       color: #fff;
+      font-weight: bold;
+      font-size: 18px;
     }
   }
 }
