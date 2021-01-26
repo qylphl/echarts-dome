@@ -110,7 +110,7 @@ export default {
       default: "图表样式及代码使用规范",
       type: String,
     },
-    color: {
+    color: {   // 图表配色
       type: Array,
     },
     themeColor: {
@@ -136,8 +136,15 @@ export default {
       chooseRouter: '',
     };
   },
-  mounted() {
-    this.initType();
+  mounted() {},
+  watch: {    
+    // 监听父组件中传入默认选中type的值改变
+    defaultHeaderNavType: {
+      immediate: true,    
+      handler (val) {
+          this.chooseListType = val;
+      }
+    }
   },
   methods: {
     themeChoose(index) {
@@ -156,20 +163,7 @@ export default {
       this.chooseRouter = router;
       this.$router.push(this.chooseRouter);
       this.$emit("navMenuChoose", {'chooseListType': this.chooseListType, 'chooseRouter': this.chooseRouter});
-    },
-    // 刷新页面导航选择同步
-    initType() {
-      let that = this,
-          pathLen = this.$route.path.lastIndexOf("\/"),
-          pathName = pathLen > -1 && pathLen == 0 ? this.$route.path : pathLen > -1 ? this.$route.path.substring(0, pathLen) : '';
-      that.headerNavList.filter(function (item, index) {
-        if (item.navRouter && item.navRouter == pathName) {
-          that.chooseListType = index;
-        }else {
-          that.chooseListType = 0;
-        }
-      });
-    },
+    }
   },
 };
 </script>

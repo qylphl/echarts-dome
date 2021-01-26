@@ -16,7 +16,9 @@ const WaterCharts = r => require.ensure([], () => r(require('@/page/waterCharts'
 const MatrixCharts = r => require.ensure([], () => r(require('@/page/matrixCharts')), 'MatrixCharts'); // 矩阵图
 const HeatCharts = r => require.ensure([], () => r(require('@/page/heatCharts')), 'HeatCharts'); // 热力图
 const DashboardCharts = r => require.ensure([], () => r(require('@/page/dashboardCharts')), 'DashboardCharts'); // 仪表盘
-const Animation = r => require.ensure([], () => r(require('@/page/animation')), 'Animation'); // 动画效果
+/***************** 动画效果 ****************/
+const AnimationNav = r => require.ensure([], () => r(require('@/page/animationNav')), 'animationNav'); // 导航和菜单
+const AnimationBtn = r => require.ensure([], () => r(require('@/page/animationBtn')), 'animationBtn'); // 按钮
 const Assembly = r => require.ensure([], () => r(require('@/page/assembly')), 'Assembly'); // 组件
 
 Vue.use(Router)
@@ -111,11 +113,15 @@ export default new Router({
             component: Main,
             children: [{
                     path: '/',
-                    component: Animation,
+                    component: AnimationNav,
                 },
                 {
-                    path: 'animation',
-                    component: Animation,
+                    path: 'animationNav',
+                    component: AnimationNav,
+                },
+                {
+                    path: 'animationBtn',
+                    component: AnimationBtn,
                 },
             ]
         },
