@@ -3,113 +3,131 @@ import Router from 'vue-router'
 
 const Index = r => require.ensure([], () => r(require('@/page/index')), 'Index');
 const Main = r => require.ensure([], () => r(require('@/page/main')), 'Main');
-const PieCharts = r => require.ensure([], () => r(require('@/page/pieCharts')), 'PieCharts');   // 饼状图
-const BarCharts = r => require.ensure([], () => r(require('@/page/barCharts')), 'BarCharts');   // 柱状图
-const LineCharts = r => require.ensure([], () => r(require('@/page/lineCharts')), 'LineCharts');  // 折线图
-const FunnelCharts = r => require.ensure([], () => r(require('@/page/funnelCharts')), 'FunnelCharts');  // 漏斗图
-const MapCharts = r => require.ensure([], () => r(require('@/page/mapCharts')), 'MapCharts');  // 地图
-const RadarCharts = r => require.ensure([], () => r(require('@/page/radarCharts')), 'RadarCharts');  // 雷达图
-const WordCharts = r => require.ensure([], () => r(require('@/page/wordCharts')), 'WordCharts');  // 词云图
-const ScatterCharts = r => require.ensure([], () => r(require('@/page/scatterCharts')), 'ScatterCharts');  // 散点气泡图
-const BiaxialCharts = r => require.ensure([], () => r(require('@/page/biaxialCharts')), 'BiaxialCharts');  // 双轴图
-const WaterCharts = r => require.ensure([], () => r(require('@/page/waterCharts')), 'WaterCharts');  // 水滴图
-const MatrixCharts = r => require.ensure([], () => r(require('@/page/matrixCharts')), 'MatrixCharts');  // 矩阵图
-const HeatCharts = r => require.ensure([], () => r(require('@/page/heatCharts')), 'HeatCharts');  // 热力图
-const DashboardCharts = r => require.ensure([], () => r(require('@/page/dashboardCharts')), 'DashboardCharts');  // 仪表盘
-const Animation = r => require.ensure([], () => r(require('@/page/animation')), 'Animation');  // 动画效果
+const PieCharts = r => require.ensure([], () => r(require('@/page/pieCharts')), 'PieCharts'); // 饼状图
+const BarCharts = r => require.ensure([], () => r(require('@/page/barCharts')), 'BarCharts'); // 柱状图
+const LineCharts = r => require.ensure([], () => r(require('@/page/lineCharts')), 'LineCharts'); // 折线图
+const FunnelCharts = r => require.ensure([], () => r(require('@/page/funnelCharts')), 'FunnelCharts'); // 漏斗图
+const MapCharts = r => require.ensure([], () => r(require('@/page/mapCharts')), 'MapCharts'); // 地图
+const RadarCharts = r => require.ensure([], () => r(require('@/page/radarCharts')), 'RadarCharts'); // 雷达图
+const WordCharts = r => require.ensure([], () => r(require('@/page/wordCharts')), 'WordCharts'); // 词云图
+const ScatterCharts = r => require.ensure([], () => r(require('@/page/scatterCharts')), 'ScatterCharts'); // 散点气泡图
+const BiaxialCharts = r => require.ensure([], () => r(require('@/page/biaxialCharts')), 'BiaxialCharts'); // 双轴图
+const WaterCharts = r => require.ensure([], () => r(require('@/page/waterCharts')), 'WaterCharts'); // 水滴图
+const MatrixCharts = r => require.ensure([], () => r(require('@/page/matrixCharts')), 'MatrixCharts'); // 矩阵图
+const HeatCharts = r => require.ensure([], () => r(require('@/page/heatCharts')), 'HeatCharts'); // 热力图
+const DashboardCharts = r => require.ensure([], () => r(require('@/page/dashboardCharts')), 'DashboardCharts'); // 仪表盘
+const Animation = r => require.ensure([], () => r(require('@/page/animation')), 'Animation'); // 动画效果
+const Assembly = r => require.ensure([], () => r(require('@/page/assembly')), 'Assembly'); // 组件
 
 Vue.use(Router)
 
 let scrollBehavior = function scrollBehavior(to, from, savedPosition) {
-  if (savedPosition) {
-    return savedPosition
-  } else {
-    if (from.meta.keepAlive) {
-      from.meta.savedPosition = document.body.scrollTop
+    if (savedPosition) {
+        return savedPosition
+    } else {
+        if (from.meta.keepAlive) {
+            from.meta.savedPosition = document.body.scrollTop
+        }
+        return { x: 0, y: to.meta.savedPosition || 0 }
     }
-    return { x: 0, y: to.meta.savedPosition || 0 }
-  }
 }
 
 export default new Router({
-  scrollBehavior,
-  routes: [
-    {
-      path: '/',
-      component: Main,
-      children: [
-        {
-          path: '/',
-          component: BarCharts,
-        },
-      ]
-    },
-    {
-      path: '/main',
-      name: 'Main',
-      component: Main,
-      children: [
-        {
-          path: '/',
-          component: BarCharts,
+    scrollBehavior,
+    routes: [{
+            path: '/',
+            component: Main,
+            children: [{
+                path: '/',
+                component: BarCharts,
+            }, ]
         },
         {
-          path: 'barCharts',
-          component: BarCharts,
+            path: '/main',
+            name: 'Main',
+            component: Main,
+            children: [{
+                    path: '/',
+                    component: BarCharts,
+                },
+                {
+                    path: 'barCharts',
+                    component: BarCharts,
+                },
+                {
+                    path: 'pieCharts',
+                    component: PieCharts,
+                },
+                {
+                    path: 'lineCharts',
+                    component: LineCharts,
+                },
+                {
+                    path: 'funnelCharts',
+                    component: FunnelCharts,
+                },
+                {
+                    path: 'mapCharts',
+                    component: MapCharts,
+                },
+                {
+                    path: 'radarCharts',
+                    component: RadarCharts,
+                },
+                {
+                    path: 'wordCharts',
+                    component: WordCharts,
+                },
+                {
+                    path: 'scatterCharts',
+                    component: ScatterCharts,
+                },
+                {
+                    path: 'biaxialCharts',
+                    component: BiaxialCharts,
+                },
+                {
+                    path: 'waterCharts',
+                    component: WaterCharts,
+                },
+                {
+                    path: 'matrixCharts',
+                    component: MatrixCharts,
+                },
+                {
+                    path: 'heatCharts',
+                    component: HeatCharts,
+                },
+                {
+                    path: 'dashboardCharts',
+                    component: DashboardCharts,
+                },
+
+            ]
         },
         {
-          path: 'pieCharts',
-          component: PieCharts,
+            path: '/animation',
+            name: 'Main',
+            component: Main,
+            children: [{
+                    path: '/',
+                    component: Animation,
+                },
+                {
+                    path: 'animation',
+                    component: Animation,
+                },
+            ]
         },
         {
-          path: 'lineCharts',
-          component: LineCharts,
+            path: '/assembly',
+            name: 'Main',
+            component: Main,
+            children: [{
+                path: '/',
+                component: Animation,
+            }, ]
         },
-        {
-          path: 'funnelCharts',
-          component: FunnelCharts,
-        },
-        {
-          path: 'mapCharts',
-          component: MapCharts,
-        },
-        {
-          path: 'radarCharts',
-          component: RadarCharts,
-        },
-        {
-          path: 'wordCharts',
-          component: WordCharts,
-        },
-        {
-          path: 'scatterCharts',
-          component: ScatterCharts,
-        },
-        {
-          path: 'biaxialCharts',
-          component: BiaxialCharts,
-        },
-        {
-          path: 'waterCharts',
-          component: WaterCharts,
-        },
-        {
-          path: 'matrixCharts',
-          component: MatrixCharts,
-        },
-        {
-          path: 'heatCharts',
-          component: HeatCharts,
-        },
-        {
-          path: 'dashboardCharts',
-          component: DashboardCharts,
-        },
-        {
-          path: 'animation',
-          component: Animation,
-        },
-      ]
-    }
-  ]
+
+    ]
 })

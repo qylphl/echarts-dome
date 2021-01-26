@@ -49,17 +49,19 @@ export default {
     chooseNav(index, router) {
       this.chooseNavType = index;
       this.$router.push("/main/" + router);
-      this.$emit("chooseNav", this.chooseNavType);
+      this.$emit("chooseNav", {'chooseNavType': this.chooseNavType,'router': router});
     },
     // 刷新页面路由和导航菜单同步
     initType() {
       let that = this,
           pathLenth = this.defaultActive.lastIndexOf("\/"),
-          pathName = pathLenth > -1 ? this.defaultActive.substring(pathLenth + 1, this.defaultActive.length) : "";
+          pathName = pathLenth > -1 ? this.defaultActive.substring(pathLenth + 1, this.defaultActive.length) : "";  
       this.menuList.filter(function (item, index) {
         if (item.Vrouter && pathName && item.Vrouter == pathName) {
           that.chooseNavType = index;
           return;
+        }else {
+          that.chooseNavType = 0;
         }
       });
     },

@@ -1,20 +1,24 @@
 <template>
   <div class="height-box">
     <!-- 头部 -->
-    <div class="header flex-box" :style="{'height': height+'px'}">
+    <div class="header flex-box" :style="{ height: height + 'px' }">
       <div class="header-left flex-box">
-        <img class="echart-logo" src="../../../src/assets/img/echarts_logo.png" alt="">
+        <img class="echart-logo" src="../../../src/assets/img/echarts_logo.png" alt=""/>
         <p class="header-title">{{ headerTitle }}</p>
       </div>
+      <ul class="nav flex-box">
+        <li v-for="(mag, index) in headerNavList" :key="index" :class="{ 'choose-list': chooseListType == index }" @click="chooseNav(index, mag.navRouter)">
+          {{ mag.title }}
+        </li>
+        <div class="tubelight" :style="{ transform: 'translate(' + chooseListType * 125 + 'px, 0)' }">
+          <div class="light-ray"></div>
+        </div>
+      </ul>
       <div class="header-right flex-box">
-        <p class="color-match flex-box">
+        <!-- <p class="color-match flex-box">
           <span>图表配色选择：</span>
-          <i
-            v-for="(item, index) in color"
-            :key="index"
-            :style="{ 'background-color': item }"
-          ></i>
-        </p>
+          <i v-for="(item, index) in color" :key="index" :style="{ 'background-color': item }"></i>
+        </p> -->
         <p class="instructions">
           <span class="icon-explain">?</span>
           <span class="instructions-title" @click="openInstructions">使用说明</span>
@@ -31,7 +35,7 @@
         </div>
       </div>
     </div>
-     <el-dialog
+    <el-dialog
       title="使用说明"
       :visible.sync="dialogVisible"
       width="48%"
@@ -43,7 +47,7 @@
         <p class="first-title">二、使用说明</p>
         <p>页面左侧为一级导航分类，可以根据不同的图表类型点击进入该类型下的图表示例。右侧为二级锚点导航，点击可以定位到该类型下的图表示例，方便查找。每个示例的右上方都有一个查看代码的按钮，找到需要使用的echarts图表示例，点击查看代码就会弹出代码的弹框。</p>
         <p>代码的使用：使用者只需要将echarts相关的js文件引入到项目中，复制弹框中的代码，弹框中展示的代码均为option设置项，根据自己的项目需要更改‘ color ’配置项为设计人员提供的颜色组；‘ data ’配置项改为动态获取的数据，只要数据格式保持一致就可以（其中‘ 键 ’的名字也尽量保持一致，否则option配置项中也需要同步变更）。其余写法与常规的echarts使用无差别。</p>
-        <p style="color: red;">(注：查看代码中的option配置项是通过js渲染出来的，所以动态的color和data也被渲染成字符串了，如果需要动态传值的可以找到对应的组件或者option配置项复制代码。)</p>
+        <p style="color: red">(注：查看代码中的option配置项是通过js渲染出来的，所以动态的color和data也被渲染成字符串了，如果需要动态传值的可以找到对应的组件或者option配置项复制代码。)</p>
         <p class="first-title">三、注意事项</p>
         <p>1、查看代码弹框中展示的仅仅是echarts的option配置项。</p>
         <p>2、option中的data数据需要根据调取接口获取，格式与例子中的保持一致即可（包括对象中的 ‘ 键 ’ 也需要保持一致，如需更改 ‘ 键 ’ ，option配置中也需要同步）。</p>
@@ -51,7 +55,7 @@
         <p>4、图表的颜色也可以根据需求进行修改，大屏页面建议使用深颜色图表。</p>
         <p>5、如果是vue项目的话，可以直接找到相应的组件，直接放入自己的项目，父子组件按要求传值即可。</p>
         <p class="first-title">四、组件存放位置</p>
-        <p style="color:red;">(注：option配置项跟查看代码中的无太大差别，可直接查看代码复制，如果不想再根据自己项目需要去改动data和color，可以找到一下路径进行复制和传值。)</p>
+        <p style="color: red">(注：option配置项跟查看代码中的无太大差别，可直接查看代码复制，如果不想再根据自己项目需要去改动data和color，可以找到一下路径进行复制和传值。)</p>
         <p class="second-level">(一)、通用echarts组件存放位置：</p>
         <p class="second-level-content"><strong>1、组件存放位置：</strong>src/components/chartsPublic/charts.vue（这个是普通echarts图表的组件。）</p>
         <p class="second-level-content"><strong>2、option存放位置：</strong>通用echarts组件option配置项存放位置，详见以下option配置项存放位置。</p>
@@ -116,25 +120,55 @@ export default {
       default: 0,
       type: Number,
     },
+    headerNavList: {
+      type: Array,
+    },
+    defaultHeaderNavType: {
+      default: 0,
+      type: Number,
+    }
   },
   data() {
     return {
       themeType: this.porpThemeType,
       dialogVisible: false,
+      chooseListType: this.defaultHeaderNavType,   // 默认选中的头部nav
+      chooseRouter: '',
     };
   },
-  mounted() {},
+  mounted() {
+    this.initType();
+  },
   methods: {
     themeChoose(index) {
       this.themeType = index;
       this.$emit("themeChoose", this.themeType);
     },
     // 使用说明弹框
-    openInstructions(){
+    openInstructions() {
       this.dialogVisible = true;
     },
     handleClose(done) {
       done();
+    },
+    chooseNav(index,router) {
+      this.chooseListType = index;
+      this.chooseRouter = router;
+      this.$router.push(this.chooseRouter);
+      this.$emit("navMenuChoose", {'chooseListType': this.chooseListType, 'chooseRouter': this.chooseRouter});
+    },
+    // 刷新页面导航选择同步
+    initType() {
+      let that = this,
+          pathLen = this.$route.path.lastIndexOf("\/"),
+          pathName = pathLen > -1 && pathLen == 0 ? this.$route.path : pathLen > -1 ? this.$route.path.substring(0, pathLen) : '';
+      that.headerNavList.filter(function (item, index) {
+        if (item.navRouter && item.navRouter == pathName) {
+          that.chooseListType = index;
+        }else {
+          that.chooseListType = 0;
+        }
+      });
     },
   },
 };
@@ -156,6 +190,75 @@ export default {
         letter-spacing: 1px;
         color: #fff;
         padding-left: 17px;
+      }
+    }
+    .nav {
+      position: relative;
+      height: 100%;
+      align-items: center;
+      box-sizing: border-box;
+      margin-right: auto;
+      margin-left: 195px;
+      cursor: pointer;
+      &::after {
+        content: "";
+        width: 100%;
+        height: 5px;
+        position: absolute;
+        bottom: 4px;
+        left: 0;
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      li {
+        width: 125px;
+        font-size: 24px;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: normal;
+        text-align: center;
+        padding: 0 30px;
+        box-sizing: border-box;
+      }
+      .choose-list {
+        font-weight: bold;
+        color: #fff;
+      }
+      .tubelight {
+        width: 125px;
+        height: 5px;
+        position: absolute;
+        left: 0;
+        bottom: 4px;
+        // transform: translateX(30px);
+        -webkit-transition: all 0.35s;
+        -moz-transition: all 0.35s;
+        -ms-transition: all 0.35s;
+        transition: all 0.35s;
+        z-index: 10;
+        &::after{
+          content: '';
+          width: 65px;
+          height: 100%;
+          position: absolute;
+          left: 50%;
+          margin-left: -32.5px;
+          border-radius: 5px;
+          background: #fcbc28;
+        }
+        .light-ray {
+          position: absolute;
+          left: 11%;
+          bottom: 5px;
+          width: 80%;
+          height: 50px;
+          clip-path: polygon(90% 0, 75% 100%, 25% 100%, 10% 0);
+          background: linear-gradient(
+            to top,
+            rgba(252, 188, 40, 0.5) -50%,
+            rgba(252, 188, 40, 0) 90%
+          );
+          pointer-events: none;
+        }
       }
     }
     .header-right {

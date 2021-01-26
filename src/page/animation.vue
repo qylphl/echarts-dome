@@ -35,7 +35,7 @@
          <HoverBtn></HoverBtn>
         </div>
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <ClickBtn></ClickBtn>
+         <!-- <ClickBtn></ClickBtn> -->
         </div>
       </div>
     </div>
