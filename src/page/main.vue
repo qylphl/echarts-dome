@@ -19,6 +19,7 @@
         :navListColor="navListColor[themeType]"
         :themeType="themeType"
         :menuList="menuList[defaultHeaderNavType]"
+        :headPathName="headPathName"
       ></v-nav>
       <div
         class="inner-content"
@@ -48,8 +49,8 @@ export default {
         { title: "规范", navRouter: "" },
       ], // 头部导航菜单
       defaultHeaderNavType: 0, // 默认选中的头部导航菜单索引
+      headPathName: '/main',   // 头部默认的路由名字
       // 二级导航相关数据
-      defaultActive: this.$route.path, // 默认展示的页面路由
       defaultNavType: 0,
       innerColor: constant.CONTENT_COLOR, // inner-content的背景颜色
       // 导航菜单标题
@@ -70,16 +71,16 @@ export default {
           { title: "热力图", iconCls: "iconfont iconrelitu", Vrouter: "heatCharts" },
         ],
         [
-          { title: "导航和菜单", iconCls: "iconfont iconrelitu", Vrouter: "animation" },
-          { title: "表单和按钮", iconCls: "iconfont iconrelitu", Vrouter: "animation" },
-          { title: "选择和筛选", iconCls: "iconfont iconrelitu", Vrouter: "animation" },
-          { title: "登录和背景", iconCls: "iconfont iconrelitu", Vrouter: "animation" },
-          { title: "轮播和切换", iconCls: "iconfont iconrelitu", Vrouter: "animation" },
-          { title: "加载和上传", iconCls: "iconfont iconrelitu", Vrouter: "animation" },
-          { title: "CSS3动画", iconCls: "iconfont iconrelitu", Vrouter: "animation" },
-          { title: "SVG动画", iconCls: "iconfont iconrelitu", Vrouter: "animation" },
-          { title: "Canvas动画", iconCls: "iconfont iconrelitu", Vrouter: "animation" },
-          { title: "其他", iconCls: "iconfont iconrelitu", Vrouter: "animation" },
+          { title: "导航和菜单", iconCls: "iconfont iconrelitu", Vrouter: "animationNav" },
+          { title: "表单和按钮", iconCls: "iconfont iconrelitu", Vrouter: "animationBtn" },
+          { title: "选择和筛选", iconCls: "iconfont iconrelitu", Vrouter: "" },
+          { title: "登录和背景", iconCls: "iconfont iconrelitu", Vrouter: "" },
+          { title: "轮播和切换", iconCls: "iconfont iconrelitu", Vrouter: "" },
+          { title: "加载和上传", iconCls: "iconfont iconrelitu", Vrouter: "animationLoading" },
+          { title: "CSS3动画", iconCls: "iconfont iconrelitu", Vrouter: "" },
+          { title: "SVG动画", iconCls: "iconfont iconrelitu", Vrouter: "" },
+          { title: "Canvas动画", iconCls: "iconfont iconrelitu", Vrouter: "" },
+          { title: "其他", iconCls: "iconfont iconrelitu", Vrouter: "" },
         ]
       ],
     };
@@ -98,23 +99,17 @@ export default {
     // 头部一级导航菜单的选择
     navMenuChoose(v) {
       this.defaultHeaderNavType = v.defaultHeaderNavType;
+      this.defaultNavType = 0;
     },
     // 拿到刷新页面的路由
     getRouterName() {
       let that = this,
-        pathLen = this.$route.path.lastIndexOf("/"),
-        // 头部菜单导航
-        headPathName =
-          pathLen > -1 && pathLen == 0
-            ? this.$route.path
-            : pathLen > -1
-            ? this.$route.path.substring(0, pathLen)
-            : "",
-        // 左侧导航菜单
-        navPathName =
-          pathLen > -1
-            ? this.$route.path.substring(pathLen + 1, this.$route.path.length)
-            : "";
+          pathLen = this.$route.path.lastIndexOf("/"),
+          // 头部菜单导航
+          headPathName = pathLen > -1 && pathLen == 0 ? this.$route.path : pathLen > -1 ? this.$route.path.substring(0, pathLen) : "",
+          // 左侧导航菜单
+          navPathName = pathLen > -1 ? this.$route.path.substring(pathLen + 1, this.$route.path.length) : "";
+      that.headPathName = headPathName;
       // 头部选中的导航菜单
       that.headerNavList.filter(function (item, index) {
         if (item.navRouter && item.navRouter == headPathName) {
@@ -126,9 +121,6 @@ export default {
       that.menuList[that.defaultHeaderNavType].filter(function (item, index) {
         if (item.Vrouter && navPathName && item.Vrouter == navPathName) {
           that.defaultNavType = index;
-          return;
-        } else {
-          that.defaultNavType = 0;
           return;
         }
       });

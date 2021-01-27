@@ -41,8 +41,7 @@ export default {
       default: 0,
       type: Number,
     },
-    defaultActive: {
-      // 默认路由
+    headPathName: {    // 一级导航的路由名字
       type: String,
     },
     width: {
@@ -78,7 +77,7 @@ export default {
   methods: {
     chooseNav(index, router) {
       this.chooseNavType = index;
-      this.$router.push("/main/" + router);
+      this.$router.push(this.headPathName + "/" + router);
       this.$emit("chooseNav", {
         chooseNavType: this.chooseNavType,
         router: router,

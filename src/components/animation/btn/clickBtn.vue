@@ -13,10 +13,10 @@
           <span class="line"></span>
         </div>
       </div>
-      <div class="three col" v-for="index in listNum2" :key="index">
+      <div class="three col" v-for="i in listNumTwo" :key="'key'+ i">
         <div class="spinner-master">
-          <input type="checkbox" :id="'spinner-form' + index" />
-          <label :class="'spinner-spin' + index" :for="'spinner-form' + index">
+          <input type="checkbox" :id="'spinner-form' + i" />
+          <label :class="'spinner-spin' + i" :for="'spinner-form' + i">
             <div class="spinner diagonal part-1"></div>
             <div class="spinner horizontal"></div>
             <div class="spinner diagonal part-2"></div>
@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       listNum: 12,
-      listNum2: 4,
+      listNumTwo: 4,
       isActive: 0,
       isChoose: false,
     };
@@ -86,9 +86,9 @@ export default {
     background-color: rgba(2, 13, 70, 0.9);
     border-radius: 5px;
     box-sizing: border-box;
-    &:last-child{
-        margin-right: auto;
-        margin-left: 1.3%;
+    &:last-child {
+      margin-right: auto;
+      margin-left: 1.3%;
     }
   }
 }

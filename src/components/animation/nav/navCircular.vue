@@ -23,7 +23,7 @@ import navBar from "components/nav/navBar";
 export default {
   props: {
     title: {
-      default: "圆形导航悬停展开效果",
+      default: "圆形菜单悬停展开效果",
       type: String,
     },
     deploy: {

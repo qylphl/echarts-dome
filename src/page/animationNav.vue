@@ -4,38 +4,20 @@
       <!-- 动画效果 -->
       <!-- 导航动效 -->
       <div class="content-box flex-box">
-        <div class="pie-box" :style="{'width': '49.3%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <NavAnimationOne></NavAnimationOne>
+        <div class="pie-box" :style="{ width: '100%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <NavAnimationOne></NavAnimationOne>
         </div>
-        <div class="pie-box" :style="{'width': '49.3%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <NavCircular></NavCircular>
+        <div class="pie-box" :style="{ width: '100%', height: 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <NavSolidFlip></NavSolidFlip>
         </div>
-        <div class="pie-box" :style="{'width': '100%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <NavSolidFlip></NavSolidFlip>
-        </div>
-        <div class="pie-box" :style="{'width': '100%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <NavLight></NavLight>
+        <div class="pie-box" :style="{ width: '100%', height: 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <NavLight></NavLight>
         </div>
       </div>
-      <!-- loading动效 -->
+      <!-- 菜单动效 -->
       <div class="content-box flex-box">
-        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <Loading></Loading>
-        </div>
-        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <SimpleLoading></SimpleLoading>
-        </div>
-        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <StyleLoading></StyleLoading>
-        </div>
-      </div>
-      <!-- 悬停动效 -->
-      <div class="content-box flex-box">
-        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <HoverBtn></HoverBtn>
-        </div>
-        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <!-- <ClickBtn></ClickBtn> -->
+        <div class="pie-box" :style="{ width: '49.3%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <NavCircular></NavCircular>
         </div>
       </div>
     </div>
@@ -57,18 +39,14 @@ import NavAnimationOne from "components/animation/nav/navAnimation";
 import NavCircular from "components/animation/nav/navCircular";
 import NavSolidFlip from "components/animation/nav/navSolidFlip";
 import NavLight from "components/animation/nav/navLight";
-// 加载相关动画组件
-import Loading from "components/animation/loading/loading";
-import StyleLoading from "components/animation/loading/styleLoading";
-import SimpleLoading from "components/animation/loading/simpleLoading";
-// 按钮相关动画组件
-import HoverBtn from "components/animation/btn/hoverBtn";
-import ClickBtn from "components/animation/btn/clickBtn";
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "导航相关动画", num: "4" },{ title: "加载相关动画", num: "3" },{ title: "按钮相关动画", num: "1" }],
+      rightList: [
+        { title: "导航相关动画", num: "3" },
+        { title: "菜单相关动画", num: "1" },
+      ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -113,7 +91,9 @@ export default {
       }
     },
     chooseRightTitle(index) {
-      let total = document.getElementsByClassName("content-box")[index].offsetTop - this.differ; // 获取需要滚动的距离
+      let total =
+        document.getElementsByClassName("content-box")[index].offsetTop -
+        this.differ; // 获取需要滚动的距离
       this.$refs.leftBox.scrollTop = total;
       this.$refs.leftBox.pageYOffset = total;
       this.chooseIndex = index;
@@ -125,24 +105,10 @@ export default {
     NavCircular,
     NavSolidFlip,
     NavLight,
-    Loading,
-    StyleLoading,
-    SimpleLoading,
-    HoverBtn,
-    ClickBtn,
   },
 };
 </script>
 
 <style lang="scss">
-@import "style/charts.scss";
-@import "style/innerContent.scss";
-.animation-content {
-    .nav-bar-box {
-        .btn {
-            display: none;
-        }
-    } 
-}
 
 </style>

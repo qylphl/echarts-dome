@@ -17,8 +17,9 @@ const MatrixCharts = r => require.ensure([], () => r(require('@/page/matrixChart
 const HeatCharts = r => require.ensure([], () => r(require('@/page/heatCharts')), 'HeatCharts'); // 热力图
 const DashboardCharts = r => require.ensure([], () => r(require('@/page/dashboardCharts')), 'DashboardCharts'); // 仪表盘
 /***************** 动画效果 ****************/
-const AnimationNav = r => require.ensure([], () => r(require('@/page/animationNav')), 'animationNav'); // 导航和菜单
-const AnimationBtn = r => require.ensure([], () => r(require('@/page/animationBtn')), 'animationBtn'); // 按钮
+const AnimationNav = r => require.ensure([], () => r(require('@/page/animationNav')), 'AnimationNav'); // 导航和菜单
+const AnimationBtn = r => require.ensure([], () => r(require('@/page/animationBtn')), 'AnimationBtn'); // 按钮
+const AnimationLoading = r => require.ensure([], () => r(require('@/page/animationLoading')), 'AnimationLoading'); // 加载和上传
 const Assembly = r => require.ensure([], () => r(require('@/page/assembly')), 'Assembly'); // 组件
 
 Vue.use(Router)
@@ -122,6 +123,10 @@ export default new Router({
                 {
                     path: 'animationBtn',
                     component: AnimationBtn,
+                },
+                {
+                    path: 'animationLoading',
+                    component: AnimationLoading,
                 },
             ]
         },

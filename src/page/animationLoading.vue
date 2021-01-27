@@ -2,13 +2,16 @@
   <div class="content flex-box animation-content">
     <div class="left-box" ref="leftBox">
       <!-- 动画效果 -->
-      <!-- 按钮动效 -->
+      <!-- loading动效 -->
       <div class="content-box flex-box">
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <HoverBtn></HoverBtn>
+         <Loading></Loading>
         </div>
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <ClickBtn></ClickBtn>
+         <SimpleLoading></SimpleLoading>
+        </div>
+        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <StyleLoading></StyleLoading>
         </div>
       </div>
     </div>
@@ -25,14 +28,15 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-// 按钮相关动画组件
-import HoverBtn from "components/animation/btn/hoverBtn";
-import ClickBtn from "components/animation/btn/clickBtn";
+// 加载相关动画组件
+import Loading from "components/animation/loading/loading";
+import StyleLoading from "components/animation/loading/styleLoading";
+import SimpleLoading from "components/animation/loading/simpleLoading";
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "按钮相关动画", num: "2" }],
+      rightList: [{ title: "加载相关动画", num: "3" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -85,19 +89,22 @@ export default {
   },
   components: {
     Subnuv,
-    HoverBtn,
-    ClickBtn,
+    Loading,
+    StyleLoading,
+    SimpleLoading,
   },
 };
 </script>
 
 <style lang="scss">
-@import "style/innerContent.scss";
-.animation-content {
-    .nav-bar-box {
-        .btn {
-            display: none;
-        }
-    } 
-}
+// @import "style/charts.scss";
+// @import "style/innerContent.scss";
+// .animation-content {
+//     .nav-bar-box {
+//         .btn {
+//             display: none;
+//         }
+//     } 
+// }
+
 </style>
