@@ -1,11 +1,14 @@
 <template>
-  <div class="content flex-box animation-content">
+  <div class="content flex-box animation-content one-content-charts-content">
     <div class="left-box" ref="leftBox">
       <!-- 动画效果 -->
       <!-- 按钮动效 -->
       <div class="content-box flex-box">
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <HoverBtn></HoverBtn>
+        </div>
+        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <HoverBtnTwo></HoverBtnTwo>
         </div>
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <ClickBtn></ClickBtn>
@@ -27,6 +30,7 @@
 import Subnuv from "components/nav/subnav";
 // 按钮相关动画组件
 import HoverBtn from "components/animation/btn/hoverBtn";
+import HoverBtnTwo from "components/animation/btn/hoverBtn2";
 import ClickBtn from "components/animation/btn/clickBtn";
 export default {
   data() {
@@ -86,6 +90,7 @@ export default {
   components: {
     Subnuv,
     HoverBtn,
+    HoverBtnTwo,
     ClickBtn,
   },
 };

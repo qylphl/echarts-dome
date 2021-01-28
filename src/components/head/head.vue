@@ -212,6 +212,7 @@ export default {
         text-align: center;
         padding: 0 30px;
         box-sizing: border-box;
+        z-index: 11;
       }
       .choose-list {
         font-weight: bold;

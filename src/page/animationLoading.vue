@@ -1,5 +1,5 @@
 <template>
-  <div class="content flex-box animation-content">
+  <div class="content flex-box animation-content one-content-charts-content">
     <div class="left-box" ref="leftBox">
       <!-- 动画效果 -->
       <!-- loading动效 -->
@@ -64,8 +64,7 @@ export default {
     loadSroll() {
       var that = this,
         sections = document.getElementsByClassName("content-box"),
-        leftBoxscollHeight =
-          this.$refs.leftBox.scrollHeight - this.$refs.leftBox.clientHeight;
+        leftBoxscollHeight = this.$refs.leftBox.scrollHeight - this.$refs.leftBox.clientHeight;
       for (var i = sections.length - 1; i >= 0; i--) {
         if (that.scroll >= sections[i].offsetTop - that.differ) {
           if (that.scroll == leftBoxscollHeight) {
@@ -97,14 +96,5 @@ export default {
 </script>
 
 <style lang="scss">
-// @import "style/charts.scss";
-// @import "style/innerContent.scss";
-// .animation-content {
-//     .nav-bar-box {
-//         .btn {
-//             display: none;
-//         }
-//     } 
-// }
-
+@import "style/innerContent.scss";
 </style>
