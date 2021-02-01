@@ -2,6 +2,15 @@
   <div class="content flex-box animation-content one-content-charts-content">
     <div class="left-box" ref="leftBox">
       <!-- 动画效果 -->
+      <!-- 表单动效 -->
+       <div class="content-box flex-box">
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+          <InputClick></InputClick>
+        </div>
+        <div class="pie-box" :style="{'width': '66.15%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+          <FormProgress></FormProgress>
+        </div>
+      </div>
       <!-- 按钮动效 -->
       <div class="content-box flex-box">
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
@@ -28,6 +37,9 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
+// 表单相关动画
+import InputClick from "components/animation/form/inputClick";
+import FormProgress from "components/animation/form/formProgress";
 // 按钮相关动画组件
 import HoverBtn from "components/animation/btn/hoverBtn";
 import HoverBtnTwo from "components/animation/btn/hoverBtn2";
@@ -36,7 +48,7 @@ export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "按钮相关动画", num: "2" }],
+      rightList: [{ title: "表单相关动画", num: "2" },{ title: "按钮相关动画", num: "3" },],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -89,6 +101,8 @@ export default {
   },
   components: {
     Subnuv,
+    InputClick,
+    FormProgress,
     HoverBtn,
     HoverBtnTwo,
     ClickBtn,
