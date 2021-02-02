@@ -18,6 +18,10 @@ import highcharts from 'highcharts'
 // import VueHighCharts from 'vue-highcharts'
 import highcharts3d from 'highcharts/highcharts-3d'
 
+// 使用particles（星空粒子动效）
+import particles from 'particles.js'
+Vue.use(particles)
+
 //解决Element/vue router连续点击多次路由报错解决方法
 const originalPush = Router.prototype.push;
 Router.prototype.push = function push(location) {

@@ -20,6 +20,7 @@ const DashboardCharts = r => require.ensure([], () => r(require('@/page/dashboar
 const AnimationNav = r => require.ensure([], () => r(require('@/page/animationNav')), 'AnimationNav'); // 导航和菜单
 const AnimationBtn = r => require.ensure([], () => r(require('@/page/animationBtn')), 'AnimationBtn'); // 按钮
 const AnimationLoading = r => require.ensure([], () => r(require('@/page/animationLoading')), 'AnimationLoading'); // 加载和上传
+const AnimationLoginBg = r => require.ensure([], () => r(require('@/page/animationLoginBg')), 'AnimationLoginBg'); // 登录和背景
 const Assembly = r => require.ensure([], () => r(require('@/page/assembly')), 'Assembly'); // 组件
 
 Vue.use(Router)
@@ -110,7 +111,7 @@ export default new Router({
         },
         {
             path: '/animation',
-            name: 'Main',
+            name: 'animation',
             component: Main,
             children: [{
                     path: '/',
@@ -128,15 +129,19 @@ export default new Router({
                     path: 'animationLoading',
                     component: AnimationLoading,
                 },
+                {
+                    path: 'animationLoginBg',
+                    component: AnimationLoginBg,
+                },
             ]
         },
         {
             path: '/assembly',
-            name: 'Main',
+            name: 'assembly',
             component: Main,
             children: [{
                 path: '/',
-                component: Animation,
+                component: Assembly,
             }, ]
         },
 

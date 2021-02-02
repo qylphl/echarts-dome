@@ -74,7 +74,7 @@ export default {
           { title: "导航和菜单", iconCls: "iconfont iconrelitu", Vrouter: "animationNav" },
           { title: "表单和按钮", iconCls: "iconfont iconrelitu", Vrouter: "animationBtn" },
           { title: "选择和筛选", iconCls: "iconfont iconrelitu", Vrouter: "" },
-          { title: "登录和背景", iconCls: "iconfont iconrelitu", Vrouter: "" },
+          { title: "登录和背景", iconCls: "iconfont iconrelitu", Vrouter: "animationLoginBg" },
           { title: "轮播和切换", iconCls: "iconfont iconrelitu", Vrouter: "" },
           { title: "加载和上传", iconCls: "iconfont iconrelitu", Vrouter: "animationLoading" },
           { title: "CSS3动画", iconCls: "iconfont iconrelitu", Vrouter: "" },
