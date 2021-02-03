@@ -80,7 +80,7 @@ export default {
           { title: "CSS3动画", iconCls: "iconfont iconrelitu", Vrouter: "" },
           { title: "SVG动画", iconCls: "iconfont iconrelitu", Vrouter: "" },
           { title: "Canvas动画", iconCls: "iconfont iconrelitu", Vrouter: "" },
-          { title: "其他", iconCls: "iconfont iconrelitu", Vrouter: "" },
+          { title: "其他", iconCls: "iconfont iconrelitu", Vrouter: "animationOther" },
         ]
       ],
     };

@@ -21,6 +21,7 @@ const AnimationNav = r => require.ensure([], () => r(require('@/page/animationNa
 const AnimationBtn = r => require.ensure([], () => r(require('@/page/animationBtn')), 'AnimationBtn'); // 按钮
 const AnimationLoading = r => require.ensure([], () => r(require('@/page/animationLoading')), 'AnimationLoading'); // 加载和上传
 const AnimationLoginBg = r => require.ensure([], () => r(require('@/page/animationLoginBg')), 'AnimationLoginBg'); // 登录和背景
+const AnimationOther = r => require.ensure([], () => r(require('@/page/animationOther')), 'AnimationOther'); // 其他
 const Assembly = r => require.ensure([], () => r(require('@/page/assembly')), 'Assembly'); // 组件
 
 Vue.use(Router)
@@ -132,6 +133,10 @@ export default new Router({
                 {
                     path: 'animationLoginBg',
                     component: AnimationLoginBg,
+                },
+                {
+                    path: 'animationOther',
+                    component: AnimationOther,
                 },
             ]
         },
