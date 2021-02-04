@@ -7,6 +7,9 @@
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <Circula></Circula>
         </div>
+        <div class="pie-box" :style="{'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <Clock></Clock>
+        </div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -24,6 +27,7 @@
 import Subnuv from "components/nav/subnav";
 // canvas相关动画组件
 import Circula from "components/animation/canvas/circular";
+import Clock from "components/animation/canvas/clock";
 export default {
   data() {
     return {
@@ -81,6 +85,7 @@ export default {
   components: {
     Subnuv,
     Circula,
+    Clock,
   },
 };
 </script>

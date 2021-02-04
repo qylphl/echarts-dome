@@ -2,7 +2,7 @@
   <div class="chart-content">
     <navBar :title="title" :optionString="deploy"></navBar>
     <div class="can-content">
-      <canvas id="can" width="1300" height="650"></canvas>
+      <canvas id="can" width="1300" height="500"></canvas>
     </div>
   </div>
 </template>
@@ -98,7 +98,7 @@ export default {
 <style lang="scss" scoped>
 .can-content {
   width: 100%;
-  height: 650px;
+  height: 500px;
   #can {
     display: block;
     width: 100%;
