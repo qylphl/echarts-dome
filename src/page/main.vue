@@ -77,9 +77,9 @@ export default {
           { title: "登录和背景", iconCls: "iconfont iconrelitu", Vrouter: "animationLoginBg" },
           { title: "轮播和切换", iconCls: "iconfont iconrelitu", Vrouter: "" },
           { title: "加载和上传", iconCls: "iconfont iconrelitu", Vrouter: "animationLoading" },
-          { title: "CSS3动画", iconCls: "iconfont iconrelitu", Vrouter: "" },
+          { title: "CSS3动画", iconCls: "iconfont iconrelitu", Vrouter: "animationCss3" },
           { title: "SVG动画", iconCls: "iconfont iconrelitu", Vrouter: "" },
-          { title: "Canvas动画", iconCls: "iconfont iconrelitu", Vrouter: "" },
+          { title: "Canvas动画", iconCls: "iconfont iconrelitu", Vrouter: "animationCanvas" },
           { title: "其他", iconCls: "iconfont iconrelitu", Vrouter: "animationOther" },
         ]
       ],

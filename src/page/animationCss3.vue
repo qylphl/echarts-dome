@@ -1,11 +1,11 @@
 <template>
   <div class="content flex-box animation-content one-content-charts-content">
     <div class="left-box" ref="leftBox">
-      <!-- 其他动画效果 -->
-      <!-- 登录动效 -->
+      <!-- 动画效果 -->
+      <!-- css3相关 -->
       <div class="content-box flex-box">
-        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <BigData></BigData>
+        <div class="pie-box" :style="{'width': '66.15%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <DigitalFlip></DigitalFlip>
         </div>
       </div>
     </div>
@@ -22,14 +22,13 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-// 登录相关动画组件
-import BigData from "components/animation/other/bigData";
-
+// css3相关动画组件
+import DigitalFlip from "components/animation/css3/digitalFlip";
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "大屏页面", num: "1" }],
+      rightList: [{ title: "canvas相关动画", num: "1" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -81,7 +80,7 @@ export default {
   },
   components: {
     Subnuv,
-    BigData,
+    DigitalFlip,
   },
 };
 </script>

@@ -112,11 +112,4 @@ export default {
 
 <style lang="scss">
 @import "style/innerContent.scss";
-.animation-content {
-    .nav-bar-box {
-        .btn {
-            display: none;
-        }
-    } 
-}
 </style>

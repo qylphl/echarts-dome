@@ -18,10 +18,13 @@ const HeatCharts = r => require.ensure([], () => r(require('@/page/heatCharts'))
 const DashboardCharts = r => require.ensure([], () => r(require('@/page/dashboardCharts')), 'DashboardCharts'); // 仪表盘
 /***************** 动画效果 ****************/
 const AnimationNav = r => require.ensure([], () => r(require('@/page/animationNav')), 'AnimationNav'); // 导航和菜单
-const AnimationBtn = r => require.ensure([], () => r(require('@/page/animationBtn')), 'AnimationBtn'); // 按钮
-const AnimationLoading = r => require.ensure([], () => r(require('@/page/animationLoading')), 'AnimationLoading'); // 加载和上传
+const AnimationBtn = r => require.ensure([], () => r(require('@/page/animationBtn')), 'AnimationBtn'); // 表单和按钮
 const AnimationLoginBg = r => require.ensure([], () => r(require('@/page/animationLoginBg')), 'AnimationLoginBg'); // 登录和背景
+const AnimationLoading = r => require.ensure([], () => r(require('@/page/animationLoading')), 'AnimationLoading'); // 加载和上传
+const AnimationCss3 = r => require.ensure([], () => r(require('@/page/animationCss3')), 'AnimationCss3'); // css3动画
+const AnimationCanvas = r => require.ensure([], () => r(require('@/page/animationCanvas')), 'AnimationCanvas'); // canvas动画
 const AnimationOther = r => require.ensure([], () => r(require('@/page/animationOther')), 'AnimationOther'); // 其他
+/***************** 组件 ****************/
 const Assembly = r => require.ensure([], () => r(require('@/page/assembly')), 'Assembly'); // 组件
 
 Vue.use(Router)
@@ -127,12 +130,20 @@ export default new Router({
                     component: AnimationBtn,
                 },
                 {
+                    path: 'animationLoginBg',
+                    component: AnimationLoginBg,
+                },
+                {
                     path: 'animationLoading',
                     component: AnimationLoading,
                 },
                 {
-                    path: 'animationLoginBg',
-                    component: AnimationLoginBg,
+                    path: 'animationCss3',
+                    component: AnimationCss3,
+                },
+                {
+                    path: 'animationCanvas',
+                    component: AnimationCanvas,
                 },
                 {
                     path: 'animationOther',
