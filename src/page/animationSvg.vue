@@ -2,14 +2,12 @@
   <div class="content flex-box animation-content one-content-charts-content">
     <div class="left-box" ref="leftBox">
       <!-- 动画效果 -->
-      <!-- canvas相关 -->
+      <!-- SVG相关 -->
       <div class="content-box flex-box">
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <Circula></Circula>
         </div>
-        <div class="pie-box" :style="{'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <Clock></Clock>
-        </div>
+        
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -25,14 +23,13 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-// canvas相关动画组件
+// SVG相关动画组件
 import Circula from "components/animation/canvas/circular";
-import Clock from "components/animation/canvas/clock";
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "canvas相关动画", num: "2" }],
+      rightList: [{ title: "SVG相关动画", num: "1" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -85,7 +82,6 @@ export default {
   components: {
     Subnuv,
     Circula,
-    Clock,
   },
 };
 </script>

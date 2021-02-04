@@ -20,8 +20,10 @@ const DashboardCharts = r => require.ensure([], () => r(require('@/page/dashboar
 const AnimationNav = r => require.ensure([], () => r(require('@/page/animationNav')), 'AnimationNav'); // 导航和菜单
 const AnimationBtn = r => require.ensure([], () => r(require('@/page/animationBtn')), 'AnimationBtn'); // 表单和按钮
 const AnimationLoginBg = r => require.ensure([], () => r(require('@/page/animationLoginBg')), 'AnimationLoginBg'); // 登录和背景
+const AnimationSwitch = r => require.ensure([], () => r(require('@/page/animationSwitch')), 'AnimationSwitch'); // 轮播和切换
 const AnimationLoading = r => require.ensure([], () => r(require('@/page/animationLoading')), 'AnimationLoading'); // 加载和上传
 const AnimationCss3 = r => require.ensure([], () => r(require('@/page/animationCss3')), 'AnimationCss3'); // css3动画
+const AnimationSvg = r => require.ensure([], () => r(require('@/page/animationSvg')), 'AnimationSvg'); // svg动画
 const AnimationCanvas = r => require.ensure([], () => r(require('@/page/animationCanvas')), 'AnimationCanvas'); // canvas动画
 const AnimationOther = r => require.ensure([], () => r(require('@/page/animationOther')), 'AnimationOther'); // 其他
 /***************** 组件 ****************/
@@ -134,12 +136,20 @@ export default new Router({
                     component: AnimationLoginBg,
                 },
                 {
+                    path: 'animationSwitch',
+                    component: AnimationSwitch,
+                },
+                {
                     path: 'animationLoading',
                     component: AnimationLoading,
                 },
                 {
                     path: 'animationCss3',
                     component: AnimationCss3,
+                },
+                {
+                    path: 'animationSvg',
+                    component: AnimationSvg,
                 },
                 {
                     path: 'animationCanvas',
