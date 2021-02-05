@@ -7,6 +7,8 @@
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <Login></Login>
         </div>
+      </div>
+      <div class="content-box flex-box">
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <BgOne></BgOne>
         </div>
@@ -33,7 +35,7 @@ export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "登录相关动画", num: "1" }],
+      rightList: [{ title: "登录相关动画", num: "1" },{ title: "背景相关动画", num: "1" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值

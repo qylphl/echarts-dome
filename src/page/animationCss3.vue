@@ -4,8 +4,25 @@
       <!-- 动画效果 -->
       <!-- css3相关 -->
       <div class="content-box flex-box">
-        <div class="pie-box" :style="{'width': '66.15%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+        <!-- 数字翻转 -->
+        <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <DigitalFlip></DigitalFlip>
+        </div>
+        <!-- 时钟 -->
+         <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <Clock></Clock>
+        </div>
+        <!-- 字体抖动 -->
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <Shake></Shake>
+        </div>
+        <!-- 水球碰撞 -->
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <Collision></Collision>
+        </div>
+        <!-- 边框线性运动 -->
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <BorderLinearMotion></BorderLinearMotion>
         </div>
       </div>
     </div>
@@ -24,11 +41,15 @@
 import Subnuv from "components/nav/subnav";
 // css3相关动画组件
 import DigitalFlip from "components/animation/css3/digitalFlip";
+import Clock from "components/animation/css3/clock";
+import Shake from "components/animation/css3/shake";
+import Collision from "components/animation/css3/collision";
+import BorderLinearMotion from "components/animation/css3/borderLinearMotion";
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "canvas相关动画", num: "1" }],
+      rightList: [{ title: "css3相关动画", num: "5" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -81,6 +102,10 @@ export default {
   components: {
     Subnuv,
     DigitalFlip,
+    Clock,
+    Shake,
+    Collision,
+    BorderLinearMotion,
   },
 };
 </script>

@@ -2,7 +2,13 @@
   <div class="content flex-box animation-content one-content-charts-content">
     <div class="left-box" ref="leftBox">
       <!-- 其他动画效果 -->
-      <!-- 登录动效 -->
+       <!-- 卡片动效 -->
+      <div class="content-box flex-box">
+        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <Card></Card>
+        </div>
+      </div>
+      <!-- 大屏动效 -->
       <div class="content-box flex-box">
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <BigData></BigData>
@@ -22,14 +28,16 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-// 登录相关动画组件
+// 卡片详情动效
+import Card from "components/animation/other/card";
+// 大屏页面
 import BigData from "components/animation/other/bigData";
 
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "大屏页面", num: "1" }],
+      rightList: [{ title: "卡片详情动效", num: "1" },{ title: "大屏页面", num: "1" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -81,6 +89,7 @@ export default {
   },
   components: {
     Subnuv,
+    Card,
     BigData,
   },
 };

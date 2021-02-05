@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "轮播相关动画", num: "1" }],
+      rightList: [{ title: "轮播相关动画", num: "2" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值

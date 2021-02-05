@@ -1,7 +1,7 @@
 <template>
   <div class="chart-content">
     <navBar :title="title" :optionString="deploy"></navBar>
-    <div id="stage-1" class="stage stage-state-default">
+    <div id="stage-1" class="stage stage-state-default"  :style="{ height: contentHeight + 'px' }">
       <div class="stage-content">
         <ul class="stage-1-icon">
           <li :class="'stage-1-icon-' + Number(index + 1)" v-for="(list, index) in stageImgList" :key="index">
@@ -35,6 +35,7 @@ export default {
   },
   data() {
     return {
+      contentHeight: 0,
       stageNum: 7,
       stageImgList: [
         bgNumber1,
@@ -52,8 +53,14 @@ export default {
       return this.$store.getters.getThemeTyle;
     },
   },
-  mounted() {},
-  methods: {},
+  mounted() {
+    this.init();
+  },
+  methods: {
+    init() {
+      this.contentHeight = document.getElementsByClassName("stage-state-default")[0].offsetWidth;
+    },
+  },
   components: { navBar },
 };
 </script>
@@ -61,11 +68,12 @@ export default {
 <style lang="scss" scoped>
 .stage-state-default {
   width: 100%;
+  padding-top: 30%;
+  box-sizing: border-box;
 }
 #stage-1 .stage-content {
-  width: 700px;
-  height: 450px;
-  margin: 70px auto 0;
+  width: 100%;
+  height: 400px;
 }
 
 .stage-1-icon {
