@@ -4,19 +4,19 @@
       <!-- 动画效果 -->
       <!-- 导航动效 -->
       <div class="content-box flex-box">
-        <div class="pie-box" :style="{ width: '100%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+        <div class="pie-box" :style="{ 'width': '100%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <NavAnimationOne></NavAnimationOne>
         </div>
-        <div class="pie-box" :style="{ width: '100%', height: 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+        <div class="pie-box" :style="{ 'width': '100%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <NavSolidFlip></NavSolidFlip>
         </div>
-        <div class="pie-box" :style="{ width: '100%', height: 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+        <div class="pie-box" :style="{ 'width': '100%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <NavLight></NavLight>
         </div>
       </div>
       <!-- 菜单动效 -->
       <div class="content-box flex-box">
-        <div class="pie-box" :style="{ width: '49.3%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <NavCircular></NavCircular>
         </div>
       </div>

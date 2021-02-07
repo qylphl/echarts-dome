@@ -19,6 +19,7 @@ const DashboardCharts = r => require.ensure([], () => r(require('@/page/dashboar
 /***************** 动画效果 ****************/
 const AnimationNav = r => require.ensure([], () => r(require('@/page/animationNav')), 'AnimationNav'); // 导航和菜单
 const AnimationBtn = r => require.ensure([], () => r(require('@/page/animationBtn')), 'AnimationBtn'); // 表单和按钮
+const AnimationChoice = r => require.ensure([], () => r(require('@/page/animationChoice')), 'AnimationChoice'); // 选择和筛选
 const AnimationLoginBg = r => require.ensure([], () => r(require('@/page/animationLoginBg')), 'AnimationLoginBg'); // 登录和背景
 const AnimationSwitch = r => require.ensure([], () => r(require('@/page/animationSwitch')), 'AnimationSwitch'); // 轮播和切换
 const AnimationLoading = r => require.ensure([], () => r(require('@/page/animationLoading')), 'AnimationLoading'); // 加载和上传
@@ -126,6 +127,10 @@ export default new Router({
                 {
                     path: 'animationNav',
                     component: AnimationNav,
+                },
+                {
+                    path: 'animationChoice',
+                    component: AnimationChoice,
                 },
                 {
                     path: 'animationBtn',

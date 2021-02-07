@@ -2,32 +2,12 @@
   <div class="content flex-box animation-content one-content-charts-content">
     <div class="left-box" ref="leftBox">
       <!-- 动画效果 -->
-      <!-- css3相关 -->
+      <!-- 选择相关 -->
       <div class="content-box flex-box">
-        <!-- 进度条 -->
-        <div class="pie-box" :style="{'width': '66.15%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <ProgressBar></ProgressBar>
+        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <ChoiceCss3></ChoiceCss3>
         </div>
-        <!-- 边框线性运动 -->
-        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <BorderLinearMotion></BorderLinearMotion>
-        </div>
-         <!-- 数字翻转 -->
-        <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <DigitalFlip></DigitalFlip>
-        </div>
-        <!-- 时钟 -->
-         <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <Clock></Clock>
-        </div>
-        <!-- 字体抖动 -->
-        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <Shake></Shake>
-        </div>
-        <!-- 水球碰撞 -->
-        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <Collision></Collision>
-        </div>
+        
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -43,18 +23,14 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-// css3相关动画组件
-import ProgressBar from "components/animation/css3/progressBar";
-import BorderLinearMotion from "components/animation/css3/borderLinearMotion";
-import DigitalFlip from "components/animation/css3/digitalFlip";
-import Clock from "components/animation/css3/clock";
-import Shake from "components/animation/css3/shake";
-import Collision from "components/animation/css3/collision";
+// 选择相关动画组件
+import ChoiceCss3 from "components/animation/choice/choiceCss3";
+
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "css3相关动画", num: "5" }],
+      rightList: [{ title: "选择相关动画", num: "2" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -106,12 +82,7 @@ export default {
   },
   components: {
     Subnuv,
-    ProgressBar,
-    BorderLinearMotion,
-    DigitalFlip,
-    Clock,
-    Shake,
-    Collision,
+    ChoiceCss3,
   },
 };
 </script>
