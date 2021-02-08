@@ -109,7 +109,7 @@ export default {
           headPathName = pathLen > -1 && pathLen == 0 ? this.$route.path : pathLen > -1 ? this.$route.path.substring(0, pathLen) : "",
           // 左侧导航菜单
           navPathName = pathLen > -1 ? this.$route.path.substring(pathLen + 1, this.$route.path.length) : "";
-      that.headPathName = headPathName;
+      that.headPathName = headPathName == '/' ? '/main' : headPathName;
       // 头部选中的导航菜单
       that.headerNavList.filter(function (item, index) {
         if (item.navRouter && item.navRouter == headPathName) {

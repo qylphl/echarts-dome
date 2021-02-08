@@ -42,6 +42,7 @@ export default {
       type: Number,
     },
     headPathName: {    // 一级导航的路由名字
+      default: '/main',
       type: String,
     },
     width: {
