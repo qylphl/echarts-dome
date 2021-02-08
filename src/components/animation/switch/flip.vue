@@ -115,6 +115,7 @@ export default {
     text-decoration: none;
     color: #333;
     text-align: center;
+    cursor: pointer;
     &:nth-of-type(1) {
       left: -60px;
     }

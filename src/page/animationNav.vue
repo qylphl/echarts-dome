@@ -19,6 +19,10 @@
         <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <NavCircular></NavCircular>
         </div>
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <AccordionMenus></AccordionMenus>
+        </div>
+        <div class="pie-box hidden"></div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -39,6 +43,7 @@ import NavAnimationOne from "components/animation/nav/navAnimation";
 import NavCircular from "components/animation/nav/navCircular";
 import NavSolidFlip from "components/animation/nav/navSolidFlip";
 import NavLight from "components/animation/nav/navLight";
+import AccordionMenus from "components/animation/nav/accordionMenus";
 export default {
   data() {
     return {
@@ -105,6 +110,7 @@ export default {
     NavCircular,
     NavSolidFlip,
     NavLight,
+    AccordionMenus,
   },
 };
 </script>

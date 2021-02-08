@@ -71,7 +71,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "style/aminationBtn/clickBtn.scss";
+@import "style/animationBtn/clickBtn.scss";
 .loadbox {
   padding: 20px 20px 0;
   flex-wrap: wrap;

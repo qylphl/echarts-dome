@@ -8,9 +8,9 @@
         <div class="pie-box" :style="{'width': '66.15%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <ProgressBar></ProgressBar>
         </div>
-        <!-- 边框线性运动 -->
+         <!-- 进度条 -->
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <BorderLinearMotion></BorderLinearMotion>
+         <Loading></Loading>
         </div>
          <!-- 数字翻转 -->
         <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
@@ -27,6 +27,10 @@
         <!-- 水球碰撞 -->
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <Collision></Collision>
+        </div>
+       <!-- 边框线性运动 -->
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <BorderLinearMotion></BorderLinearMotion>
         </div>
       </div>
     </div>
@@ -45,11 +49,12 @@
 import Subnuv from "components/nav/subnav";
 // css3相关动画组件
 import ProgressBar from "components/animation/css3/progressBar";
-import BorderLinearMotion from "components/animation/css3/borderLinearMotion";
+import Loading from "components/animation/css3/loading";
 import DigitalFlip from "components/animation/css3/digitalFlip";
 import Clock from "components/animation/css3/clock";
 import Shake from "components/animation/css3/shake";
 import Collision from "components/animation/css3/collision";
+import BorderLinearMotion from "components/animation/css3/borderLinearMotion";
 export default {
   data() {
     return {
@@ -107,11 +112,12 @@ export default {
   components: {
     Subnuv,
     ProgressBar,
-    BorderLinearMotion,
+    Loading,
     DigitalFlip,
     Clock,
     Shake,
     Collision,
+    BorderLinearMotion,
   },
 };
 </script>

@@ -52,7 +52,7 @@ export default {
   width: 100%;
   height: 100%;
   .container {
-    margin: 100px auto;
+    margin: 80px auto;
     width: 500px;
     text-align: center;
     .progress {

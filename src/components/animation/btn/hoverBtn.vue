@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "style/aminationBtn/hoverBtn.scss";
+@import "style/animationBtn/hoverBtn.scss";
 .loadbox {
   padding: 20px 20px 0;
   flex-wrap: wrap;
