@@ -8,6 +8,12 @@
          <Card></Card>
         </div>
       </div>
+       <!-- 时间轴 -->
+      <div class="content-box flex-box">
+        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <TimeAxis></TimeAxis>
+        </div>
+      </div>
       <!-- 大屏动效 -->
       <div class="content-box flex-box">
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
@@ -28,16 +34,15 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-// 卡片详情动效
-import Card from "components/animation/other/card";
-// 大屏页面
-import BigData from "components/animation/other/bigData";
+import Card from "components/animation/other/card"; // 卡片详情动效
+import TimeAxis from "components/animation/other/timeAxis"; // 时间轴
+import BigData from "components/animation/other/bigData"; // 大屏页面
 
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "卡片详情动效", num: "1" },{ title: "大屏页面", num: "1" }],
+      rightList: [{ title: "卡片详情动效", num: "1" },{ title: "时间轴效果", num: "1" },{ title: "大屏页面", num: "1" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -90,6 +95,7 @@ export default {
   components: {
     Subnuv,
     Card,
+    TimeAxis,
     BigData,
   },
 };

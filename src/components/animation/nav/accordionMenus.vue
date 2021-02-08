@@ -56,10 +56,11 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  height: calc(100% - 64px);
+  padding-top: 40px;
   position: relative;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
   .mainMenu {
     width: 250px;
     display: block;

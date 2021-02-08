@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "选择相关动画", num: "2" }],
+      rightList: [{ title: "选择相关动画", num: "1" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值

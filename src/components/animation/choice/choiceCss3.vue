@@ -169,7 +169,7 @@ import navBar from "components/nav/navBar";
 export default {
   props: {
     title: {
-      default: "进度条动画",
+      default: "下拉选择动画",
       type: String,
     },
     deploy: {
