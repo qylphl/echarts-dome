@@ -5,7 +5,7 @@
       <!-- SVG相关 -->
       <div class="content-box flex-box">
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <Circula></Circula>
+         <HoverLayer></HoverLayer>
         </div>
         
       </div>
@@ -24,7 +24,7 @@
 <script>
 import Subnuv from "components/nav/subnav";
 // SVG相关动画组件
-import Circula from "components/animation/canvas/circular";
+import HoverLayer from "components/animation/svg/hoverLayer";
 export default {
   data() {
     return {
@@ -81,7 +81,7 @@ export default {
   },
   components: {
     Subnuv,
-    Circula,
+    HoverLayer,
   },
 };
 </script>

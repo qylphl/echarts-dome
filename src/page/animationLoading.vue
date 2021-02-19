@@ -2,6 +2,15 @@
   <div class="content flex-box animation-content one-content-charts-content">
     <div class="left-box" ref="leftBox">
       <!-- 动画效果 -->
+      <!-- 进度条动效 -->
+      <div class="content-box flex-box">
+        <div class="pie-box" :style="{'width': '66.15%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <ProgressBar></ProgressBar>
+        </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <Loading2></Loading2>
+        </div>
+      </div>
       <!-- loading动效 -->
       <div class="content-box flex-box">
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
@@ -14,6 +23,7 @@
          <StyleLoading></StyleLoading>
         </div>
       </div>
+      
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
       <Subnuv
@@ -28,6 +38,9 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
+// 进度条相关动画
+import ProgressBar from "components/animation/loading/progressBar";
+import Loading2 from "components/animation/loading/loading2";
 // 加载相关动画组件
 import Loading from "components/animation/loading/loading";
 import StyleLoading from "components/animation/loading/styleLoading";
@@ -36,7 +49,7 @@ export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "加载相关动画", num: "3" }],
+      rightList: [{ title: "进度条相关动画", num: "2" },{ title: "加载相关动画", num: "3" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -91,6 +104,8 @@ export default {
     Loading,
     StyleLoading,
     SimpleLoading,
+    ProgressBar,
+    Loading2,
   },
 };
 </script>

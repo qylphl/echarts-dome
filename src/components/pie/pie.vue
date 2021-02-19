@@ -1,6 +1,6 @@
 <template>
   <div class="chart-content">
-    <navBar :title="title ? title : '饼状图'" :optionString="deploy"></navBar>
+    <navBar :title="title ? title : '饼状图'" :optionString="deploy" :tipTitle="tipTitle"></navBar>
     <div class="chart-box" ref="pieChart" :style="{'background-color': themeType==1?'#07124a':'#fff'}"></div>
   </div>
 </template>
@@ -26,7 +26,9 @@ export default {
     }
   },
   data() {
-    return {};
+    return {
+      tipTitle: '注："boxTitle"和"boxWidth"不是echart中option所需要的属性，可以删掉。',
+    };
   },
   computed: {
     themeType() {
@@ -46,11 +48,13 @@ export default {
       });
       pieChart.setOption(option, true);
       if(this.isCheck == 1){ // 设置默认选中高亮
+        that.tipTitle = '注："boxTitle"和"boxWidth"不是echart中option所需要的属性，可以删掉。如果需要默认选中高量的话，需要引入utils/chartsClass.js文件，使用setHighlight方法进行配置。',
         setHighlight(
           pieChart,
           that.data.map((v) => v.value)
         );
       }else if(this.isCheck == 2){  // 带虚线边框饼图的默认高亮
+        that.tipTitle = '注："boxTitle"和"boxWidth"不是echart中option所需要的属性，可以删掉。如果需要默认选中高量的话，需要引入utils/chartsClass.js文件，使用setBorderPieHighlight方法进行配置。',
         setBorderPieHighlight(
           pieChart,
           that.data.map((v) => v.value)

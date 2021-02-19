@@ -4,29 +4,33 @@
       <!-- 动画效果 -->
       <!-- css3相关 -->
       <div class="content-box flex-box">
-        <!-- 进度条 -->
-        <div class="pie-box" :style="{'width': '66.15%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <ProgressBar></ProgressBar>
-        </div>
-         <!-- 进度条 -->
-        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <Loading></Loading>
-        </div>
-         <!-- 数字翻转 -->
-        <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <DigitalFlip></DigitalFlip>
-        </div>
         <!-- 时钟 -->
          <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <Clock></Clock>
-        </div>
-        <!-- 字体抖动 -->
+        </div> 
+         <!-- 数字翻转 -->
+        <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <DigitalFlip></DigitalFlip>
+        </div>       
+        <!-- 数字翻转2 -->
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <Shake></Shake>
+         <DigitalFlip2></DigitalFlip2>
         </div>
         <!-- 水球碰撞 -->
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <Collision></Collision>
+        </div>
+        <!-- 水波纹动画 -->
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <WaterRipple></WaterRipple>
+        </div>
+        <!-- 水滴动画 -->
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <WaterDrop></WaterDrop>
+        </div>
+        <!-- 字体抖动 -->
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <Shake></Shake>
         </div>
        <!-- 边框线性运动 -->
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
@@ -48,12 +52,13 @@
 <script>
 import Subnuv from "components/nav/subnav";
 // css3相关动画组件
-import ProgressBar from "components/animation/css3/progressBar";
-import Loading from "components/animation/css3/loading";
-import DigitalFlip from "components/animation/css3/digitalFlip";
 import Clock from "components/animation/css3/clock";
-import Shake from "components/animation/css3/shake";
+import DigitalFlip from "components/animation/css3/digitalFlip";
+import DigitalFlip2 from "components/animation/css3/digitalFlip2";
 import Collision from "components/animation/css3/collision";
+import WaterRipple from "components/animation/css3/waterRipple";
+import WaterDrop from "components/animation/css3/waterDrop";
+import Shake from "components/animation/css3/shake";
 import BorderLinearMotion from "components/animation/css3/borderLinearMotion";
 export default {
   data() {
@@ -111,13 +116,14 @@ export default {
   },
   components: {
     Subnuv,
-    ProgressBar,
-    Loading,
-    DigitalFlip,
     Clock,
-    Shake,
+    DigitalFlip,
+    DigitalFlip2,
     Collision,
-    BorderLinearMotion,
+    WaterRipple,
+    WaterDrop,
+    Shake,
+    BorderLinearMotion, 
   },
 };
 </script>
