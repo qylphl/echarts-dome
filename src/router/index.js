@@ -29,6 +29,8 @@ const AnimationCanvas = r => require.ensure([], () => r(require('@/page/animatio
 const AnimationOther = r => require.ensure([], () => r(require('@/page/animationOther')), 'AnimationOther'); // 其他
 /***************** 组件 ****************/
 const Assembly = r => require.ensure([], () => r(require('@/page/assembly')), 'Assembly'); // 组件
+/***************** 规范 ****************/
+const Standard = r => require.ensure([], () => r(require('@/page/standard')), 'Standard'); // 规范
 
 Vue.use(Router)
 
@@ -173,6 +175,15 @@ export default new Router({
             children: [{
                 path: '/',
                 component: Assembly,
+            }, ]
+        },
+        {
+            path: '/standard',
+            name: 'standard',
+            component: Main,
+            children: [{
+                path: '/',
+                component: Standard,
             }, ]
         },
 

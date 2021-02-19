@@ -46,7 +46,7 @@ export default {
         { title: "图表", navRouter: "/main" },
         { title: "动效", navRouter: "/animation" },
         { title: "组件", navRouter: "/assembly" },
-        { title: "规范", navRouter: "" },
+        { title: "规范", navRouter: "/standard" },
       ], // 头部导航菜单
       defaultHeaderNavType: 0, // 默认选中的头部导航菜单索引
       headPathName: '/main',   // 头部默认的路由名字
@@ -81,7 +81,9 @@ export default {
           { title: "SVG动画", iconCls: "iconfont iconrelitu", Vrouter: "animationSvg" },
           { title: "Canvas动画", iconCls: "iconfont iconrelitu", Vrouter: "animationCanvas" },
           { title: "其他", iconCls: "iconfont iconrelitu", Vrouter: "animationOther" },
-        ]
+        ],
+        [],
+        []
       ],
     };
   },
