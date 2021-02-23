@@ -288,6 +288,39 @@
           <div class="css-times times3"></div>
         </div>
       </div>
+      <div class="loader-content-box">
+        <div class="heart-loading flex-ct-x">
+          <ul style="--line-count: 9">
+            <li
+              v-for="v in 9"
+              :key="v"
+              :class="`line-${v}`"
+              :style="`--line-index: ${v}`"
+            ></li>
+          </ul>
+        </div>
+      </div>
+      <div class="loader-content-box">
+        <ul class="initial-keyframe">
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="loader-content-box">
+        <ul class="reflect-loading">
+          <li v-for="v in 10" :key="'reflect' + v"></li>
+        </ul>
+      </div>
+      <div class="loader-content-box">
+        <div id="container">
+          <div class="stick" v-for="v in 6" :key="'stick' + v"></div>
+          <h1>Loading...</h1>
+        </div>
+      </div>
+      <div class="loader-content-box">
+        <div class="loading-indicator">加载中<span></span></div>
+      </div>
     </div>
   </div>
 </template>
@@ -325,15 +358,259 @@ export default {
   flex-wrap: wrap;
   justify-content: space-between;
   box-sizing: border-box;
-  .loader-content-box{
-      width: 19%;
-      height: 180px;
+  .loader-content-box {
+    width: 19%;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: rgba(2, 13, 70, 0.9);
+    // 心形加载动效
+    .heart-loading {
+      width: 100%;
+      height: 100%;
+      ul {
+        display: flex;
+        justify-content: space-between;
+        width: 150px;
+        height: 10px;
+        margin: 80px auto 0;
+      }
+      li {
+        --Θ: calc(var(--line-index) / var(--line-count) * 0.5turn);
+        --time: calc((var(--line-index) - 1) * 40ms);
+        border-radius: 5px;
+        width: 10px;
+        height: 10px;
+        background-color: #3c9;
+        filter: hue-rotate(var(--Θ));
+        animation-duration: 1s;
+        animation-delay: var(--time);
+        animation-iteration-count: infinite;
+      }
+      .line-1,
+      .line-9 {
+        animation-name: line-move-1;
+      }
+      .line-2,
+      .line-8 {
+        animation-name: line-move-2;
+      }
+      .line-3,
+      .line-7 {
+        animation-name: line-move-3;
+      }
+      .line-4,
+      .line-6 {
+        animation-name: line-move-4;
+      }
+      .line-5 {
+        animation-name: line-move-5;
+      }
+      @keyframes line-move-1 {
+        0%,
+        10%,
+        90%,
+        100% {
+          height: 10px;
+        }
+
+        45%,
+        55% {
+          height: 30px;
+          transform: translate3d(0, -15px, 0);
+        }
+      }
+      @keyframes line-move-2 {
+        0%,
+        10%,
+        90%,
+        100% {
+          height: 10px;
+        }
+
+        45%,
+        55% {
+          height: 60px;
+          transform: translate3d(0, -30px, 0);
+        }
+      }
+      @keyframes line-move-3 {
+        0%,
+        10%,
+        90%,
+        100% {
+          height: 10px;
+        }
+
+        45%,
+        55% {
+          height: 80px;
+          transform: translate3d(0, -40px, 0);
+        }
+      }
+      @keyframes line-move-4 {
+        0%,
+        10%,
+        90%,
+        100% {
+          height: 10px;
+        }
+
+        45%,
+        55% {
+          height: 90px;
+          transform: translate3d(0, -30px, 0);
+        }
+      }
+      @keyframes line-move-5 {
+        0%,
+        10%,
+        90%,
+        100% {
+          height: 10px;
+        }
+
+        45%,
+        55% {
+          height: 90px;
+          transform: translate3d(0, -20px, 0);
+        }
+      }
+    }
+    // 三个圆转圈动效
+    .initial-keyframe {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      li {
+        position: absolute;
+        border-radius: 100%;
+        width: 100%;
+        height: 100%;
+        background-color: #3c9;
+        transform: rotate(0) translate(-30px, 0);
+        animation: rotate 3s linear infinite;
+        &:nth-child(2) {
+          animation-delay: -1s;
+        }
+        &:nth-child(3) {
+          animation-delay: -2s;
+        }
+      }
+      @keyframes rotate {
+        to {
+          transform: rotate(1turn) translate(-30px, 0);
+        }
+      }
+    }
+    // 倒影加载动效
+    .reflect-loading {
+      $count: 10;
+      $color: #66f #09f;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      background-color: rgba(2, 13, 70, .9);
+      height: 60px;
+      margin-top: -20px;
+      -webkit-box-reflect: below 0
+        linear-gradient(rgba(#fff, 0), rgba(#fff, 0.7));
+      li {
+        width: 15px;
+        @for $i from 0 to $count {
+          $args: append($color, $i * 100% / ($count - 1));
+          &:nth-child(#{$i + 1}) {
+            background-color: mix($args...);
+            animation: rotate2 3s cubic-bezier(0.81, 0.04, 0.4, 0.7) infinite;
+            animation-delay: $i * 50ms;
+          }
+        }
+      }
+      @keyframes rotate2 {
+        0% {
+          transform: rotate(-0.5turn) rotateX(-1turn);
+        }
+        75%,
+        100% {
+          transform: none;
+        }
+      }
+    }
+    // 曲线加载动效
+    #container {
+      .stick {
+        width: 30px;
+        height: 3px;
+        background: white;
+        display: inline-block;
+        margin-left: -3px;
+        &:nth-child(n) {
+          transform: rotate(30deg);
+          animation: fall 2s infinite;
+        }
+        &:nth-child(2n) {
+          transform: rotate(-30deg);
+          animation: rise 2s infinite;
+        }
+      }
+      h1 {
+        font-family: "Lato";
+        color: white;
+        text-transform: uppercase;
+        font-size: 1em;
+        letter-spacing: 1.5px;
+        text-align: center;
+        width: 155px;
+        margin-top: 20px;
+        padding-left: 12px;
+        animation: fade 2s infinite;
+        box-sizing: border-box;
+      }
+      @keyframes fall {
+        50% {
+          transform: rotate(-30deg);
+        }
+      }
+      @keyframes rise {
+        50% {
+          transform: rotate(30deg);
+        }
+      }
+      @keyframes fade {
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    }
+    // 文字加载中样式
+    .loading-indicator {
+      font-size: 18px;
+      color: #09ff;
+      span {
+        display: inline-block;
+        overflow: hidden;
+        height: 1em;
+        line-height: 1;
+        vertical-align: -0.25em;
+        &::after {
+          display: block;
+          white-space: pre-wrap;
+          content: "...\A..\A.";
+          animation: loading 3s infinite step-start both;
+        }
+      }
+      @keyframes loading {
+        33% {
+          transform: translate3d(0, -2em, 0);
+        }
+        66% {
+          transform: translate3d(0, -1em, 0);
+        }
+      }
+    }
   }
 }
 </style>

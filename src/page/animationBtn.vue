@@ -10,6 +10,15 @@
         <div class="pie-box" :style="{'width': '66.15%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
           <FormProgress></FormProgress>
         </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+          <FormVeri></FormVeri>
+        </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+          <FormVeriTwo></FormVeriTwo>
+        </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+          <SearchBox></SearchBox>
+        </div>
       </div>
       <!-- 按钮动效 -->
       <div class="content-box flex-box">
@@ -21,6 +30,9 @@
         </div>
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <ClickBtn></ClickBtn>
+        </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <CssClickBtn></CssClickBtn>
         </div>
       </div>
     </div>
@@ -40,15 +52,19 @@ import Subnuv from "components/nav/subnav";
 // 表单相关动画
 import InputClick from "components/animation/form/inputClick";
 import FormProgress from "components/animation/form/formProgress";
+import FormVeri from "components/animation/form/formVeri";
+import FormVeriTwo from "components/animation/form/formVeri2";
+import SearchBox from "components/animation/form/searchBox";
 // 按钮相关动画组件
 import HoverBtn from "components/animation/btn/hoverBtn";
 import HoverBtnTwo from "components/animation/btn/hoverBtn2";
 import ClickBtn from "components/animation/btn/clickBtn";
+import CssClickBtn from "components/animation/btn/cssClickBtn";
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "表单相关动画", num: "2" },{ title: "按钮相关动画", num: "3" },],
+      rightList: [{ title: "表单相关动画", num: "4" },{ title: "按钮相关动画", num: "4" },],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -103,9 +119,13 @@ export default {
     Subnuv,
     InputClick,
     FormProgress,
+    FormVeri,
+    FormVeriTwo,
+    SearchBox,
     HoverBtn,
     HoverBtnTwo,
     ClickBtn,
+    CssClickBtn,
   },
 };
 </script>

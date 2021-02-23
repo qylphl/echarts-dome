@@ -4,10 +4,18 @@
       <!-- 动画效果 -->
       <!-- SVG相关 -->
       <div class="content-box flex-box">
-        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+        <!-- <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <HoverLayer></HoverLayer>
+        </div> -->
+        <div class="pie-box" :style="{'width': '49.3%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <Weather></Weather>
         </div>
-        
+        <div class="pie-box" :style="{'width': '49.3%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <WeatherTwo></WeatherTwo>
+        </div>
+        <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <Likes></Likes>
+        </div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -25,6 +33,9 @@
 import Subnuv from "components/nav/subnav";
 // SVG相关动画组件
 import HoverLayer from "components/animation/svg/hoverLayer";
+import Weather from "components/animation/svg/weather";
+import WeatherTwo from "components/animation/svg/weather2";
+import Likes from "components/animation/svg/likes";
 export default {
   data() {
     return {
@@ -82,6 +93,9 @@ export default {
   components: {
     Subnuv,
     HoverLayer,
+    Weather,
+    WeatherTwo,
+    Likes,
   },
 };
 </script>

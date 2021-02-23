@@ -50,7 +50,6 @@ export default {
 <style lang="scss" scoped>
 .progress-content-box {
   width: 100%;
-  height: 100%;
   .container {
     margin: 80px auto;
     width: 500px;

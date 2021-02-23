@@ -12,6 +12,9 @@
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <BgOne></BgOne>
         </div>
+        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <BubbleBg></BubbleBg>
+        </div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -30,12 +33,13 @@ import Subnuv from "components/nav/subnav";
 // 登录相关动画组件
 import Login from "components/animation/login/login";
 import BgOne from "components/animation/background/bg";
+import BubbleBg from "components/animation/background/bubbleBg";
 
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "登录相关动画", num: "1" },{ title: "背景相关动画", num: "1" }],
+      rightList: [{ title: "登录相关动画", num: "1" },{ title: "背景相关动画", num: "2" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -89,6 +93,7 @@ export default {
     Subnuv,
     Login,
     BgOne,
+    BubbleBg,
   },
 };
 </script>
