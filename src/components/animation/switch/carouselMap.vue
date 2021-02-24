@@ -2,7 +2,7 @@
   <div class="chart-content">
     <navBar :title="title" :optionString="deploy"></navBar>
     <div class="pie-content">
-      <ul class="pic" :style="{'width': 400 * (bgColor.length + 1) + 'px'}">
+      <ul class="pic" :style="{'width': 500 * (bgColor.length + 1) + 'px'}">
         <li v-for="(list, index) in bgColor" :key="index" :style="{'background-color': list}">{{ index + 1 }}</li>
         <li>1</li>
       </ul>

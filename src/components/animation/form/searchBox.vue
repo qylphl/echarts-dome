@@ -39,7 +39,7 @@ export default {
 <style lang="scss" scoped>
 .search-box {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 64px);
   min-height: 300px;
   position: relative;
   .inputbox {
