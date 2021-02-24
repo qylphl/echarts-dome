@@ -34,6 +34,10 @@
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <CssClickBtn></CssClickBtn>
         </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <SolidBtn></SolidBtn>
+        </div>
+        <div class="pie-box hidden"></div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -60,6 +64,7 @@ import HoverBtn from "components/animation/btn/hoverBtn";
 import HoverBtnTwo from "components/animation/btn/hoverBtn2";
 import ClickBtn from "components/animation/btn/clickBtn";
 import CssClickBtn from "components/animation/btn/cssClickBtn";
+import SolidBtn from "components/animation/btn/solidBtn";
 export default {
   data() {
     return {
@@ -126,6 +131,7 @@ export default {
     HoverBtnTwo,
     ClickBtn,
     CssClickBtn,
+    SolidBtn,
   },
 };
 </script>
