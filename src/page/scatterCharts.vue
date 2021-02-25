@@ -94,9 +94,40 @@ export default {
           color: new echarts.graphic.RadialGradient(0.3, 0.5, 0.7,
               [{ offset: 0, color: '#17dca4' }, { offset: 1, color: '#03b388' }])
       }],
+      colorListInfo: [
+        [
+        '#ff7f50', '#87cefa', '#da70d6', '#32cd32', '#6495ed',
+        '#ff69b4', '#ba55d3', '#cd5c5c', '#ffa500', '#40e0d0',
+        '#1e90ff', '#ff6347', '#7b68ee', '#d0648a', '#ffd700',
+        '#6b8e23', '#4ea397', '#3cb371', '#b8860b', '#7bd9a5'
+        ],
+        [
+        '#ff7f50', '#87cefa', '#da70d6', '#32cd32', '#6495ed',
+        '#ff69b4', '#ba55d3', '#cd5c5c', '#ffa500', '#40e0d0',
+        '#1e90ff', '#ff6347', '#7b68ee', '#00fa9a', '#ffd700',
+        '#6b8e23', '#ff00ff', '#3cb371', '#b8860b', '#30e0e0'
+        ],
+        [
+        '#929fff', '#9de0ff', '#ffa897', '#af87fe', '#7dc3fe',
+        '#bb60b2', '#433e7c', '#f47a75', '#009db2', '#024b51', 
+        '#0780cf', '#765005', '#e75840', '#26ccd8', '#3685fe', 
+        '#9977ef', '#f5616f', '#f7b13f', '#f9e264', '#50c48f'
+        ]
+      ][2],
+      dataListInfo: [
+        {name: '女篮两连胜后大喊武汉加油', value: '5449', symbolSize: '73'},
+        {name: '火神山医院开微博', value: '2289', symbolSize: '67'},
+        {name: '缅怀疫情中逝去的人们', value: '4730', symbolSize: '88'},
+        {name: '妨害疫情防控的违法行为', value: '1952', symbolSize: '45'},
+        {name: '抗击新型肺炎第一线', value: '8694000', symbolSize: '114'},
+        {name: '12项疫情防控惠民政策', value: '5668', symbolSize: '75'},
+        {name: '战疫一线的别样团圆', value: '339', symbolSize: '68'},
+        {name: '31省区市心理援助热线', value: '671', symbolSize: '62'},
+        {name: '疫情中的逆行者', value: '92000', symbolSize: '93'},
+      ],
       // 右侧导航菜单
       rightList: [
-        { title: "散点气泡图", num: "5" },
+        { title: "散点气泡图", num: "6" },
         { title: "3d散点气泡图", num: "1" },
       ],
       scroll: "",
@@ -127,6 +158,8 @@ export default {
         color: this.color,
         dataList: this.dataList,
         colorList: this.colorList,
+        dataListInfo: this.dataListInfo,
+        colorListInfo: this.colorListInfo,
       };
       this.scatterOption = new scatterCharts(info).SCATTER_CHARTS;
     },
@@ -154,9 +187,7 @@ export default {
       }
     },
     chooseRightTitle(index) {
-      let total =
-        document.getElementsByClassName("content-box")[index].offsetTop -
-        this.differ; // 获取需要滚动的距离
+      let total = document.getElementsByClassName("content-box")[index].offsetTop - this.differ; // 获取需要滚动的距离
       this.$refs.leftBox.scrollTop = total;
       this.$refs.leftBox.pageYOffset = total;
       this.chooseIndex = index;

@@ -602,6 +602,82 @@ export default class scatterChart {
                     }
                     return dataArr;
                 })()
+            },
+            scatter_charts_option6: {
+                boxTitle: '关系图延伸散点气泡图', // 给图表父元素定义的title，不用于echarts中的option
+                boxWidth: '100%',  // 给图表父元素定义的宽，不用于echarts中的option
+                // 图表标题
+                title: {
+                    show: false,//显示策略，默认值true,可选为：true（显示） | false（隐藏）
+                    text: '"新时代"主题图谱',//主标题文本，'\n'指定换行
+                    x: 'center',        // 水平安放位置，默认为左对齐，可选为：'center' ¦ 'left' ¦ 'right' ¦ {number}（x坐标，单位px）
+                    y: 'bottom',             // 垂直安放位置，默认为全图顶端，可选为： 'top' ¦ 'bottom' ¦ 'center' ¦ {number}（y坐标，单位px）
+                    //textAlign: null          // 水平对齐方式，默认根据x设置自动调整
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    borderColor: '#ccc',    // 标题边框颜色
+                    borderWidth: 0,         // 标题边框线宽，单位px，默认为0（无边框）
+                    padding: 5,             // 标题内边距，单位px，默认各方向内边距为5，
+                    // 接受数组分别设定上右下左边距，同css
+                    itemGap: 10,            // 主副标题纵向间隔，单位px，默认为10，
+                    textStyle: {
+                        fontSize: 18,
+                        fontWeight: 'bolder',
+                        color: '#333'        // 主标题文字颜色
+                    },
+                    subtextStyle: {
+                        color: '#aaa'        // 副标题文字颜色
+                    }
+                },
+                // backgroundColor: '#fff',
+                tooltip: {},
+                animationDurationUpdate: function (idx) {
+                    // 越往后的数据延迟越大
+                    return idx * 100;
+                },
+                animationEasingUpdate: 'bounceIn',
+                series: [{
+                    width: '100%',
+                    height: '20%',
+                    top: "40%",
+                    type: 'graph',
+                    layout: 'force',
+                    force: {
+                        repulsion: 450,
+                        edgeLength: [10, 50]
+                    },
+                    roam: 'move',   // 开启缩放或者平移'scale' / 'move'   设置成 true 为都开启
+                    label: {
+                        normal: {
+                            show: true
+                        }
+                    },
+                    data: (() => {
+                        let datas = [],
+                            dataModel = {
+                                name: '',
+                                value: '',
+                                symbolSize: '',
+                                draggable: true,
+                                itemStyle: {
+                                    normal: {
+                                        shadowBlur: 20,
+                                        shadowColor: '',
+                                        color: ''
+                                    }
+                                }
+                            };
+                        for (var i = 0; i < info.dataListInfo.length; i++) {
+                            dataModel.name = info.dataListInfo[i].name;
+                            dataModel.value = info.dataListInfo[i].value;
+                            dataModel.symbolSize = info.dataListInfo[i].symbolSize;
+                            dataModel.itemStyle.normal.shadowColor = info.colorListInfo[i];
+                            dataModel.itemStyle.normal.color = info.colorListInfo[i];
+                            var newDataModel = JSON.parse(JSON.stringify(dataModel))
+                            datas.push(newDataModel)
+                        }
+                        return datas;
+                    })()
+                }]
             }
         }
     }
