@@ -16,13 +16,13 @@
 
 <script>
 import navBar from "components/nav/navBar";
-import bgNumber1 from "../../../../src/assets/img/digitalFlip/bg-number-1_d055a87.png";
-import bgNumber2 from "../../../../src/assets/img/digitalFlip/bg-number-2_8474a71.png";
-import bgNumber3 from "../../../../src/assets/img/digitalFlip/bg-number-3_5180f47.png";
-import bgNumber4 from "../../../../src/assets/img/digitalFlip/bg-number-4_23d785e.png";
-import bgNumber5 from "../../../../src/assets/img/digitalFlip/bg-number-5_517e73d.png";
-import bgNumber6 from "../../../../src/assets/img/digitalFlip/bg-number-6_e104400.png";
-import bgNumber7 from "../../../../src/assets/img/digitalFlip/bg-number-7_5c57e30.png";
+import bgNumber1 from "@/assets/img/digitalFlip/bg-number-1_d055a87.png";
+import bgNumber2 from "@/assets/img/digitalFlip/bg-number-2_8474a71.png";
+import bgNumber3 from "@/assets/img/digitalFlip/bg-number-3_5180f47.png";
+import bgNumber4 from "@/assets/img/digitalFlip/bg-number-4_23d785e.png";
+import bgNumber5 from "@/assets/img/digitalFlip/bg-number-5_517e73d.png";
+import bgNumber6 from "@/assets/img/digitalFlip/bg-number-6_e104400.png";
+import bgNumber7 from "@/assets/img/digitalFlip/bg-number-7_5c57e30.png";
 export default {
   props: {
     title: {
