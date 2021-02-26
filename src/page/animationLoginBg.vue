@@ -4,6 +4,12 @@
       <!-- 动画效果 -->
       <!-- 登录动效 -->
       <div class="content-box flex-box">
+        <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <LoginTwo></LoginTwo>
+        </div>
+        <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <LoginThree></LoginThree>
+        </div>
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <Login></Login>
         </div>
@@ -32,6 +38,8 @@
 import Subnuv from "components/nav/subnav";
 // 登录相关动画组件
 import Login from "components/animation/login/login";
+import LoginTwo from "components/animation/login/login2";
+import LoginThree from "components/animation/login/login3";
 import BgOne from "components/animation/background/bg";
 import BubbleBg from "components/animation/background/bubbleBg";
 
@@ -39,7 +47,7 @@ export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "登录相关动画", num: "1" },{ title: "背景相关动画", num: "2" }],
+      rightList: [{ title: "登录相关动画", num: "3" },{ title: "背景相关动画", num: "2" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -92,6 +100,8 @@ export default {
   components: {
     Subnuv,
     Login,
+    LoginTwo,
+    LoginThree,
     BgOne,
     BubbleBg,
   },

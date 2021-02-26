@@ -181,7 +181,7 @@ export default {
 //   top: 0px;
 //   left: 0px;
   position: relative;
-  height: 800px;
+  height: 650px;
   width: 100%;
   /*Fallback if gradeints don't work */
   background: #141e6e;

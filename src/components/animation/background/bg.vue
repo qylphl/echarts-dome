@@ -160,7 +160,7 @@ export default {
 <style lang="scss" scoped>
 .bg-content-box {
   position: relative;
-  height: 800px;
+  height: 650px;
   width: 100%;
   .content {
     width: 100%;
