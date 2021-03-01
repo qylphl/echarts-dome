@@ -16,6 +16,9 @@
         <div class="pie-box" :style="{ 'width': '100%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <NavLight></NavLight>
         </div>
+        <div class="pie-box" :style="{ 'width': '100%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <NavColor></NavColor>
+        </div>
       </div>
       <!-- 菜单动效 -->
       <div class="content-box flex-box">
@@ -49,6 +52,7 @@ import TextNav from "components/animation/nav/textNav";
 import NavCircular from "components/animation/nav/navCircular";
 import NavSolidFlip from "components/animation/nav/navSolidFlip";
 import NavLight from "components/animation/nav/navLight";
+import NavColor from "components/animation/nav/navColor";
 import AccordionMenus from "components/animation/nav/accordionMenus";
 import SvgMenus from "components/animation/nav/svgMenus";
 export default {
@@ -118,6 +122,7 @@ export default {
     NavCircular,
     NavSolidFlip,
     NavLight,
+    NavColor,
     AccordionMenus,
     SvgMenus,
   },
