@@ -48,7 +48,7 @@ export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "SVG相关动画", num: "1" }],
+      rightList: [{ title: "SVG相关动画", num: "5" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值

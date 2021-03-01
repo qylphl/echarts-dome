@@ -4,8 +4,11 @@
       <!-- 动画效果 -->
       <!-- 导航动效 -->
       <div class="content-box flex-box">
-        <div class="pie-box" :style="{ 'width': '100%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+        <div class="pie-box" :style="{ 'width': '66.15%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <NavAnimationOne></NavAnimationOne>
+        </div>
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <TextNav></TextNav>
         </div>
         <div class="pie-box" :style="{ 'width': '100%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <NavSolidFlip></NavSolidFlip>
@@ -22,7 +25,9 @@
         <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <AccordionMenus></AccordionMenus>
         </div>
-        <div class="pie-box hidden"></div>
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <SvgMenus></SvgMenus>
+        </div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -40,17 +45,19 @@
 import Subnuv from "components/nav/subnav";
 // 导航相关动画组件
 import NavAnimationOne from "components/animation/nav/navAnimation";
+import TextNav from "components/animation/nav/textNav";
 import NavCircular from "components/animation/nav/navCircular";
 import NavSolidFlip from "components/animation/nav/navSolidFlip";
 import NavLight from "components/animation/nav/navLight";
 import AccordionMenus from "components/animation/nav/accordionMenus";
+import SvgMenus from "components/animation/nav/svgMenus";
 export default {
   data() {
     return {
       // 右侧导航菜单
       rightList: [
-        { title: "导航相关动画", num: "3" },
-        { title: "菜单相关动画", num: "2" },
+        { title: "导航相关动画", num: "4" },
+        { title: "菜单相关动画", num: "3" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
@@ -107,10 +114,12 @@ export default {
   components: {
     Subnuv,
     NavAnimationOne,
+    TextNav,
     NavCircular,
     NavSolidFlip,
     NavLight,
     AccordionMenus,
+    SvgMenus,
   },
 };
 </script>
