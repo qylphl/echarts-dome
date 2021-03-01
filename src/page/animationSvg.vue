@@ -8,13 +8,19 @@
          <HoverLayer></HoverLayer>
         </div> -->
         <div class="pie-box" :style="{'width': '49.3%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <Weather></Weather>
+         <Likes></Likes>
         </div>
         <div class="pie-box" :style="{'width': '49.3%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <Weather></Weather>
+        </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <WeatherTwo></WeatherTwo>
         </div>
-        <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
-         <Likes></Likes>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <CloseBtn></CloseBtn>
+        </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <SendBtn></SendBtn>
         </div>
       </div>
     </div>
@@ -36,6 +42,8 @@ import HoverLayer from "components/animation/svg/hoverLayer";
 import Weather from "components/animation/svg/weather";
 import WeatherTwo from "components/animation/svg/weather2";
 import Likes from "components/animation/svg/likes";
+import CloseBtn from "components/animation/svg/closeBtn";
+import SendBtn from "components/animation/svg/sendBtn";
 export default {
   data() {
     return {
@@ -96,6 +104,8 @@ export default {
     Weather,
     WeatherTwo,
     Likes,
+    CloseBtn,
+    SendBtn,
   },
 };
 </script>

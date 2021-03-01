@@ -182,8 +182,10 @@ export default {
 .container {
   position: relative;
   svg {
+    display: block;
     height: 100%;
-    width: 100%;
+    width: 65%;
+    margin: 0 auto;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
   .st1 {
