@@ -59,7 +59,8 @@ export default {
 <style lang="scss" scoped>
 .nav_menu {
   width: 100%;
-  height: calc(500px - 64px);
+  height: max-content;
+  padding: 60px 0;
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
@@ -67,6 +68,7 @@ export default {
   font-size: 14px;
   font-weight: bold;
   overflow: hidden;
+  box-sizing: border-box;
   .nav {
     display: inline-flex;
     position: relative;

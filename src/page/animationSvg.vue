@@ -22,6 +22,9 @@
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <SendBtn></SendBtn>
         </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <ToolBar></ToolBar>
+        </div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -44,6 +47,7 @@ import WeatherTwo from "components/animation/svg/weather2";
 import Likes from "components/animation/svg/likes";
 import CloseBtn from "components/animation/svg/closeBtn";
 import SendBtn from "components/animation/svg/sendBtn";
+import ToolBar from "components/animation/svg/toolBar";
 export default {
   data() {
     return {
@@ -106,6 +110,7 @@ export default {
     Likes,
     CloseBtn,
     SendBtn,
+    ToolBar,
   },
 };
 </script>
