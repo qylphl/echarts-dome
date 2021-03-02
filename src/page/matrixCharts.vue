@@ -315,7 +315,7 @@ export default {
         ]
       }],
       // 右侧导航菜单
-      rightList: [{ title: "矩阵图", num: "1" }],
+      rightList: [{ title: "矩阵图", num: "2" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
