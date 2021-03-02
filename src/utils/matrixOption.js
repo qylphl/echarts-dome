@@ -52,6 +52,68 @@ export default class MatrixChart {
                     ]
                 }]
             },
+            Matrixe_charts_option2: {
+                boxTitle: '矩阵图', // 给图表父元素定义的title，不用于echarts中的option
+                boxWidth: '100%',  // 给图表父元素定义的宽，不用于echarts中的option
+                // backgroundColor: '#012248',
+                color: [
+                    "#2C58A6"
+                ],
+                tooltip: {
+                    formatter: (info) => {
+                        let value = info.value
+                        let treePathInfo = info.treePathInfo
+                        let treePath = []
+
+                        for (let i = 1; i < treePathInfo.length; i++) {
+                            treePath.push(treePathInfo[i].name)
+                        }
+
+                        return [
+                            '<div class="tooltip-title">' + echarts.format.encodeHTML(treePath.join(' - ')) + '</div>',
+                            '数量: ' + echarts.format.addCommas(value),
+                        ].join('')
+                    }
+                },
+                series: [{
+                    name: '型号',
+                    type: 'treemap',
+                    roam: false,
+                    itemStyle: {
+                        normal: {
+                            // borderColor: '#2C58A6',
+                        }
+                    },
+                    label: {
+                        fontSize: 15
+                    },
+                    levels: [{
+                        itemStyle: {
+                            normal: {
+                                borderColor: '#fff',
+                                borderWidth: 0,
+                                gapWidth: 0,
+                            }
+                        },
+                    },
+                    {
+                        colorAlpha: [0.75, 0.90],
+                        colorSaturation: [0.30, 0.40],
+                        itemStyle: {
+                            normal: {
+                                borderWidth: 0,
+                                gapWidth: 0,
+                                // borderColorSaturation: 0.3,
+                            }
+                        },
+                    }
+                    ],
+                    width: '90%',
+                    height: '90%',
+                    leafDepth: 2,
+                    data: info.dataTwo
+                }]
+            }
         };
     }
 }

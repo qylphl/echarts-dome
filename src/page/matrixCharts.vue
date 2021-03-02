@@ -1,5 +1,5 @@
 <template>
-  <div class="content flex-box">
+  <div class="content flex-box one-content-charts-content">
     <div class="left-box" ref="leftBox">
       <!-- 矩阵图 -->
       <div class="content-box flex-box">
@@ -216,6 +216,104 @@ export default {
         { name: "基里巴斯", value: 0.156 },
         { name: "图瓦卢", value: 0.032 },
       ],
+      dataTwo: [{
+        value: 170,
+        children: [
+          { "name": "iPhone 7", "value": 9}, 
+          { "name": "iPhone 7 Plus", "value": 8}, 
+          { "name": "iPhone 11", "value": 8}, 
+          { "name": "iPhone 6S Plus", "value": 7}, 
+          { "name": "OPPO R11", "value": 7}, 
+          { "name": "iPhone X", "value": 7}, 
+          { "name": "iPhone 8", "value": 7},
+          { "name": "华为 Mate 9", "value": 6}, 
+          { "name": "华为 P10 Plus", "value": 6}, 
+          { "name": "华为 荣耀 V9", "value": 5}, 
+          { "name": "iPhone XR", "value": 5}, 
+          { "name": "华为 荣耀 8", "value": 4}, 
+          { "name": "小米 6", "value": 3}, 
+          { "name": "iPhone 6", "value": 3}, 
+          { "name": "vivo X9s", "value": 3}, 
+          { "name": "OPPO R9s Plus", "value": 3}, 
+          { "name": "华为 P10", "value": 3}, 
+          { "name": "华为 荣耀 V10", "value": 3}, 
+          { "name": "华为 荣耀 9", "value": 3}, 
+          { "name": "华为 P20", "value": 3}, 
+          { "name": "魅族 16X", "value": 2}, 
+          { "name": "华为 P30", "value": 2}, 
+          { "name": "vivo X9", "value": 2}, 
+          { "name": "iPhone XS MAX", "value": 2}, 
+          { "name": "华为 nova 2s", "value": 2}, 
+          { "name": "华为 Mate 20 Pro", "value": 2}, 
+          { "name": "华为 Mate 10", "value": 2}, 
+          { "name": "小米 6X", "value": 2}, 
+          { "name": "华为 荣耀 9X", "value": 2}, 
+          { "name": "华为 荣耀 10", "value": 2}, 
+          { "name": "OPPO R9s", "value": 2}, 
+          { "name": "LIO-AL00", "value": 2}, 
+          { "name": "OPPO A9X", "value": 1}, 
+          { "name": "华为 荣耀 Play", "value": 1}, 
+          { "name": "小米 8", "value": 1}, 
+          { "name": "OPPO PCLM10", "value": 1}, 
+          { "name": "华为 畅享 9S", "value": 1}, 
+          { "name": "Nubia 红魔 Mars", "value": 1}, 
+          { "name": "小米 4", "value": 1}, 
+          { "name": "三星 Galaxy N10", "value": 1}, 
+          { "name": "Realme X 青春版",  "value": 1}, 
+          { "name": "小米 8 Pro", "value": 1}, 
+          { "name": "华为 LIO-AN00", "value": 1}, 
+          { "name": "vivo Xplay 5A", "value": 1}, 
+          { "name": "vivo X9 Plus", "value": 1}, 
+          { "name": "RMX1971", "value": 1}, 
+          { "name": "荣耀 9i", "value": 1}, 
+          { "name": "金立 S9L", "value": 1}, 
+          { "name": "vivo iQOO", "value": 1}, 
+          { "name": "小米 MIX 2S", "value": 1},
+          { "name": "vivo X9L", "value": 1}, 
+          { "name": "OPPO R17", "value": 1}, 
+          { "name": "华为 荣耀 畅玩 7X", "value": 1}, 
+          { "name": "华为 畅享 9 Plus", "value": 1}, 
+          { "name": "华为 荣耀 9i", "value": 1}, 
+          { "name": "华为 P30 Pro", "value": 1}, 
+          { "name": "坚果 Pro", "value": 1}, 
+          { "name": "三星 Galaxy Note 9", "value": 1}, 
+          { "name": "vivo NEX", "value": 1}, 
+          { "name": "iPhone SE", "value": 1}, 
+          { "name": "OPPO R11 Plus", "value": 1}, 
+          { "name": "vivo X27 Pro", "value": 1}, 
+          { "name": "魅族 16th", "value": 1},
+          { "name": "小米 5S", "value": 1}, 
+          { "name": "iPhone 8 Plus", "value": 1}, 
+          { "name": "华为 麦芒 5", "value": 1}, 
+          { "name": "华为 nova 3i", "value": 1}, 
+          { "name": "vivo Z3", "value": 1}, 
+          { "name": "VIVO X9 L", "value": 1}, 
+          { "name": "三星 Galaxy S10", "value": 1}, 
+          { "name": "华为 荣耀 20", "value": 1}, 
+          { "name": "华为 nova 3", "value": 1}, 
+          { "name": "OPPO R11s", "value": 1}, 
+          { "name": "华为 荣耀 畅玩 5A", "value": 1}, 
+          { "name": "华为 Nova 5 Pro", "value": 1}, 
+          { "name": "金立 S10L", "value": 1}, 
+          { "name": "华为 荣耀 10 Lite", "value": 1},
+          { "name": "小天才 Z3", "value": 1}, 
+          { "name": "三星 Galaxy S8+", "value": 1}, 
+          { "name": "OPPO A59s", "value": 1}, 
+          { "name": "红米 Note 8 Pro", "value": 1}, 
+          { "name": "华为 荣耀 畅玩 7A", "value": 1}, 
+          { "name": "华为 nova", "value": 1}, 
+          { "name": "三星 Galaxy S8", "value": 1}, 
+          { "name": "vivo Y93", "value": 1}, 
+          { "name": "vivo X9 Plus L", "value": 1}, 
+          { "name": "一加 6T", "value": 1}, 
+          { "name": "华为 nova 2 Plus", "value": 1}, 
+          { "name": "vivo X9i", "value": 1}, 
+          { "name": "华为 荣耀 畅玩 6X", "value": 1}, 
+          { "name": "一加 6", "value": 1}, 
+          { "name": "LG Nexus 5", "value": 1}, 
+          { "name": "vivo S1", "value": 1}
+        ]
+      }],
       // 右侧导航菜单
       rightList: [{ title: "矩阵图", num: "1" }],
       scroll: "",
@@ -244,6 +342,7 @@ export default {
       let info = {
         data: this.data,
         color: this.color,
+        dataTwo: this.dataTwo,
       };
       this.matrixOption = new MatrixChart(info).MATRIX_CHARTS;
     },
@@ -271,9 +370,7 @@ export default {
       }
     },
     chooseRightTitle(index) {
-      let total =
-        document.getElementsByClassName("content-box")[index].offsetTop -
-        this.differ; // 获取需要滚动的距离
+      let total = document.getElementsByClassName("content-box")[index].offsetTop - this.differ; // 获取需要滚动的距离
       this.$refs.leftBox.scrollTop = total;
       this.$refs.leftBox.pageYOffset = total;
       this.chooseIndex = index;
