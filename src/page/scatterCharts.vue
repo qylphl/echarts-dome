@@ -10,9 +10,19 @@
       </div>
       <!-- 3d散点气泡图 -->
       <div class="content-box flex-box">
+        <!-- 散点气泡图 -->
+        <div class="pie-box" v-for="(item, index) in scatterOption2" :key="index" :style="{ 'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+          <Scatter :deploy="item" :title="item.boxTitle"></Scatter>
+        </div>
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
           <SolidScatter :color="color"></SolidScatter>
         </div> 
+      </div>
+      <!-- 关系图 -->
+      <div class="content-box flex-box">
+        <div class="pie-box" v-for="(item, index) in diagramOption" :key="index" :style="{ 'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+          <Scatter :deploy="item" :title="item.boxTitle"></Scatter>
+        </div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -125,15 +135,88 @@ export default {
         {name: '31省区市心理援助热线', value: '671', symbolSize: '62'},
         {name: '疫情中的逆行者', value: '92000', symbolSize: '93'},
       ],
+      // 关系图配置
+      diagramData: {
+        nodes: [{
+          name: '操作系统集团',
+          category: 0
+        }, {
+          name: '浏览器有限公司',
+          category: 0
+        }, {
+          name: 'HTML科技',
+          category: 0
+        }, {
+          name: 'JavaScript科技',
+          category: 0
+        }, {
+          name: 'CSS科技',
+          category: 0
+        }, {
+          name: 'Chrome',
+          category: 1
+        }, {
+          name: 'IE',
+          category: 1
+        }, {
+          name: 'Firefox',
+          category: 1
+        }, {
+          name: 'Safari',
+          category: 1
+        }],
+        
+        links: [{
+          source: '浏览器有限公司',
+          target: '操作系统集团',
+          name: '参股'
+        }, {
+          source: 'HTML科技',
+          target: '浏览器有限公司',
+          name: '参股'
+        }, {
+          source: 'CSS科技',
+          target: '浏览器有限公司',
+          name: '参股'
+        }, {
+          source: 'JavaScript科技',
+          target: '浏览器有限公司',
+          name: '参股'
+        }, {
+          source: 'Chrome',
+          target: '浏览器有限公司',
+          name: '董事'
+        }, {
+          source: 'IE',
+          target: '浏览器有限公司',
+          name: '董事'
+        }, {
+          source: 'Firefox',
+          target: '浏览器有限公司',
+          name: '董事'
+        }, {
+          source: 'Safari',
+          target: '浏览器有限公司',
+          name: '董事'
+        }, {
+          source: 'Chrome',
+          target: 'JavaScript科技',
+          name: '法人'
+        }]
+      },
+      diagramColor: ['#006acc', '#ff7d18', '#10a050'],
       // 右侧导航菜单
       rightList: [
         { title: "散点气泡图", num: "6" },
         { title: "3d散点气泡图", num: "1" },
+        { title: "关系图", num: "2" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
       scatterOption: [], // 散点气泡图配置项
+      scatterOption2: [], // 散点气泡图配置项
+      diagramOption: [], // 关系图配置项
     };
   },
   computed: {
@@ -160,8 +243,12 @@ export default {
         colorList: this.colorList,
         dataListInfo: this.dataListInfo,
         colorListInfo: this.colorListInfo,
+        diagramData: this.diagramData,
+        diagramColor: this.diagramColor,
       };
       this.scatterOption = new scatterCharts(info).SCATTER_CHARTS;
+      this.scatterOption2 = new scatterCharts(info).SCATTER_CHARTS_TWO;
+      this.diagramOption = new scatterCharts(info).DIAGRAM_CHAETS;
     },
     // 锚点双向监听
     dataScroll() {
