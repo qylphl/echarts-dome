@@ -184,7 +184,7 @@ export default class funnelChart {
                     },
                     data: [{ name: '感知', value: 100, }, { name: '好奇', value: 60, }, { name: '询问', value: 20, }, { name: '行动', value: 40, }, { name: '拥护', value: 20, itemStyle: { height: 0 } }]
                 }]
-            }, 
+            },
             funnel_charts_option8: {
                 boxTitle: '蝴蝶结型漏斗图', // 给图表父元素定义的title，不用于echarts中的option
                 color: info.color,
@@ -412,6 +412,122 @@ export default class funnelChart {
         };
         // 3d立体柱状图
         this.SOLID_FUNNEL_CHARTS = {
+            gradient_funnel_charts_option: {
+                boxTitle: '渐变漏斗图', // 给图表父元素定义的title，不用于echarts中的option
+                tooltip: {
+                    trigger: "axis",
+                    axisPointer: {
+                        type: "cross",
+                        label: {
+                            backgroundColor: "#6a7985"
+                        },
+                        lineStyle: {
+                            color: "#9eb2cb"
+                        }
+                    }
+                },
+                legend: {
+                    left: 'center',
+                    bottom: '10',
+                    textStyle: {
+                        color: "#333"
+                    },
+                    itemHeight: 10,
+                    data: info.gradientData.map((v) => { return v.name })
+                },
+                grid: {
+                    containLabel: true,
+                    borderWidth: 0.5
+                },
+                series: [
+                    {
+                        top: '20',
+                        name: '',
+                        type: 'funnel',
+                        left: '20%',
+                        width: '60%',
+                        gap: 10,
+                        minSize: '94',
+                        maxSize: '190',
+                        label: {
+                            normal: {
+                                color: '#353535',
+                                position: 'left',
+                            },
+                            emphasis: {
+                                position: 'left',
+                                formatter: '{c}%'
+                            }
+                        },
+                        labelLine: {
+                            normal: {
+                                length: '30',
+                                position: 'left',
+                                lineStyle: {
+                                    width: 2
+                                }
+                            }
+                        },
+                        itemStyle: {
+                            normal: {}
+                        },
+                        data: (() => {
+                            let newData = [],
+                                dataObj = {
+                                    value: '',
+                                    name: '',
+                                    itemStyle: {
+                                        normal: {
+                                            color: '#4e99de'
+                                        }
+                                    },
+                                    labelLine: {
+                                        normal: {
+                                            lineStyle: {
+                                                shadowColor: '#4e99de',
+                                                shadowOffsetX: 1
+                                            }
+                                        }
+                                    }
+                                };
+                            info.gradientData.forEach((item) => {
+                                dataObj.value = item.value;
+                                dataObj.name = item.name;
+                                dataObj.itemStyle.normal.color = item.color;
+                                dataObj.labelLine.normal.lineStyle.shadowColor = item.color;
+                                newData.push(JSON.parse(JSON.stringify(dataObj)));
+                            });
+                            return newData;
+                        })(),
+                    },
+                    {
+                        name: '',
+                        type: 'funnel',
+                        top: '20',
+                        gap: 10,
+                        label: {
+                            normal: {
+                                position: 'inside',
+                                formatter: '转化率：({c}%)',
+                                textStyle: {
+                                    color: '#fff'
+                                }
+                            }
+                        },
+                        labelLine: {
+                            normal: {}
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: 'transparent',
+                                borderWidth: 0,
+                                opacity: 0
+                            }
+                        },
+                        data: info.gradientData
+                    }
+                ]
+            },
             solid_funnel_charts_option: {
                 boxTitle: '3d立体漏斗图', // 给图表父元素定义的title，不用于echarts中的option
                 color: info.color,
