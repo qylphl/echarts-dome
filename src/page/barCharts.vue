@@ -33,9 +33,17 @@
         <div class="pie-box" v-for="(item, index) in solidBarOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
           <Bar :deploy="item" :title="item.boxTitle"></Bar>
         </div>
-        <!-- 3d立体圆柱图 -->
-        <div class="pie-box" :style="{ 'width': '100%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+        <!-- 3d立体柱状图 -->
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <SolidBar></SolidBar>
+        </div>
+        <!-- 3d立体堆积柱状图 -->
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <SolidCumulateBar></SolidCumulateBar>
+        </div>
+        <!-- 3d立体圆柱图 -->
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <SolidBarTwo></SolidBarTwo>
         </div>
       </div>
       <!-- 双向柱状图 -->
@@ -57,6 +65,8 @@ import Bar from "components/chartsPublic/charts";
 import RankingBar from "components/bar/rankingBar";
 import ShadowBar from "components/bar/shadowBar";
 import SolidBar from "components/bar/3dSolidBar";
+import SolidCumulateBar from "components/bar/3dSolidCumulateBar";
+import SolidBarTwo from "components/bar/3dSolidBar2";
 import TwoWayBar from "components/bar/twoWayBar";
 import BarChart from "utils/barOption";
 export default {
@@ -136,7 +146,7 @@ export default {
         {title: "柱状(条形)图",num: '9'},
         {title: "堆积柱状图",num: '3'},
         {title: "分组柱状图",num: '2'},
-        {title: "3D柱状图",num: '4'},
+        {title: "3D柱状图",num: '6'},
         {title: "双向柱状图",num: '1'},
       ],
       scroll: '',
@@ -217,7 +227,7 @@ export default {
       this.chooseIndex = index;
     },
   },
-  components: { Bar,RankingBar,ShadowBar,SolidBar,TwoWayBar,Subnuv },
+  components: { Bar,RankingBar,ShadowBar,SolidBar,SolidCumulateBar,SolidBarTwo,TwoWayBar,Subnuv },
 };
 </script>
 
