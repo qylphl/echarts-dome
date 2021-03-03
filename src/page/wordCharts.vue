@@ -1,20 +1,17 @@
 <template>
-  <div class="content flex-box">
+  <div class="content flex-box one-content-charts-content">
     <div class="left-box" ref="leftBox">
       <!-- 词云图 -->
       <div class="content-box flex-box">
-        <div
-          class="pie-box"
-          :style="{ 'width': '100%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }"
-        >
+        <div class="pie-box" :style="{ 'width': '100%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <WordChart :data="data"></WordChart>
+        </div>
+        <div class="pie-box" :style="{ 'width': '100%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <WordChartTwo :data="data"></WordChartTwo>
         </div>
       </div>
     </div>
-    <div
-      class="right-box"
-      :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }"
-    >
+    <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
       <Subnuv
         ref="subnuv"
         :dataList="rightList"
@@ -28,14 +25,15 @@
 <script>
 import Subnuv from "components/nav/subnav";
 import WordChart from "components/word/word";
+import WordChartTwo from "components/word/word2";
 export default {
   data() {
     return {
       data: [
-        { name: "微信", value: 3328 },
-        { name: "南方+", value: 1045 },
-        { name: "东莞时间网", value: 834 },
-        { name: "i东莞", value: 804 },
+        { name: "微信", value: 1028 },
+        { name: "南方+", value: 705 },
+        { name: "东莞时间网", value: 634 },
+        { name: "i东莞", value: 604 },
         { name: "新浪微博", value: 532 },
         { name: "今日头条", value: 493 },
         { name: "腾讯新闻", value: 479 },
@@ -59,79 +57,79 @@ export default {
         { name: "东莞阳光平台", value: 108 },
         { name: "腾讯新闻.APP", value: 107 },
         { name: "南方网", value: 103 },
-        { name: "UC头条", value: 98 },
-        { name: "凤凰新闻", value: 93 },
-        { name: "报告诉", value: 77 },
-        { name: "网易新闻.APP", value: 74 },
-        { name: "中国小康网", value: 64 },
-        { name: "东莞万江", value: 63 },
-        { name: "信息时报", value: 59 },
-        { name: "中国文明网", value: 58 },
-        { name: "东莞网", value: 57 },
-        { name: "搜狐新闻（自媒体）", value: 54 },
-        { name: "南方日报", value: 54 },
-        { name: "搜狐焦点", value: 53 },
-        { name: "阳光社区", value: 52 },
-        { name: "南方plus.APP", value: 47 },
-        { name: "阳光望牛墩", value: 46 },
-        { name: "中国报道", value: 43 },
-        { name: "新浪新闻", value: 43 },
-        { name: "房掌柜", value: 39 },
-        { name: "广州日报网", value: 38 },
-        { name: "ZAKER", value: 38 },
-        { name: "一点资讯.APP", value: 35 },
-        { name: "聚焦东莞", value: 35 },
-        { name: "广州新闻网", value: 35 },
-        { name: "新浪", value: 31 },
-        { name: "东莞服务热线12345", value: 31 },
-        { name: "人民网", value: 29 },
-        { name: "阳光热线问政平台", value: 26 },
-        { name: "党报头条", value: 26 },
-        { name: "羊城晚报地方版", value: 24 },
-        { name: "网易房产", value: 23 },
-        { name: "中国网", value: 22 },
-        { name: "金羊网", value: 21 },
-        { name: "东莞长安", value: 21 },
-        { name: "百家号", value: 21 },
-        { name: "澎湃新闻", value: 20 },
-        { name: "读特", value: 19 },
-        { name: "东方头条.APP", value: 17 },
-        { name: "阳光石排", value: 16 },
-        { name: "新浪乐居", value: 16 },
-        { name: "微信邦", value: 16 },
-        { name: "搜狐新闻.APP", value: 16 },
-        { name: "人民日报", value: 16 },
-        { name: "百度新闻", value: 16 },
-        { name: "南方都市报.APP", value: 15 },
-        { name: "荔枝网", value: 15 },
-        { name: "华人头条", value: 15 },
-        { name: "广东建设报", value: 15 },
-        { name: "中国", value: 14 },
-        { name: "阳光黄江", value: 14 },
-        { name: "东方网", value: 14 },
-        { name: "网易", value: 12 },
-        { name: "搜狐网", value: 12 },
-        { name: "和讯", value: 12 },
-        { name: "文化莞城", value: 11 },
-        { name: "聊聊网", value: 11 },
-        { name: "58同镇", value: 11 },
-        { name: "凤凰网", value: 10 },
-        { name: "新浪网", value: 9 },
-        { name: "趣头条.APP", value: 9 },
-        { name: "凤岗网", value: 9 },
-        { name: "新快网_新快报", value: 8 },
-        { name: "上游新闻", value: 8 },
-        { name: "东莞市城市综合管理局", value: 8 },
-        { name: "大众网", value: 8 },
-        { name: "中国新闻网", value: 7 },
-        { name: "第一推", value: 7 },
-        { name: "大洋网", value: 7 },
-        { name: "新浪网", value: 6 },
-        { name: "新浪看点", value: 6 },
-        { name: "手机和讯网", value: 6 },
+        { name: "UC头条", value: 198 },
+        { name: "凤凰新闻", value: 193 },
+        { name: "报告诉", value: 197 },
+        { name: "网易新闻.APP", value: 194 },
+        { name: "中国小康网", value: 194 },
+        { name: "东莞万江", value: 183 },
+        { name: "信息时报", value: 189 },
+        { name: "中国文明网", value: 188 },
+        { name: "东莞网", value: 187 },
+        { name: "搜狐新闻（自媒体）", value: 184 },
+        { name: "南方日报", value: 184 },
+        { name: "搜狐焦点", value: 183 },
+        { name: "阳光社区", value: 182 },
+        { name: "南方plus.APP", value: 177 },
+        { name: "阳光望牛墩", value: 176 },
+        { name: "中国报道", value: 173 },
+        { name: "新浪新闻", value: 173 },
+        { name: "房掌柜", value: 790 },
+        { name: "广州日报网", value: 780 },
+        { name: "ZAKER", value: 782 },
+        { name: "一点资讯.APP", value: 753 },
+        { name: "聚焦东莞", value: 754 },
+        { name: "广州新闻网", value: 755 },
+        { name: "新浪", value: 712 },
+        { name: "东莞服务热线12345", value: 716 },
+        { name: "人民网", value: 691 },
+        { name: "阳光热线问政平台", value: 660 },
+        { name: "党报头条", value: 566 },
+        { name: "羊城晚报地方版", value: 364 },
+        { name: "网易房产", value: 623 },
+        { name: "中国网", value: 262 },
+        { name: "金羊网", value: 261 },
+        { name: "东莞长安", value: 261 },
+        { name: "百家号", value: 161 },
+        { name: "澎湃新闻", value: 360 },
+        { name: "读特", value: 859 },
+        { name: "东方头条.APP", value: 658 },
+        { name: "阳光石排", value: 558 },
+        { name: "新浪乐居", value: 358 },
+        { name: "微信邦", value: 158 },
+        { name: "搜狐新闻.APP", value: 758 },
+        { name: "人民日报", value: 958 },
+        { name: "百度新闻", value: 158 },
+        { name: "南方都市报.APP", value: 155 },
+        { name: "荔枝网", value: 155 },
+        { name: "华人头条", value: 155 },
+        { name: "广东建设报", value: 155 },
+        { name: "中国", value: 754 },
+        { name: "阳光黄江", value: 254 },
+        { name: "东方网", value: 154 },
+        { name: "网易", value: 852 },
+        { name: "搜狐网", value: 152 },
+        { name: "和讯", value: 152 },
+        { name: "文化莞城", value: 151 },
+        { name: "聊聊网", value: 151 },
+        { name: "58同镇", value: 551 },
+        { name: "凤凰网", value: 650 },
+        { name: "新浪网", value: 549 },
+        { name: "趣头条.APP", value: 89 },
+        { name: "凤岗网", value: 89 },
+        { name: "新快网_新快报", value: 98 },
+        { name: "上游新闻", value: 98 },
+        { name: "东莞市城市综合管理局", value: 98 },
+        { name: "大众网", value: 98 },
+        { name: "中国新闻网", value: 147 },
+        { name: "第一推", value: 147 },
+        { name: "大洋网", value: 147 },
+        { name: "新浪网", value: 146 },
+        { name: "新浪看点", value: 246 },
+        { name: "手机和讯网", value: 96 },
       ],
       // 右侧导航菜单
-      rightList: [{ title: "词云图", num: "1" }],
+      rightList: [{ title: "词云图", num: "2" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -187,6 +185,7 @@ export default {
   components: {
     Subnuv,
     WordChart,
+    WordChartTwo,
   },
 };
 </script>
