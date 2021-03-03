@@ -1539,7 +1539,7 @@ export default class BarChart {
         this.SOLID_BAR_CHARTS = {
             // 3D立体柱状图
             solid_charts_option: {
-                boxTitle: '立体柱状图', // 给图表父元素定义的title，不用于echarts中的option
+                boxTitle: '3D立体柱状图', // 给图表父元素定义的title，不用于echarts中的option
                 tooltip: {
                     trigger: 'item',
                 },
@@ -1786,10 +1786,238 @@ export default class BarChart {
                     },
                 ]
             },
-            // 3D立体菱柱图
+            // 3D立体柱状图2
             solid_charts_option2: {
-                boxTitle: '立体菱柱图', // 给图表父元素定义的title，不用于echarts中的option
-                boxWidth: '66.15%',  // 给图表父元素定义的宽，不用于echarts中的option
+                boxTitle: '3D立体柱状图类型二', // 给图表父元素定义的title，不用于echarts中的option
+                // backgroundColor: '#0e202d',
+                title: {
+                    text: "第三采油厂",
+                    subtext: "总数: 599",
+                    textStyle: {
+                        color: "#333",
+                        fontSize: 18
+                    },
+                    subtextStyle: {
+                        color: "#999",
+                        fontSize: 14
+                    },
+                    x: "center",
+                    top: "20"
+                },
+                grid: {
+                    top: 150,
+                    bottom: 100
+                },
+                tooltip: {},
+                xAxis: {
+                    data: info.solidData.map((v) => { return v.name }),
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        interval: 0,
+                        textStyle: {
+                            color: '#beceff',
+                            fontSize: 16,
+                        },
+                        margin: 45, //刻度标签与轴线之间的距离。
+                    }
+                },
+                yAxis: {
+                    splitLine: {
+                        show: false
+                    },
+                    axisTick: {
+                        show: false
+                    },
+                    axisLine: {
+                        show: false
+                    },
+                    axisLabel: {
+                        show: false
+                    }
+                },
+                series: [
+                    // 顶部椭圆
+                    {
+                        name: "",
+                        type: "pictorialBar",
+                        symbolSize: [40, 15],
+                        symbolOffset: [0, -10],
+                        z: 12,
+                        data: (() => {
+                            let newData = [],
+                                dataListObj = {
+                                    name: "",
+                                    value: "",
+                                    trueVal: "",
+                                    symbolPosition: "end",
+                                    itemStyle: {
+                                        normal: {
+                                            color: ""  //圆柱顶部颜色
+                                        }
+                                    }
+                                };
+                            info.solidData.forEach((item) => {
+                                dataListObj.name = item.name;
+                                dataListObj.value = item.value;
+                                dataListObj.itemStyle.normal.color = item.color[0];
+                                newData.push(JSON.parse(JSON.stringify(dataListObj)));
+                            })
+                            return newData;
+                        })(),
+                    },
+                    // 底部椭圆
+                    {
+                        name: "",
+                        type: "pictorialBar",
+                        symbolSize: [40, 15],
+                        symbolOffset: [0, 6],
+                        z: 12,
+                        data: (() => {
+                            let newData = [],
+                                dataListObj = {
+                                    name: "",
+                                    value: "",
+                                    trueVal: "",
+                                    itemStyle: {
+                                        normal: {
+                                            color: "#43bafe" //圆柱底部颜色
+                                        }
+                                    }
+                                };
+                            info.solidData.forEach((item) => {
+                                dataListObj.name = item.name;
+                                dataListObj.value = item.value;
+                                dataListObj.itemStyle.normal.color = item.color[1];
+                                newData.push(JSON.parse(JSON.stringify(dataListObj)));
+                            })
+                            return newData;
+                        })()
+                    },
+                    //  底部椭圆托盘1
+                    {
+                        name: "",
+                        type: "pictorialBar",
+                        symbolSize: [70, 35],
+                        symbolOffset: [0, 20],
+                        z: 11,
+                        data: (() => {
+                            let newData = [],
+                                dataListObj = {
+                                    name: "",
+                                    value: "",
+                                    trueVal: "",
+                                    itemStyle: {
+                                        normal: {
+                                            color: "transparent",
+                                            borderColor: "#43bafe", //底部内圆圈颜色
+                                            borderWidth: 5
+                                        }
+                                    }
+                                };
+                            info.solidData.forEach((item) => {
+                                dataListObj.name = item.name;
+                                dataListObj.value = item.value;
+                                dataListObj.itemStyle.normal.borderColor = item.color[1];
+                                newData.push(JSON.parse(JSON.stringify(dataListObj)));
+                            })
+                            return newData;
+                        })()
+                    },
+                    // 底部椭圆托盘2  
+                    {
+                        name: "",
+                        type: "pictorialBar",
+                        symbolSize: [100, 55],
+                        symbolOffset: [0, 32],
+                        z: 10,
+                        data: (() => {
+                            let newData = [],
+                                dataListObj = {
+                                    name: "",
+                                    value: "",
+                                    trueVal: "",
+                                    itemStyle: {
+                                        normal: {
+                                            color: "transparent",
+                                            borderColor: "#43bafe",  //底部外圆圈颜色
+                                            borderType: "dashed",
+                                            borderWidth: 5
+                                        }
+                                    }
+                                };
+                            info.solidData.forEach((item) => {
+                                dataListObj.name = item.name;
+                                dataListObj.value = item.value;
+                                dataListObj.itemStyle.normal.borderColor = item.color[1];
+                                newData.push(JSON.parse(JSON.stringify(dataListObj)));
+                            })
+                            return newData;
+                        })()
+                    },
+                    // 中心柱子
+                    {
+                        type: "bar",
+                        silent: true,
+                        barWidth: 40,
+                        barGap: "-100%",
+                        data: (() => {
+                            let newData = [],
+                                dataListObj = {
+                                    name: "",
+                                    value: "",
+                                    trueVal: "",
+                                    label: {
+                                        normal: {
+                                            show: true,
+                                            position: "top",
+                                            distance: 20,
+                                            textStyle: {
+                                                color: "", //柱子对应数值颜色
+                                                fontSize: 20
+                                            }
+                                        }
+                                    },
+                                    itemStyle: {
+                                        normal: {
+                                            color: {
+                                                x: 0,
+                                                y: 0,
+                                                x2: 0,
+                                                y2: 1,
+                                                type: "linear",
+                                                global: false,
+                                                colorStops: [{
+                                                    offset: 0,
+                                                    color: "rgba(0,255,245,0.5)"
+                                                }, {
+                                                    offset: 1,
+                                                    color: "#43bafe" //底部渐变颜色
+                                                }]
+                                            }
+                                        }
+                                    }
+                                };
+                            info.solidData.forEach((item) => {
+                                dataListObj.name = item.name;
+                                dataListObj.value = item.value;
+                                dataListObj.label.normal.textStyle.color = item.color[0];
+                                dataListObj.itemStyle.normal.color.colorStops[0].color = item.color[2];
+                                dataListObj.itemStyle.normal.color.colorStops[1].color = item.color[1];
+                                newData.push(JSON.parse(JSON.stringify(dataListObj)));
+                            })
+                            return newData;
+                        })(),
+                    }]
+            },
+            // 3D立体菱柱图
+            solid_charts_option3: {
+                boxTitle: '3D立体菱柱图', // 给图表父元素定义的title，不用于echarts中的option
+                // boxWidth: '66.15%',  // 给图表父元素定义的宽，不用于echarts中的option
                 tooltip: {
                     trigger: 'axis',
                     formatter: "{b} : {c}",
@@ -1913,7 +2141,7 @@ export default class BarChart {
                     z: 3
                 }
                 ]
-            }
+            },
         }
     }
 }

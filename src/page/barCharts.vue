@@ -33,6 +33,10 @@
         <div class="pie-box" v-for="(item, index) in solidBarOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
           <Bar :deploy="item" :title="item.boxTitle"></Bar>
         </div>
+        <!-- 3d立体圆柱图 -->
+        <div class="pie-box" :style="{ 'width': '100%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <SolidBar></SolidBar>
+        </div>
       </div>
       <!-- 双向柱状图 -->
       <div class="content-box flex-box" ref="twoWayCharts">
@@ -52,6 +56,7 @@ import Subnuv from "components/nav/subnav";
 import Bar from "components/chartsPublic/charts";
 import RankingBar from "components/bar/rankingBar";
 import ShadowBar from "components/bar/shadowBar";
+import SolidBar from "components/bar/3dSolidBar";
 import TwoWayBar from "components/bar/twoWayBar";
 import BarChart from "utils/barOption";
 export default {
@@ -115,6 +120,12 @@ export default {
         { value: [16, 24], name: "辽宁" },
         { value: [14, 30], name: "黑龙江" },
       ],
+      // 3D立体柱状图2数据
+      solidData:[
+        {'name': '关井数', 'value': '981', 'color': ['#00fff5','#43bafe','rgba(0,255,245,0.5)']},
+        {'name': '开井数', 'value': '1000', 'color': ['#ffcc00','#ff7800','rgba(255,204,0,0.5)']},
+        {'name': '不在线', 'value': '900', 'color': ['#b9b7ff','#e9a5ff','rgba(185,183,255,0.5)']}
+      ],
       // 双向柱状图数据
       twoWayData: {
         female: { name: '女性', data: [{ value: 5, label: '小于1岁' }, { value: 12, label: '1 ～ 9 岁' }, { value: 10, label: '10 ～ 19 岁' }, { value: 7, label: '20 ～ 29 岁' }, { value: 32, label: '30 ～ 39 岁' }, { value: 40, label: '40 ～ 49 岁' }, { value: 28, label: '50 ～ 59 岁' }, { value: 34, label: '大于60岁' }] },
@@ -125,7 +136,7 @@ export default {
         {title: "柱状(条形)图",num: '9'},
         {title: "堆积柱状图",num: '3'},
         {title: "分组柱状图",num: '2'},
-        {title: "3D柱状图",num: '2'},
+        {title: "3D柱状图",num: '4'},
         {title: "双向柱状图",num: '1'},
       ],
       scroll: '',
@@ -162,6 +173,7 @@ export default {
         cumulateData: this.cumulateData,
         ringColumnData: this.ringColumnData,
         groupData: this.groupData,
+        solidData: this.solidData,
       };
       this.ordinaryBarOption = new BarChart(info).ORDINARY_BAR_CHARTS;
       this.cumulateBarOption = new BarChart(info).CUMULATE_BAR_CHARTS;
@@ -205,7 +217,7 @@ export default {
       this.chooseIndex = index;
     },
   },
-  components: { Bar,RankingBar,ShadowBar,TwoWayBar,Subnuv },
+  components: { Bar,RankingBar,ShadowBar,SolidBar,TwoWayBar,Subnuv },
 };
 </script>
 
