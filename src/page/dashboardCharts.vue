@@ -37,9 +37,10 @@ export default {
         {value:'60',name: '第二种形态',colorList:['#9f8cff','#7962df','#eef5f8']},
         {value:'70',name: '第三种形态',colorList:['#ffb45a','#e57C00','#eef5f8']},
         {value:'80',name: '第四种形态',colorList:['#fe8d51','#e83608','#eef5f8']},
-        ],
+      ],
+      dataInfoList: [{value: '75'},{value: '80'},{value: '55'}],
       // 右侧导航菜单
-      rightList: [{ title: "仪表盘", num: "7" }],
+      rightList: [{ title: "仪表盘", num: "8" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -70,6 +71,7 @@ export default {
         dataArr: this.dataArr,
         name: this.textName,
         dataList: this.dataList,
+        dataInfoList: this.dataInfoList,
       };
       this.dashboardOption = new DashboardChart(info).DASHBOARD_CHARTS;
     },

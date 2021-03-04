@@ -1140,7 +1140,7 @@ export default class DashboardChart {
                     let titleData = [];
                     for (var i = 0; i < info.dataList.length; i++) {
                         titleData.push({
-                            x: 9.5+25*i+'%',
+                            x: 9.5 + 25 * i + '%',
                             y: "72%",
                             subtext: info.dataList[i].name,
                             subtextStyle: {
@@ -1233,6 +1233,110 @@ export default class DashboardChart {
                     }
                     return dataArr;
                 })()
+            },
+            dashboard_charts_option8: {
+                boxTitle: '仪表盘--简约形态', // 给图表父元素定义的title，不用于echarts中的option
+                boxWidth: '100%',  // 给图表父元素定义的宽，不用于echarts中的option
+                backgroundColor: '#393265',
+                title: (() => {
+                    let newData = [{
+                        show: false,
+                        text: 'Donut Chart',
+                        x: '50%',
+                        y: 50,
+                        textAlign: 'center',
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: '100',
+                            color: '#fff',
+                            textAlign: 'center',
+                        },
+                    }],
+                        dataObj = {
+                            text: '',
+                            left: '',
+                            top: '47%',
+                            textAlign: 'center',
+                            textStyle: {
+                                fontSize: '50',
+                                fontWeight: '100',
+                                color: '#fff',
+                                textAlign: 'center',
+                            },
+                        };
+                    info.dataInfoList.forEach((item, index) => {
+                        dataObj.text = item.value + '%';
+                        dataObj.left = 19.5 + (index * 30) + '%';
+                        newData.push(JSON.parse(JSON.stringify(dataObj)));
+                    });
+                    return newData;
+                })(),
+                series: (() => {
+                    let newData = [],
+                        dataObj = {
+                            type: 'pie',
+                            startAngle: -90,
+                            radius: ['60%', '64%'],
+                            center: ['20%', '50%'],
+                            data: [{
+                                hoverOffset: 1,
+                                value: '',
+                                name: '',
+                                itemStyle: {
+                                    normal: {
+                                        color: new echarts.graphic.LinearGradient(0, 1, 1, 0, [{
+                                            offset: 0,
+                                            color: '#ef29b1'
+                                        }, {
+                                            offset: 1,
+                                            color: '#fd7225'
+                                        }]),
+                                        shadowColor: '#1c1b3a',
+                                        shadowBlur: 1,
+                                        shadowOffsetX: '0',
+                                        shadowOffsetY: '25',
+                                    }
+                                },
+                                label: {
+                                    show: false
+                                },
+                                labelLine: {
+                                    normal: {
+                                        smooth: true,
+                                        lineStyle: {
+                                            width: 0
+                                        }
+                                    }
+                                },
+                                hoverAnimation: false,
+                            },
+                            {
+                                label: {
+                                    show: false
+                                },
+                                labelLine: {
+                                    normal: {
+                                        smooth: true,
+                                        lineStyle: {
+                                            width: 0
+                                        }
+                                    }
+                                },
+                                value: '',
+                                hoverAnimation: false,
+                                itemStyle: {
+                                    color: 'rgba(251, 200, 79, 0)',
+                                },
+                            }]
+                        };
+                    info.dataInfoList.forEach((item, index) => {
+                        dataObj.center[0] = 20 + (30 * index) + '%';
+                        dataObj.data[0].value = item.value;
+                        dataObj.data[1].value = 100 - item.value;
+                        newData.push(JSON.parse(JSON.stringify(dataObj)));
+                    });
+                    return newData;
+                })(),
             }
         };
     }

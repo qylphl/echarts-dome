@@ -10,6 +10,9 @@
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
           <Water :data="data" :waveColor="waveColor" :bdColor="bdColor"></Water>
         </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <WaterTwo :data="data" :waveColor="waveColor" :bdColor="bdColor"></WaterTwo>
+        </div>
         <div class="pie-box hidden"></div>
       </div>
     </div>
@@ -27,6 +30,7 @@
 <script>
 import Subnuv from "components/nav/subnav";
 import Water from "components/water/water";
+import WaterTwo from "components/water/water2";
 import BgWater from "components/water/bgWater";
 import BiaxialChart from "utils/biaxialOption";
 import constant from "utils/constant";
@@ -36,10 +40,10 @@ export default {
       color: constant.COLOR,
       waveColor: ["#55c9fc", "#328ae3"],
       bdColor: ["#5ecdfb", "#1647d4"],
-      data: [{name:'name',value:0.3}],
+      data: [{name:'name',value:0.5}],
       // 右侧导航菜单
       rightList: [
-        { title: "水滴图", num: "1" },
+        { title: "水滴图", num: "3" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
@@ -105,6 +109,7 @@ export default {
   components: {
     Subnuv,
     Water,
+    WaterTwo,
     BgWater,
   },
 };
