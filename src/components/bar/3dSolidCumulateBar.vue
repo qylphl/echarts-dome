@@ -59,6 +59,7 @@ export default {
       var option = {
         chart: {
           type: "column",
+          backgroundColor: 'rgba(0,0,0,0)',
           options3d: {
             enabled: true,
             alpha: 15,

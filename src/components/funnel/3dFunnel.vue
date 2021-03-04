@@ -52,6 +52,7 @@ export default {
       var option = {
         chart: {
           type: "funnel3d",
+          backgroundColor: 'rgba(0,0,0,0)',
           options3d: {
             enabled: true,
             alpha: 10,

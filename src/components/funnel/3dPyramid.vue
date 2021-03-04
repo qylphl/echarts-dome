@@ -51,6 +51,7 @@ export default {
       var option = {
         chart: {
           type: "pyramid3d",
+          backgroundColor: 'rgba(0,0,0,0)',
           options3d: {
             enabled: true,
             alpha: 10,

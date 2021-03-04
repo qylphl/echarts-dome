@@ -32,7 +32,7 @@ export default {
       data: {},
       // 右侧导航菜单
       rightList: [
-        { title: "双轴图", num: "1" },
+        { title: "双轴图", num: "2" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值

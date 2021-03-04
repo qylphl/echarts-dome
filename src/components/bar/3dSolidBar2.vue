@@ -46,6 +46,7 @@ export default {
             depth: 50,
             viewDistance: 25,
           },
+          backgroundColor: 'rgba(0,0,0,0)',
         },
         credits: {
           //关闭版权信息的标签

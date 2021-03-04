@@ -43,6 +43,7 @@ export default {
         chart: {
           type: "column",
           margin: 75,
+          backgroundColor: 'rgba(0,0,0,0)',
           options3d: {
             enabled: true,
             alpha: 10,

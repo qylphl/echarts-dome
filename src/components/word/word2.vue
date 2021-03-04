@@ -37,6 +37,9 @@ export default {
     initChart() {
       var newData = JSON.parse(JSON.stringify(this.data).replace(/value/g, "weight")),
       option = {
+        chart: {
+          backgroundColor: 'rgba(0,0,0,0)',
+        },
         series: [
           {
             type: "wordcloud",
