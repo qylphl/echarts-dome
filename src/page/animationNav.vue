@@ -10,15 +10,16 @@
         <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <TextNav></TextNav>
         </div>
-        <div class="pie-box" :style="{ 'width': '100%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+        <div class="pie-box" :style="{ 'width': '49.3%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <NavSolidFlip></NavSolidFlip>
+        </div>
+        <div class="pie-box" :style="{ 'width': '49.3%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <NavColor></NavColor>
         </div>
         <div class="pie-box" :style="{ 'width': '100%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <NavLight></NavLight>
         </div>
-        <div class="pie-box" :style="{ 'width': '100%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
-          <NavColor></NavColor>
-        </div>
+        
       </div>
       <!-- 菜单动效 -->
       <div class="content-box flex-box">
@@ -64,7 +65,7 @@ export default {
     return {
       // 右侧导航菜单
       rightList: [
-        { title: "导航相关动画", num: "4" },
+        { title: "导航相关动画", num: "5" },
         { title: "菜单相关动画", num: "4" },
       ],
       scroll: "",

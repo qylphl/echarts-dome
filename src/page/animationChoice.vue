@@ -7,7 +7,9 @@
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <ChoiceCss3></ChoiceCss3>
         </div>
-        
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <SwitchBtn></SwitchBtn>
+        </div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -25,12 +27,13 @@
 import Subnuv from "components/nav/subnav";
 // 选择相关动画组件
 import ChoiceCss3 from "components/animation/choice/choiceCss3";
+import SwitchBtn from "components/animation/choice/switchBtn";
 
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "选择相关动画", num: "1" }],
+      rightList: [{ title: "选择相关动画", num: "2" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -83,6 +86,7 @@ export default {
   components: {
     Subnuv,
     ChoiceCss3,
+    SwitchBtn,
   },
 };
 </script>

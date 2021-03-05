@@ -44,7 +44,7 @@ export default {
   height: 50px;
   justify-content: space-around;
   align-items: center;
-  margin: 80px 60px;
+  margin: 85px 60px;
   color: #fff;
   .menu_item {
     position: relative;

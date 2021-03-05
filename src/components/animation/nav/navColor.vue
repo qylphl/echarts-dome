@@ -60,7 +60,7 @@ export default {
 .nav_menu {
   width: 100%;
   height: max-content;
-  padding: 60px 0;
+  padding: 80px 0;
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
