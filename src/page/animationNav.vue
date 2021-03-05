@@ -65,7 +65,7 @@ export default {
       // 右侧导航菜单
       rightList: [
         { title: "导航相关动画", num: "4" },
-        { title: "菜单相关动画", num: "3" },
+        { title: "菜单相关动画", num: "4" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
