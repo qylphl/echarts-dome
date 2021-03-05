@@ -1,5 +1,5 @@
 <template>
-  <div class="content flex-box animation-content">
+  <div class="content flex-box animation-content one-content-charts-content">
     <div class="left-box" ref="leftBox">
       <!-- 动画效果 -->
       <!-- 导航动效 -->
@@ -31,6 +31,9 @@
         <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <SvgMenus></SvgMenus>
         </div>
+        <div class="pie-box" :style="{ 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <ContractionMenus></ContractionMenus>
+        </div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -55,6 +58,7 @@ import NavLight from "components/animation/nav/navLight";
 import NavColor from "components/animation/nav/navColor";
 import AccordionMenus from "components/animation/nav/accordionMenus";
 import SvgMenus from "components/animation/nav/svgMenus";
+import ContractionMenus from "components/animation/nav/contractionMenus";
 export default {
   data() {
     return {
@@ -125,6 +129,7 @@ export default {
     NavColor,
     AccordionMenus,
     SvgMenus,
+    ContractionMenus,
   },
 };
 </script>
