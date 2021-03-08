@@ -37,13 +37,13 @@
         <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <SolidBar></SolidBar>
         </div>
-        <!-- 3d立体堆积柱状图 -->
-        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
-          <SolidCumulateBar></SolidCumulateBar>
-        </div>
         <!-- 3d立体圆柱图 -->
         <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <SolidBarTwo></SolidBarTwo>
+        </div>
+        <!-- 3d立体堆积柱状图 -->
+        <div class="pie-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <SolidCumulateBar></SolidCumulateBar>
         </div>
       </div>
       <!-- 双向柱状图 -->

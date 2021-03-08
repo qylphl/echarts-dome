@@ -409,9 +409,6 @@ export default class funnelChart {
                     data: [{ name: '感知', value: 20, }, { name: '好奇', value: 30, }, { name: '询问', value: 40, }, { name: '行动', value: 70, }, { name: '拥护', value: 55, itemStyle: { height: 0 } }]
                 }]
             },
-        };
-        // 3d立体柱状图
-        this.SOLID_FUNNEL_CHARTS = {
             gradient_funnel_charts_option: {
                 boxTitle: '渐变漏斗图', // 给图表父元素定义的title，不用于echarts中的option
                 tooltip: {
@@ -528,83 +525,7 @@ export default class funnelChart {
                     }
                 ]
             },
-            solid_funnel_charts_option: {
-                boxTitle: '3d立体漏斗图', // 给图表父元素定义的title，不用于echarts中的option
-                color: info.color,
-                tooltip: {
-                    trigger: 'item',
-                    // formatter: "{a} <br/>{b} : {c}"
-                    formatter: "{b} : {c}"
-                },
-                series: [
-                    {
-                        name: '',
-                        type: 'funnel',
-                        left: '8%',
-                        width: '70%',
-                        sort: 'ascending',
-                        gap: 8,
-                        label: {
-                            normal: {
-                                formatter: '{b}',
-                                // fontSize: 18,
-                            },
-                            emphasis: {
-                                position: 'inside',
-                                formatter: '{b}: {c}'
-                            }
-                        },
-                        labelLine: {
-                            normal: {
-                                show: false
-                            }
-                        },
-                        itemStyle: {
-                            normal: {
-                                opacity: .8,
-                                borderColor: 'rgba(9,20,36,0)',
-                            }
-                        },
-                        data: info.data
-                    },
-                    {
-                        name: '',
-                        type: 'funnel',
-                        left: '8%',
-                        width: '70%',
-                        maxSize: '80%',
-                        sort: 'ascending',
-                        gap: 8,
-                        label: {
-                            normal: {
-                                show: false,
-                                position: 'inside',
-                                formatter: '{c}',
-                                textStyle: {
-                                    color: '#fff'
-                                }
-                            },
-                            emphasis: {
-                                position: 'inside',
-                                formatter: '{b}: {c}'
-                            }
-                        },
-                        itemStyle: {
-                            normal: {
-                                opacity: 1,
-                                borderColor: 'rgba(9,20,36,0)',
-                                borderWidth: 0,
-                                shadowBlur: 5,
-                                shadowOffsetX: 5,
-                                shadowOffsetY: 0,
-                                shadowColor: 'rgba(0, 0, 0, 1)'
-                            }
-                        },
-                        data: info.data
-                    }
-                ]
-            },
-            solid_funnel_charts_option2: {
+            funnel_charts_option16: {
                 boxTitle: '不对称漏斗图', // 给图表父元素定义的title，不用于echarts中的option
                 tooltip: {
                     trigger: 'item',
@@ -708,7 +629,7 @@ export default class funnelChart {
                     }
                 }]
             },
-            solid_funnel_charts_option3: {
+            funnel_charts_option17: {
                 boxTitle: '3d金字塔漏斗图', // 给图表父元素定义的title，不用于echarts中的option
                 // backgroundColor: {type: 'linear',x: 0,y: 0,x2: 0,y2: 1,colorStops: [{offset: 0,color: '#0c0d2b'},{offset: 0.5,color: '#0a0c3d'},{offset: 1,color: '#111629'}],globalCoord: false},
                 title: {
@@ -842,6 +763,85 @@ export default class funnelChart {
                             value: 40,
                             name: 'F'
                         }]
+                    }
+                ]
+            },
+        };
+        // 3d立体柱状图
+        this.SOLID_FUNNEL_CHARTS = {
+            solid_funnel_charts_option: {
+                boxTitle: '3d立体漏斗图', // 给图表父元素定义的title，不用于echarts中的option
+                color: info.color,
+                tooltip: {
+                    trigger: 'item',
+                    // formatter: "{a} <br/>{b} : {c}"
+                    formatter: "{b} : {c}"
+                },
+                series: [
+                    {
+                        name: '',
+                        type: 'funnel',
+                        left: '8%',
+                        width: '70%',
+                        sort: 'ascending',
+                        gap: 8,
+                        label: {
+                            normal: {
+                                formatter: '{b}',
+                                // fontSize: 18,
+                            },
+                            emphasis: {
+                                position: 'inside',
+                                formatter: '{b}: {c}'
+                            }
+                        },
+                        labelLine: {
+                            normal: {
+                                show: false
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                opacity: .8,
+                                borderColor: 'rgba(9,20,36,0)',
+                            }
+                        },
+                        data: info.data
+                    },
+                    {
+                        name: '',
+                        type: 'funnel',
+                        left: '8%',
+                        width: '70%',
+                        maxSize: '80%',
+                        sort: 'ascending',
+                        gap: 8,
+                        label: {
+                            normal: {
+                                show: false,
+                                position: 'inside',
+                                formatter: '{c}',
+                                textStyle: {
+                                    color: '#fff'
+                                }
+                            },
+                            emphasis: {
+                                position: 'inside',
+                                formatter: '{b}: {c}'
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                opacity: 1,
+                                borderColor: 'rgba(9,20,36,0)',
+                                borderWidth: 0,
+                                shadowBlur: 5,
+                                shadowOffsetX: 5,
+                                shadowOffsetY: 0,
+                                shadowColor: 'rgba(0, 0, 0, 1)'
+                            }
+                        },
+                        data: info.data
                     }
                 ]
             }

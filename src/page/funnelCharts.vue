@@ -49,8 +49,8 @@ export default {
       gradientData: [{ value: 100, name: '展现', color: '#0083c7' },{ value: 80, name: '点击', color: '#398bd8' },{ value: 60, name: '访问', color: '#4e99de' },{ value: 40, name: '咨询', color: '#4da7db' },{ value: 20, name: '订单', color: '#53b8e2' }],
       // 右侧导航菜单
       rightList: [
-        { title: "漏斗图", num: "16" },
-        { title: "3d漏斗图", num: "5" },
+        { title: "漏斗图", num: "18" },
+        { title: "3d漏斗图", num: "3" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值

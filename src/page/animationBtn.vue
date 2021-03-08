@@ -40,6 +40,9 @@
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <SolidBtn></SolidBtn>
         </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <SubmitBtn></SubmitBtn>
+        </div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -68,11 +71,12 @@ import ClickBtn from "components/animation/btn/clickBtn";
 import CssClickBtn from "components/animation/btn/cssClickBtn";
 import JellyBtn from "components/animation/btn/jellyBtn";
 import SolidBtn from "components/animation/btn/solidBtn";
+import SubmitBtn from "components/animation/btn/submitBtn";
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "表单相关动画", num: "5" },{ title: "按钮相关动画", num: "6" },],
+      rightList: [{ title: "表单相关动画", num: "5" },{ title: "按钮相关动画", num: "7" },],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -136,6 +140,7 @@ export default {
     CssClickBtn,
     JellyBtn,
     SolidBtn,
+    SubmitBtn,
   },
 };
 </script>
