@@ -9,8 +9,21 @@
         </div>
         <div class="pie-box" :style="{'width': '49.3%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <Flip></Flip>
+        </div> 
+      </div>
+      <div class="content-box flex-box">
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <RadioBtn></RadioBtn>
         </div>
-        
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <SwitchBtn></SwitchBtn>
+        </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <DayNightSwitch></DayNightSwitch>
+        </div>
+        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <SwitchBtnTwo></SwitchBtnTwo>
+        </div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -26,14 +39,19 @@
 
 <script>
 import Subnuv from "components/nav/subnav";
-// 轮播和切换相关动画组件
+// 轮播相关动画组件
 import CarouselMap from "components/animation/switch/carouselMap";
 import Flip from "components/animation/switch/flip";
+// 切换相关动画组件
+import RadioBtn from "components/animation/switch/radioBtn";
+import SwitchBtn from "components/animation/switch/switchBtn";
+import DayNightSwitch from "components/animation/switch/dayNightSwitch";
+import SwitchBtnTwo from "components/animation/switch/switchBtn2";
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "轮播相关动画", num: "2" }],
+      rightList: [{ title: "轮播相关动画", num: "2" },{ title: "切换相关动画", num: "4" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -87,6 +105,10 @@ export default {
     Subnuv,
     Flip,
     CarouselMap,
+    RadioBtn,
+    SwitchBtn,
+    DayNightSwitch,
+    SwitchBtnTwo,
   },
 };
 </script>

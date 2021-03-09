@@ -25,6 +25,10 @@
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <ToolBar></ToolBar>
         </div>
+        <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <SvgLoading></SvgLoading>
+        </div>
+        <div class="pie-box hidden"></div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -48,6 +52,7 @@ import Likes from "components/animation/svg/likes";
 import CloseBtn from "components/animation/svg/closeBtn";
 import SendBtn from "components/animation/svg/sendBtn";
 import ToolBar from "components/animation/svg/toolBar";
+import SvgLoading from "components/animation/svg/svgLoading";
 export default {
   data() {
     return {
@@ -111,6 +116,7 @@ export default {
     CloseBtn,
     SendBtn,
     ToolBar,
+    SvgLoading,
   },
 };
 </script>
