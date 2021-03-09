@@ -515,7 +515,7 @@ import navBar from "components/nav/navBar";
 export default {
   props: {
     title: {
-      default: "纯css3复选框选中动画",
+      default: "纯css3开关和复选框动画",
       type: String,
     },
     deploy: {
