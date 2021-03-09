@@ -46,7 +46,7 @@ export default {
 .wrapper {
   width: 100%;
   height: calc(100% - 64px);
-  min-height: calc(500px -64px);
+  min-height: calc(500px - 64px);
   align-items: center;
   justify-content: center;
   .option {
