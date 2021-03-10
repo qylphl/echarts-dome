@@ -604,397 +604,556 @@ export default class scatterChart {
                 })()
             }
         },
-        this.SCATTER_CHARTS_TWO = {
-            scatter_charts_option6: {
-                boxTitle: '关系图延伸散点气泡图', // 给图表父元素定义的title，不用于echarts中的option
-                boxWidth: '66.15%',  // 给图表父元素定义的宽，不用于echarts中的option
-                // 图表标题
-                title: {
-                    show: false,//显示策略，默认值true,可选为：true（显示） | false（隐藏）
-                    text: '"新时代"主题图谱',//主标题文本，'\n'指定换行
-                    x: 'center',        // 水平安放位置，默认为左对齐，可选为：'center' ¦ 'left' ¦ 'right' ¦ {number}（x坐标，单位px）
-                    y: 'bottom',             // 垂直安放位置，默认为全图顶端，可选为： 'top' ¦ 'bottom' ¦ 'center' ¦ {number}（y坐标，单位px）
-                    //textAlign: null          // 水平对齐方式，默认根据x设置自动调整
-                    backgroundColor: 'rgba(0,0,0,0)',
-                    borderColor: '#ccc',    // 标题边框颜色
-                    borderWidth: 0,         // 标题边框线宽，单位px，默认为0（无边框）
-                    padding: 5,             // 标题内边距，单位px，默认各方向内边距为5，
-                    // 接受数组分别设定上右下左边距，同css
-                    itemGap: 10,            // 主副标题纵向间隔，单位px，默认为10，
-                    textStyle: {
-                        fontSize: 18,
-                        fontWeight: 'bolder',
-                        color: '#333'        // 主标题文字颜色
-                    },
-                    subtextStyle: {
-                        color: '#aaa'        // 副标题文字颜色
-                    }
-                },
-                // backgroundColor: '#fff',
-                tooltip: {},
-                animationDurationUpdate: function (idx) {
-                    // 越往后的数据延迟越大
-                    return idx * 100;
-                },
-                animationEasingUpdate: 'bounceIn',
-                series: [{
-                    width: '100%',
-                    height: '20%',
-                    top: "40%",
-                    type: 'graph',
-                    layout: 'force',
-                    force: {
-                        repulsion: 450,
-                        edgeLength: [10, 50]
-                    },
-                    roam: 'move',   // 开启缩放或者平移'scale' / 'move'   设置成 true 为都开启
-                    label: {
-                        normal: {
-                            show: true
+            this.SCATTER_CHARTS_TWO = {
+                scatter_charts_option6: {
+                    boxTitle: '关系图延伸散点气泡图', // 给图表父元素定义的title，不用于echarts中的option
+                    boxWidth: '66.15%',  // 给图表父元素定义的宽，不用于echarts中的option
+                    // 图表标题
+                    title: {
+                        show: false,//显示策略，默认值true,可选为：true（显示） | false（隐藏）
+                        text: '"新时代"主题图谱',//主标题文本，'\n'指定换行
+                        x: 'center',        // 水平安放位置，默认为左对齐，可选为：'center' ¦ 'left' ¦ 'right' ¦ {number}（x坐标，单位px）
+                        y: 'bottom',             // 垂直安放位置，默认为全图顶端，可选为： 'top' ¦ 'bottom' ¦ 'center' ¦ {number}（y坐标，单位px）
+                        //textAlign: null          // 水平对齐方式，默认根据x设置自动调整
+                        backgroundColor: 'rgba(0,0,0,0)',
+                        borderColor: '#ccc',    // 标题边框颜色
+                        borderWidth: 0,         // 标题边框线宽，单位px，默认为0（无边框）
+                        padding: 5,             // 标题内边距，单位px，默认各方向内边距为5，
+                        // 接受数组分别设定上右下左边距，同css
+                        itemGap: 10,            // 主副标题纵向间隔，单位px，默认为10，
+                        textStyle: {
+                            fontSize: 18,
+                            fontWeight: 'bolder',
+                            color: '#333'        // 主标题文字颜色
+                        },
+                        subtextStyle: {
+                            color: '#aaa'        // 副标题文字颜色
                         }
                     },
-                    data: (() => {
-                        let datas = [],
-                            dataModel = {
-                                name: '',
-                                value: '',
-                                symbolSize: '',
-                                draggable: true,
-                                itemStyle: {
-                                    normal: {
-                                        shadowBlur: 20,
-                                        shadowColor: '',
-                                        color: ''
+                    // backgroundColor: '#fff',
+                    tooltip: {},
+                    animationDurationUpdate: function (idx) {
+                        // 越往后的数据延迟越大
+                        return idx * 100;
+                    },
+                    animationEasingUpdate: 'bounceIn',
+                    series: [{
+                        type: 'graph',
+                        layout: 'force',
+                        force: {
+                            repulsion: 340,
+                            edgeLength: [5, 25]
+                        },
+                        roam: 'move',   // 开启缩放或者平移'scale' / 'move'   设置成 true 为都开启
+                        label: {
+                            normal: {
+                                show: true
+                            }
+                        },
+                        data: (() => {
+                            let datas = [],
+                                dataModel = {
+                                    name: '',
+                                    value: '',
+                                    symbolSize: '',
+                                    draggable: true,
+                                    itemStyle: {
+                                        normal: {
+                                            shadowBlur: 20,
+                                            shadowColor: '',
+                                            color: ''
+                                        }
+                                    }
+                                };
+                            for (var i = 0; i < info.dataListInfo.length; i++) {
+                                dataModel.name = info.dataListInfo[i].name;
+                                dataModel.value = info.dataListInfo[i].value;
+                                dataModel.symbolSize = info.dataListInfo[i].symbolSize;
+                                dataModel.itemStyle.normal.shadowColor = info.colorListInfo[i];
+                                dataModel.itemStyle.normal.color = info.colorListInfo[i];
+                                var newDataModel = JSON.parse(JSON.stringify(dataModel))
+                                datas.push(newDataModel)
+                            }
+                            return datas;
+                        })()
+                    }]
+                }
+            },
+            // 关系图
+            this.DIAGRAM_CHAETS = {
+                diagram_charts_option: {
+                    boxTitle: '关系图', // 给图表父元素定义的title，不用于echarts中的option
+                    title: {
+                        show: false,
+                        text: '知识图谱',
+                    },
+                    legend: [{
+                        // selectedMode: 'single',
+                        data: ['公司', '董事'],
+                        left: 'auto',
+                        // icon: 'circle'
+                    }],
+                    series: [{
+                        type: 'graph',
+                        center: ['78%', '50%'],
+                        layout: 'force',
+                        symbolSize: 50,
+                        draggable: true,
+                        roam: true,
+                        focusNodeAdjacency: true,
+                        categories: [{
+                            name: '公司',
+                            itemStyle: {
+                                color: info.diagramColor[0]
+                            }
+                        },
+                        {
+                            name: '董事',
+                            itemStyle: {
+                                color: info.diagramColor[1]
+                            }
+                        }],
+                        edgeSymbol: ['', 'arrow'],
+                        // edgeSymbolSize: [80, 10],
+                        edgeLabel: {
+                            normal: {
+                                show: true,
+                                textStyle: {
+                                    fontSize: 20
+                                },
+                                formatter(x) {
+                                    return x.data.name;
+                                }
+                            }
+                        },
+                        label: {
+                            show: true
+                        },
+                        force: {
+                            repulsion: 650,
+                            edgeLength: 140
+                        },
+                        data: (() => {
+                            info.diagramData.nodes.forEach(node => {
+                                if (node.category === 0) {
+                                    node.symbolSize = 85;
+                                    node.itemStyle = {
+                                        color: info.diagramColor[0]
+                                    };
+                                } else if (node.category === 1) {
+                                    node.itemStyle = {
+                                        color: info.diagramColor[1]
+                                    };
+                                }
+                            });
+                            return info.diagramData.nodes;
+                        })(),
+                        links: (() => {
+                            info.diagramData.links.forEach(link => {
+                                link.label = {
+                                    align: 'center',
+                                    fontSize: 12
+                                };
+                                if (link.name === '参股') {
+                                    link.lineStyle = {
+                                        color: info.diagramColor[1]
+                                    }
+                                } else if (link.name === '董事') {
+                                    link.lineStyle = {
+                                        color: info.diagramColor[0]
+                                    }
+                                } else if (link.name === '法人') {
+                                    link.lineStyle = {
+                                        color: info.diagramColor[2]
                                     }
                                 }
-                            };
-                        for (var i = 0; i < info.dataListInfo.length; i++) {
-                            dataModel.name = info.dataListInfo[i].name;
-                            dataModel.value = info.dataListInfo[i].value;
-                            dataModel.symbolSize = info.dataListInfo[i].symbolSize;
-                            dataModel.itemStyle.normal.shadowColor = info.colorListInfo[i];
-                            dataModel.itemStyle.normal.color = info.colorListInfo[i];
-                            var newDataModel = JSON.parse(JSON.stringify(dataModel))
-                            datas.push(newDataModel)
-                        }
-                        return datas;
-                    })()
-                }]
-            }
-        },
-        // 关系图
-        this.DIAGRAM_CHAETS = {
-            diagram_charts_option: {
-                boxTitle: '关系图', // 给图表父元素定义的title，不用于echarts中的option
-                title: {
-                    show: false,
-                    text: '知识图谱',
+                            });
+                            return info.diagramData.links;
+                        })()
+                    }]
                 },
-                legend: [{
-                    // selectedMode: 'single',
-                    data: ['公司', '董事'],
-                    // icon: 'circle'
-                }],
-                series: [{
-                    type: 'graph',
-                    layout: 'force',
-                    symbolSize: 58,
-                    draggable: true,
-                    roam: true,
-                    focusNodeAdjacency: true,
-                    categories: [{
-                        name: '公司',
-                        itemStyle: {
-                            color: info.diagramColor[0]
-                        }
-                    },
-                    {
-                        name: '董事',
-                        itemStyle: {
-                            color: info.diagramColor[1]
-                        }
-                    }],
-                    edgeSymbol: ['', 'arrow'],
-                    // edgeSymbolSize: [80, 10],
-                    edgeLabel: {
-                        normal: {
-                            show: true,
-                            textStyle: {
-                                fontSize: 20
-                            },
-                            formatter(x) {
-                                return x.data.name;
-                            }
-                        }
-                    },
-                    label: {
-                        show: true
-                    },
-                    force: {
-                        repulsion: 2000,
-                        edgeLength: 120
-                    },
-                    data: (() => {
-                        info.diagramData.nodes.forEach(node => {
-                            if (node.category === 0) {
-                                node.symbolSize = 100;
-                                node.itemStyle = {
-                                    color: info.diagramColor[0]
-                                };
-                            } else if (node.category === 1) {
-                                node.itemStyle = {
-                                    color: info.diagramColor[1]
-                                };
-                            }
-                        });
-                        return info.diagramData.nodes;
-                    })(),
-                    links: (() => {
-                        info.diagramData.links.forEach(link => {
-                            link.label = {
-                                align: 'center',
-                                fontSize: 12
-                            };
-
-                            if (link.name === '参股') {
-                                link.lineStyle = {
-                                    color: info.diagramColor[1]
-                                }
-                            } else if (link.name === '董事') {
-                                link.lineStyle = {
-                                    color: info.diagramColor[0]
-                                }
-                            } else if (link.name === '法人') {
-                                link.lineStyle = {
-                                    color: info.diagramColor[2]
-                                }
-                            }
-                        });
-                        return info.diagramData.links;
-                    })()
-                }]
-            },
-            diagram_charts_option2: {
-                boxTitle: '关系图', // 给图表父元素定义的title，不用于echarts中的option
-                boxWidth: '66.15%',  // 给图表父元素定义的宽，不用于echarts中的option
-                title: {
-                    show: false,
-                    text: "实体属性关系图",
-                    top: "top",
-                    left: "center"
-                },
-                itemStyle: {
-                    normal: {
-                        color: '#000',
-                    },
-                    shadowBlur: 10
-                },
-                animationDuration: 1500,
-                animationEasingUpdate: 'quinticInOut',
-                xAxis: {
-                    show: false,
-                    type: 'value'
-                },
-                yAxis: {
-                    show: false,
-                    type: 'value'
-                },
-                series: [{
-                    type: 'graph',
-                    coordinateSystem: 'cartesian2d',
-                    legendHoverLink: false,
-                    hoverAnimation: true,
-                    nodeScaleRatio: false,
-                    //建头
-                    edgeSymbol: ['circle', 'arrow'],
-                    edgeSymbolSize: [2, 15],
-                    edgeLabel: {
+                diagram_charts_option2: {
+                    boxTitle: '关系图', // 给图表父元素定义的title，不用于echarts中的option
+                    boxWidth: '66.15%',  // 给图表父元素定义的宽，不用于echarts中的option
+                    title: {
                         show: false,
-                        normal: {
-                            show: true,
-                            position: 'middle',
-                            textStyle: {
-                                fontSize: 12
-                            },
-                            formatter: "{c}"
-                        }
-                    },
-                    focusNodeAdjacency: true,
-                    roam: true,
-                    nodeScaleRatio: 0.64,
-                    categories: [{
-                        name: '一级关系',
-                        itemStyle: { //可配置颜色
-                            normal: {
-                                color: "#A170DD",
-                            }
-                        }
-                    }, {
-                        name: '二级关系',
-                        itemStyle: { //可配置颜色
-                            normal: {
-                                color: "#41B1EF",
-                            }
-                        }
-                    }, {
-                        name: '三级关系',
-                        itemStyle: { //可配置颜色
-                            normal: {
-                                color: "#E8B842",
-                            }
-                        }
-                    }, {
-                        name: '四级关系',
-                        itemStyle: { //可配置颜色
-                            normal: {
-                                color: "#667AED",
-                            }
-                        }
-                    }],
-                    //圆形上面的文字
-                    label: {
-                        normal: {
-                            position: "inside",
-                            show: true,
-                            textStyle: {
-                                color: '#fff',
-                                fontSize: 12
-                            },
-                        }
-                    },
-                    force: {
-                        repulsion: 1000,
-                    },
-                    force: {
-                        repulsion: 2500,
-
+                        text: "实体属性关系图",
+                        top: "top",
+                        left: "center"
                     },
                     itemStyle: {
                         normal: {
-                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
-                                offset: 0,
-                                color: '#157eff'
-                            }, {
-                                offset: 1,
-                                color: '#35c2ff'
-                            }]),
+                            color: '#000',
                         },
                         shadowBlur: 10
                     },
-                    // lineStyle: {
-                    //     normal: {
-                    //         width: 1,
-                    //         shadowColor: 'none',
-                    //         color: '#0250FD'
-                    //     },
-                    // },
-                    lineStyle: {
-                        normal: {
-                            opacity: 0.9,
-                            width: 1,
-                            curveness: 0.1
-                        }
+                    animationDuration: 1500,
+                    animationEasingUpdate: 'quinticInOut',
+                    xAxis: {
+                        show: false,
+                        type: 'value'
                     },
-                    data: [{
-                        name: "浮游植物",
-                        category: 0, // 这是种类，一级实体1二级关系2三级关系3四级关系4
-                        symbolSize: 50,
-                        draggable: true,
-                        fixed: true,
-                        value: [0, 150]
-                    }, {
-                        name: "虎鲸",
-                        category: 0,
-                        symbolSize: 50,
-                        draggable: true,
-                        fixed: true,
-                        value: [600, 150]
-                    }, {
-                        name: "磷虾",
-                        category: 1,
-                        value: [200, 200],
-                        draggable: true,
-                        fixed: true,
-                        symbolSize: 50
-                    }, {
-                        name: "浮游动物",
-                        category: 1,
-                        value: [200, 150],
-                        draggable: true,
-                        fixed: true,
-                        symbolSize: 50
-                    }, {
-                        name: "小鱼",
-                        category: 1,
-                        value: [200, 100],
-                        draggable: false,
-                        symbolSize: 50
-                    }, {
-                        name: "须鲸",
-                        category: 2,
-                        symbolSize: 50,
-                        draggable: false,
-                        value: [300, 200]
-                    }, {
-                        name: "大鱼",
-                        category: 2,
-                        symbolSize: 50,
-                        draggable: false,
-                        value: [300, 150]
-                    }, {
-                        name: "海豹",
-                        category: 2,
-                        symbolSize: 50,
-                        draggable: false,
-                        value: [300, 100]
-                    }],
-                    links: [{
-                        source: "浮游植物",
-                        value: "132",
-                        target: "磷虾",
-                    }, {
-                        source: "磷虾",
-                        value: "132",
-                        target: "浮游植物",
-                    }, {
-                        source: "浮游植物",
-                        value: "778",
-                        target: "浮游动物",
-                    }, {
-                        source: "浮游植物",
-                        value: "5354",
-                        target: "小鱼",
-                    }, {
-                        source: "须鲸",
-                        value: "6677",
-                        target: "虎鲸",
-                    }, {
-                        source: "大鱼",
-                        value: "3344",
-                        target: "虎鲸",
-                    }, {
-                        source: "海豹",
-                        value: "2333",
-                        target: "虎鲸",
-                    }, {
-                        source: "磷虾",
-                        value: "3737",
-                        target: "须鲸",
-                    }, {
-                        source: "浮游动物",
-                        value: "6688",
-                        target: "大鱼",
-                    }, {
-                        source: "小鱼",
-                        value: "7788",
-                        target: "海豹",
-                    }, {
-                        source: "大鱼",
-                        value: "9933",
-                        target: "海豹",
+                    yAxis: {
+                        show: false,
+                        type: 'value'
+                    },
+                    series: [{
+                        type: 'graph',
+                        coordinateSystem: 'cartesian2d',
+                        legendHoverLink: false,
+                        hoverAnimation: true,
+                        nodeScaleRatio: false,
+                        //建头
+                        edgeSymbol: ['circle', 'arrow'],
+                        edgeSymbolSize: [2, 15],
+                        edgeLabel: {
+                            show: false,
+                            normal: {
+                                show: true,
+                                position: 'middle',
+                                textStyle: {
+                                    fontSize: 12
+                                },
+                                formatter: "{c}"
+                            }
+                        },
+                        focusNodeAdjacency: true,
+                        roam: true,
+                        nodeScaleRatio: 0.64,
+                        categories: [{
+                            name: '一级关系',
+                            itemStyle: { //可配置颜色
+                                normal: {
+                                    color: "#A170DD",
+                                }
+                            }
+                        }, {
+                            name: '二级关系',
+                            itemStyle: { //可配置颜色
+                                normal: {
+                                    color: "#41B1EF",
+                                }
+                            }
+                        }, {
+                            name: '三级关系',
+                            itemStyle: { //可配置颜色
+                                normal: {
+                                    color: "#E8B842",
+                                }
+                            }
+                        }, {
+                            name: '四级关系',
+                            itemStyle: { //可配置颜色
+                                normal: {
+                                    color: "#667AED",
+                                }
+                            }
+                        }],
+                        //圆形上面的文字
+                        label: {
+                            normal: {
+                                position: "inside",
+                                show: true,
+                                textStyle: {
+                                    color: '#fff',
+                                    fontSize: 12
+                                },
+                            }
+                        },
+                        force: {
+                            repulsion: 1000,
+                        },
+                        force: {
+                            repulsion: 2500,
+
+                        },
+                        itemStyle: {
+                            normal: {
+                                color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [{
+                                    offset: 0,
+                                    color: '#157eff'
+                                }, {
+                                    offset: 1,
+                                    color: '#35c2ff'
+                                }]),
+                            },
+                            shadowBlur: 10
+                        },
+                        // lineStyle: {
+                        //     normal: {
+                        //         width: 1,
+                        //         shadowColor: 'none',
+                        //         color: '#0250FD'
+                        //     },
+                        // },
+                        lineStyle: {
+                            normal: {
+                                opacity: 0.9,
+                                width: 1,
+                                curveness: 0.1
+                            }
+                        },
+                        data: [{
+                            name: "浮游植物",
+                            category: 0, // 这是种类，一级实体1二级关系2三级关系3四级关系4
+                            symbolSize: 50,
+                            draggable: true,
+                            fixed: true,
+                            value: [0, 150]
+                        }, {
+                            name: "虎鲸",
+                            category: 0,
+                            symbolSize: 50,
+                            draggable: true,
+                            fixed: true,
+                            value: [600, 150]
+                        }, {
+                            name: "磷虾",
+                            category: 1,
+                            value: [200, 200],
+                            draggable: true,
+                            fixed: true,
+                            symbolSize: 50
+                        }, {
+                            name: "浮游动物",
+                            category: 1,
+                            value: [200, 150],
+                            draggable: true,
+                            fixed: true,
+                            symbolSize: 50
+                        }, {
+                            name: "小鱼",
+                            category: 1,
+                            value: [200, 100],
+                            draggable: false,
+                            symbolSize: 50
+                        }, {
+                            name: "须鲸",
+                            category: 2,
+                            symbolSize: 50,
+                            draggable: false,
+                            value: [300, 200]
+                        }, {
+                            name: "大鱼",
+                            category: 2,
+                            symbolSize: 50,
+                            draggable: false,
+                            value: [300, 150]
+                        }, {
+                            name: "海豹",
+                            category: 2,
+                            symbolSize: 50,
+                            draggable: false,
+                            value: [300, 100]
+                        }],
+                        links: [{
+                            source: "浮游植物",
+                            value: "132",
+                            target: "磷虾",
+                        }, {
+                            source: "磷虾",
+                            value: "132",
+                            target: "浮游植物",
+                        }, {
+                            source: "浮游植物",
+                            value: "778",
+                            target: "浮游动物",
+                        }, {
+                            source: "浮游植物",
+                            value: "5354",
+                            target: "小鱼",
+                        }, {
+                            source: "须鲸",
+                            value: "6677",
+                            target: "虎鲸",
+                        }, {
+                            source: "大鱼",
+                            value: "3344",
+                            target: "虎鲸",
+                        }, {
+                            source: "海豹",
+                            value: "2333",
+                            target: "虎鲸",
+                        }, {
+                            source: "磷虾",
+                            value: "3737",
+                            target: "须鲸",
+                        }, {
+                            source: "浮游动物",
+                            value: "6688",
+                            target: "大鱼",
+                        }, {
+                            source: "小鱼",
+                            value: "7788",
+                            target: "海豹",
+                        }, {
+                            source: "大鱼",
+                            value: "9933",
+                            target: "海豹",
+                        }]
                     }]
-                }]
+                },
+                diagram_charts_option3: {
+                    boxTitle: '关系图', // 给图表父元素定义的title，不用于echarts中的option
+                    grid: {
+                        left: '15%',
+                        top: 60,
+                        right: '15%',
+                        bottom: 60,
+                    },
+                    series: [{
+                        type: 'graph',
+                        layout: 'force',
+                        force: {
+                            repulsion: 850,
+                            edgeLength: 60,
+                            layoutAnimation: true,
+                        },
+                        symbolSize: 55,
+                        nodeScaleRatio: 1, //图标大小是否随鼠标滚动而变
+                        roam: true, //缩放
+                        draggable: true, //节点是否可以拖拽
+                        focusNodeAdjacency: false, //是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点
+                        edgeSymbol: ['circle', 'arrow'], //线2头标记
+                        label: {
+                            normal: {
+                                show: true,
+                                position: 'inside',
+                                color: 'gold'
+                            }
+                        },
+                        edgeLabel: {
+                            normal: {
+                                show: true,
+                                textStyle: {
+                                    fontSize: 12,
+                                    color: '#333'
+                                },
+                                formatter: "{c}"
+                            }
+                        },
+                        categories: [{
+                            name: '亲人',
+                        }, {
+                            name: '租户',
+                            symbol: 'rect'
+                        }],
+                        itemStyle: {
+                            normal: {
+                                borderColor: '#04f2a7',
+                                borderWidth: 2,
+                                shadowBlur: 10,
+                                shadowColor: '#04f2a7',
+                                color: '#001c43',
+                            }
+                        },
+                        lineStyle: {
+                            normal: {
+                                opacity: 0.9,
+                                width: 1,
+                                curveness: 0,
+                                color: {
+                                    type: 'linear',
+                                    x: 0,
+                                    y: 0,
+                                    x2: 0,
+                                    y2: 1,
+                                    colorStops: [{
+                                        offset: 0,
+                                        color: '#e0f55a' // 0% 处的颜色
+                                    }, {
+                                        offset: 1,
+                                        color: '#639564' // 100% 处的颜色
+                                    }],
+                                    globalCoord: false // 缺省为 false
+                                }
+                            }
+                        },
+                        symbolKeepAspect: false,
+                        data: [{
+                            name: '李富贵',
+                        },
+                        {
+                            name: '王桂花',
+                        },
+                        {
+                            name: '李思思',
+                        },
+                        {
+                            name: '自住房屋',
+
+                        },
+                        {
+                            name: '车子',
+
+                        },
+                        {
+                            name: '租房',
+
+                        },
+                        {
+                            name: '黄涛',
+                        },
+                        {
+                            name: '于海',
+
+                        },
+                        {
+                            name: '张柏',
+                        },
+                        {
+                            name: '付梦杰',
+                        }
+                        ],
+                        links: [{
+                            source: 0,
+                            target: 1,
+                            value: '夫妻'
+                        },
+                        {
+                            source: 0,
+                            target: 2,
+                            value: '父女'
+                        },
+                        {
+                            source: 0,
+                            target: 3,
+                            value: '自住'
+                        },
+                        {
+                            source: 0,
+                            target: 4,
+                            value: '车主'
+                        },
+                        {
+                            source: 0,
+                            target: 5,
+                            value: '租户'
+                        },
+                        {
+                            source: 5,
+                            target: 6,
+                            value: '租赁'
+
+                        },
+                        {
+                            source: 5,
+                            target: 7,
+                            value: '租赁'
+                        },
+                        {
+                            source: 5,
+                            target: 8,
+                            value: '租赁'
+                        },
+                        {
+                            source: 5,
+                            target: 9,
+                            value: '租赁'
+                        }
+                        ],
+                    }]
+                }
             }
-        }
     }
 }

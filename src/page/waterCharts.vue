@@ -13,7 +13,6 @@
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
           <WaterTwo :data="data" :waveColor="waveColor" :bdColor="bdColor"></WaterTwo>
         </div>
-        <div class="pie-box hidden"></div>
       </div>
     </div>
     <div class="right-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6'}">

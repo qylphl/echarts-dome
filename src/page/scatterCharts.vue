@@ -1,5 +1,5 @@
 <template>
-  <div class="content flex-box">
+  <div class="one-content-charts-content content flex-box">
     <div class="left-box" ref="leftBox">
       <!-- 散点气泡图 -->
       <div class="content-box flex-box">
@@ -23,6 +23,9 @@
         <div class="pie-box" v-for="(item, index) in diagramOption" :key="index" :style="{ 'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
           <Scatter :deploy="item" :title="item.boxTitle"></Scatter>
         </div>
+        <div class="pie-box" :style="{  'width': '66.15%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+          <FlowChart></FlowChart>
+        </div>
       </div>
     </div>
     <div class="right-box" :style="{ 'border-color': themeType == 1 ? '#082b7d' : '#b6b6b6' }">
@@ -42,6 +45,7 @@ import Scatter from "components/chartsPublic/charts";
 import SolidScatter from "components/scatter/3dScatter";
 import scatterCharts from "utils/scatterOption";
 import constant from "utils/constant";
+import FlowChart from "components/scatter/flowChart";
 import echarts from "echarts/lib/echarts";
 export default {
   data() {
@@ -129,7 +133,7 @@ export default {
         {name: '火神山医院开微博', value: '2289', symbolSize: '67'},
         {name: '缅怀疫情中逝去的人们', value: '4730', symbolSize: '88'},
         {name: '妨害疫情防控的违法行为', value: '1952', symbolSize: '45'},
-        {name: '抗击新型肺炎第一线', value: '8694000', symbolSize: '114'},
+        {name: '抗击新型肺炎第一线', value: '8694000', symbolSize: '104'},
         {name: '12项疫情防控惠民政策', value: '5668', symbolSize: '75'},
         {name: '战疫一线的别样团圆', value: '339', symbolSize: '68'},
         {name: '31省区市心理援助热线', value: '671', symbolSize: '62'},
@@ -283,7 +287,8 @@ export default {
   components: {
     Subnuv,
     Scatter,
-    SolidScatter
+    SolidScatter,
+    FlowChart,
   },
 };
 </script>
