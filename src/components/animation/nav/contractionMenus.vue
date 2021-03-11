@@ -8,7 +8,7 @@
           :key="index" 
           :class="{ 'swanky-wrapper-box': true, 'choose-content': chooseType == index }" 
           :style="{'height': (chooseType == index ? (64 * item.second.length + 72) + 'px' : '72px')}" 
-          @click="chooseType = index"
+          @click="chooseType = chooseType == index ? -1 : index;"
         >
           <div class="item-content flex-box">
             <i :class="'iconfont ' + item.icon"></i>

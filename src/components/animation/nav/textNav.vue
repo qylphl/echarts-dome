@@ -4,9 +4,12 @@
     <div class="nav_menu flex-box">
       <div class="nav-box" id="gsapNavBox">
         <ul>
-          <li>音乐</li>
-          <li>电影</li>
-          <li>Apps</li>
+          <li 
+            v-for="(msg, index) in menuList" 
+            :key="index" 
+            :class="{'choose-menu': chooseType == index}"
+            @click="chooseType = index"
+          >{{msg}}</li>
           <div class="focus-el el--1"></div>
           <div class="focus-el el--2"></div>
         </ul>
@@ -29,7 +32,10 @@ export default {
     },
   },
   data() {
-    return {};
+    return {
+      menuList: ['音乐','电影','Apps'],
+      chooseType: 0,
+    };
   },
   computed: {
     themeType() {
@@ -68,36 +74,17 @@ export default {
         el.addEventListener("mousedown", () => {
           if (reachedEnd && index + 1 == startPosIndex) {
             tl.to(slideEl_1, animationDuration, { left: `${liRect.width}px` });
-            tl.to(
-              slideEl_2,
-              animationDuration,
-              { left: `${elRect.left - liRect.left}px` },
-              `-=${animationDuration}`
-            );
-            tl.set(
-              slideEl_1,
-              { left: `${slideEl_1_DefaultLeft - liRect.left}px` },
-              `+=${animationDuration}`
-            );
-            tl.set(
-              slideEl_2,
-              { left: `${slideEl_2_DefaultLeft - liRect.left}px` },
-              `+=${animationDuration}`
-            );
+            tl.to(slideEl_2, animationDuration, { left: `${elRect.left - liRect.left}px` }, `-=${animationDuration}`);
+            tl.set(slideEl_1, { left: `${slideEl_1_DefaultLeft - liRect.left}px` }, `+=${animationDuration}`);
+            tl.set(slideEl_2, { left: `${slideEl_2_DefaultLeft - liRect.left}px` }, `+=${animationDuration}`);
           }
 
-          let timesWidth =
-            index + 1 - activeIndex + 1 <= 0 ? 1 : index + 1 - activeIndex + 1;
+          let timesWidth = index + 1 - activeIndex + 1 <= 0 ? 1 : index + 1 - activeIndex + 1;
           activeIndex = index + 1;
 
-          tl.to(slideEl_1, animationDuration, {
-            width: `${timesWidth * slideEl_1_DefaultWidth}px`,
-          });
+          tl.to(slideEl_1, animationDuration, { width: `${timesWidth * slideEl_1_DefaultWidth}px`});
           if (index + 1 != startPosIndex || reachedEnd == false) {
-            tl.to(slideEl_1, animationDuration, {
-              left: `${elRect.left - liRect.left}px`,
-              width: `${slideEl_1_DefaultWidth}px`,
-            });
+            tl.to(slideEl_1, animationDuration, { left: `${elRect.left - liRect.left}px`, width: `${slideEl_1_DefaultWidth}px`});
           }
 
           if (index + 1 == liEls.length) {
@@ -119,7 +106,7 @@ export default {
   height: calc(500px - 64px);
   justify-content: center;
   align-items: center;
-  background-color: #1355f6;
+  // background-color: #1355f6;
   #gsapNavBox {
     width: 350px;
     height: 350px;
@@ -133,17 +120,21 @@ export default {
       grid-template-columns: repeat(3, 1fr);
       border-radius: 35px;
       background: rgba(255, 255, 255, 0.65);
-      box-shadow: 0 12.5px 10px rgba(0, 0, 0, 0.08),
-        0 100px 80px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.08), 0 100px 80px rgba(0, 0, 0, 0.03);
       overflow: hidden;
+      .choose-menu {
+        color: #fff
+      }
       li {
         list-style: none;
         display: grid;
         place-items: center;
         font-family: "montserrat";
-        color: #1355f6;
+        // color: #1355f6;
+        color: #333;
         z-index: 10;
         cursor: pointer;
+        transition: color .2s ease-in-out;
       }
       .focus-el {
         position: absolute;
@@ -152,9 +143,9 @@ export default {
         width: calc(100% / 3);
         height: 100%;
         border-radius: 35px;
-        background: #fff;
-        box-shadow: 0 12.5px 10px rgba(0, 0, 0, 0.015),
-          0 100px 80px rgba(0, 0, 0, 0.03);
+        // background: #fff;
+        background-color: #2094FB;
+        box-shadow: 0 12.5px 10px rgba(0, 0, 0, 0.015), 0 100px 80px rgba(0, 0, 0, 0.03);
       }
       .el--2 {
         left: calc(-100% / 3);

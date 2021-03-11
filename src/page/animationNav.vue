@@ -16,10 +16,12 @@
         <div class="pie-box" :style="{ 'width': '49.3%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <NavColor></NavColor>
         </div>
-        <div class="pie-box" :style="{ 'width': '100%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
-          <NavLight></NavLight>
+        <div class="pie-box" :style="{ 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <SliderNav></SliderNav>
         </div>
-        
+        <div class="pie-box" :style="{ 'width': '66.15%', 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <NavLight></NavLight>
+        </div> 
       </div>
       <!-- 菜单动效 -->
       <div class="content-box flex-box">
@@ -34,6 +36,9 @@
         </div>
         <div class="pie-box" :style="{ 'height': 'auto', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
           <ContractionMenus></ContractionMenus>
+        </div>
+        <div class="pie-box" :style="{  'width': '66.15%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea' }">
+          <PolygonMenu></PolygonMenu>
         </div>
       </div>
     </div>
@@ -55,18 +60,20 @@ import NavAnimationOne from "components/animation/nav/navAnimation";
 import TextNav from "components/animation/nav/textNav";
 import NavCircular from "components/animation/nav/navCircular";
 import NavSolidFlip from "components/animation/nav/navSolidFlip";
+import SliderNav from "components/animation/nav/sliderNav";
 import NavLight from "components/animation/nav/navLight";
 import NavColor from "components/animation/nav/navColor";
 import AccordionMenus from "components/animation/nav/accordionMenus";
 import SvgMenus from "components/animation/nav/svgMenus";
 import ContractionMenus from "components/animation/nav/contractionMenus";
+import PolygonMenu from "components/animation/nav/polygonMenu";
 export default {
   data() {
     return {
       // 右侧导航菜单
       rightList: [
-        { title: "导航相关动画", num: "5" },
-        { title: "菜单相关动画", num: "4" },
+        { title: "导航相关动画", num: "6" },
+        { title: "菜单相关动画", num: "5" },
       ],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
@@ -126,11 +133,13 @@ export default {
     TextNav,
     NavCircular,
     NavSolidFlip,
+    SliderNav,
     NavLight,
     NavColor,
     AccordionMenus,
     SvgMenus,
     ContractionMenus,
+    PolygonMenu,
   },
 };
 </script>
