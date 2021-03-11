@@ -7,7 +7,6 @@
 
 <script>
 import navBar from "components/nav/navBar";
-import { setHighlight, setBorderPieHighlight } from "utils/chartsClass";
 export default {
   props: {
     title: {
