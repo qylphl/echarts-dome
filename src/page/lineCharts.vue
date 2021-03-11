@@ -10,6 +10,10 @@
         <div class="pie-box" v-for="(item, index) in lineOption" :key="index" :style="{'width': item.boxWidth ? item.boxWidth : '32.4%','border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
           <LineArea :deploy="item" :title="item.boxTitle"></LineArea>
         </div>
+        <!-- 动态折线图 -->
+        <div class="pie-box" :style="{'width': '100%', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea'}">
+          <DynamicLine :data="dynamicLineData"></DynamicLine>
+        </div>
       </div>
       <!-- 面积图 -->
       <div class="content-box flex-box">
@@ -33,6 +37,7 @@
 import Subnuv from "components/nav/subnav";
 import LineArea from "components/chartsPublic/charts";
 import BarLine from "components/line/barLine";
+import DynamicLine from "components/line/dynamicLine";
 import LineChart from "utils/lineOption";
 import constant from "utils/constant";
 export default {
@@ -58,9 +63,15 @@ export default {
         O3_data: [281.55, 398.35, 214.02, 179.55, 289.57, 356.14, 422.0],
         date_list: ['2020-10-01', '2020-10-02', '2020-10-03', '2020-10-04', '2020-10-05', '2020-10-06','2020-10-07']
       },
+      // 动态折线图数据
+      dynamicLineData: [{
+        xcategory: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
+        low: [3, 10, 5, 20, 8, 35, 5, 25, 20, 37, 30, 39],
+        lowLine: [],
+      }],
       // 右侧导航菜单
       rightList: [
-        { title: "折线图", num: "4" },
+        { title: "折线图", num: "5" },
         { title: "面积图", num: "4" },
       ],
       scroll: "",
@@ -132,7 +143,8 @@ export default {
   components: {
     Subnuv,
     LineArea,
-    BarLine
+    BarLine,
+    DynamicLine,
   },
 };
 </script>

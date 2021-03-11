@@ -25,7 +25,7 @@ export default {
     return {
       optionString: {},
       tipTitle:
-        "注：该组件可以在src/components/pie/sunrisePie.vue中找到直接使用。",
+        "注：该组件可以在src/components/pie/sunrisePie.vue找到直接使用。",
     };
   },
   computed: {
