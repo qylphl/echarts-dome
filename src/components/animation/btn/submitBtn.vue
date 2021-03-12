@@ -1,7 +1,7 @@
 <template>
   <div class="chart-content">
     <navBar :title="title" :optionString="deploy"></navBar>
-    <div class="container flex-box">
+    <div class="container flex-box" ref="container">
       <button id="button" :class="btnClassName" @click="clickButton">
         <div class="message submitMessage">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 12.2">
@@ -32,16 +32,18 @@
           </span>
         </div>
       </button>
+      <canvas id="canvas"></canvas>
     </div>
   </div>
 </template>
 
 <script>
 import navBar from "components/nav/navBar";
+import { Confetto, Sequin } from "utils/submitBtnClass";
 export default {
   props: {
     title: {
-      default: "SVG提交按钮动效",
+      default: "SVG + Canvas纸屑按钮提交动效",
       type: String,
     },
     deploy: {
@@ -52,6 +54,12 @@ export default {
     return {
       disabled: false,
       btnClassName: "ready", // 按钮的class类名
+      // canvas需要数据
+      confettiCount: 20,
+      sequinCount: 10,
+      // add Confetto/Sequin objects to arrays to draw them
+      confetti: [],
+      sequins: [],
     };
   },
   computed: {
@@ -59,8 +67,107 @@ export default {
       return this.$store.getters.getThemeTyle;
     },
   },
-  mounted() {},
+  mounted() {
+    this.initCanvas();
+  },
   methods: {
+    initCanvas() {
+      // init other global elements
+      const button = document.getElementById("button"),
+        canvas = document.getElementById("canvas"),
+        ctx = canvas.getContext("2d");
+      canvas.width = this.$refs.container.offsetWidth;
+      canvas.height = this.$refs.container.offsetHeight;
+
+      let that = this,
+        cx = ctx.canvas.width / 2,
+        cy = ctx.canvas.height / 2;
+
+      var render = () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        that.confetti.forEach((confetto, index) => {
+          let width = confetto.dimensions.x * confetto.scale.x,
+            height = confetto.dimensions.y * confetto.scale.y;
+
+          // move canvas to position and rotate
+          ctx.translate(confetto.position.x, confetto.position.y);
+          ctx.rotate(confetto.rotation);
+
+          // update confetto "physics" values
+          confetto.update();
+
+          // get front or back fill color
+          ctx.fillStyle = confetto.scale.y > 0 ? confetto.color.front : confetto.color.back;
+
+          // draw confetto
+          ctx.fillRect(-width / 2, -height / 2, width, height);
+
+          // reset transform matrix
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+          // clear rectangle where button cuts off
+          if (confetto.velocity.y < 0) {
+            ctx.clearRect(
+              canvas.width / 2 - button.offsetWidth / 2,
+              canvas.height / 2 + button.offsetHeight / 2,
+              button.offsetWidth,
+              button.offsetHeight
+            );
+          }
+        });
+
+        that.sequins.forEach((sequin, index) => {
+          // move canvas to position
+          ctx.translate(sequin.position.x, sequin.position.y);
+
+          // update sequin "physics" values
+          sequin.update();
+
+          // set the color
+          ctx.fillStyle = sequin.color;
+
+          // draw sequin
+          ctx.beginPath();
+          ctx.arc(0, 0, sequin.radius, 0, 2 * Math.PI);
+          ctx.fill();
+
+          // reset transform matrix
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+
+          // clear rectangle where button cuts off
+          if (sequin.velocity.y < 0) {
+            ctx.clearRect(
+              canvas.width / 2 - button.offsetWidth / 2,
+              canvas.height / 2 + button.offsetHeight / 2,
+              button.offsetWidth,
+              button.offsetHeight
+            );
+          }
+        });
+
+        // remove confetti and sequins that fall off the screen
+        // must be done in seperate loops to avoid noticeable flickering
+        that.confetti.forEach((confetto, index) => {
+          if (confetto.position.y >= canvas.height) that.confetti.splice(index, 1);
+        });
+        that.sequins.forEach((sequin, index) => {
+          if (sequin.position.y >= canvas.height) that.sequins.splice(index, 1);
+        });
+
+        window.requestAnimationFrame(render);
+      };
+
+      render();
+    },
+    initBurst() {
+      for (let i = 0; i < this.confettiCount; i++) {
+        this.confetti.push(new Confetto());
+      }
+      for (let i = 0; i < this.sequinCount; i++) {
+        this.sequins.push(new Sequin());
+      }
+    },
     clickButton() {
       let that = this;
       if (!that.disabled) {
@@ -69,9 +176,12 @@ export default {
         setTimeout(() => {
           that.btnClassName = "complete";
           setTimeout(() => {
-            that.disabled = false;
-            that.btnClassName = "ready";
-          }, 5000);
+            that.initBurst();
+            setTimeout(() => {
+              that.disabled = false;
+              that.btnClassName = "ready";
+            }, 5000);
+          }, 320);
         }, 1800);
       }
     },
@@ -83,7 +193,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 64px);
   min-height: calc(500px - 64px);
   position: relative;
   button {
@@ -253,10 +363,10 @@ export default {
     }
   }
   canvas {
-    height: 100vh;
-    pointer-events: none;
-    position: fixed;
+    position: absolute;
     width: 100%;
+    height: 100%;
+    pointer-events: none;
     z-index: 2;
   }
 }
