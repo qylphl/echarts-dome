@@ -37,7 +37,7 @@ export default {
 <style lang="scss" scoped>
 .light-shadow-btn-box {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 64px);
   min-height: calc(500px - 64px);
   align-items: center;
   justify-content: center;
