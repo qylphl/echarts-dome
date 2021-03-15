@@ -59,18 +59,14 @@ export default {
 <style lang="scss" scoped>
 @import "style/animationBtn/hoverBtn.scss";
 .loadbox {
-  padding: 20px 20px 0;
+  padding: 20px;
   flex-wrap: wrap;
-  justify-content: space-between;
   box-sizing: border-box;
   .button {
     min-width: 150px !important;
     width: 150px !important;
     height: 54px !important;
     box-sizing: border-box;
-    &:last-child {
-        margin-right: auto;
-    }
   }
   .button--pipaluk,
   .button--moema {

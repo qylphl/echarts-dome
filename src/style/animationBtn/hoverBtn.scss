@@ -24,12 +24,10 @@ input::-moz-focus-inner {
     min-width: 150px;
     max-width: 250px;
     display: block;
-    margin: 1em;
+    margin: 1em 1.35em;
     padding: 1em 2em;
     border: none;
-    background: 0 0;
     color: inherit;
-    vertical-align: middle;
     position: relative;
     z-index: 1;
     -webkit-backface-visibility: hidden;

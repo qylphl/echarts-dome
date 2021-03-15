@@ -29,6 +29,9 @@
          <HoverBtnTwo></HoverBtnTwo>
         </div>
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <GradientBtn></GradientBtn>
+        </div>
+        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <ClickBtn></ClickBtn>
         </div>
         <div class="pie-box" :style="{'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
@@ -71,6 +74,7 @@ import SearchBox from "components/animation/form/searchBox";
 // 按钮相关动画组件
 import HoverBtn from "components/animation/btn/hoverBtn";
 import HoverBtnTwo from "components/animation/btn/hoverBtn2";
+import GradientBtn from "components/animation/btn/gradientBtn";
 import ClickBtn from "components/animation/btn/clickBtn";
 import CssClickBtn from "components/animation/btn/cssClickBtn";
 import JellyBtn from "components/animation/btn/jellyBtn";
@@ -81,7 +85,7 @@ export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "表单相关动画", num: "5" },{ title: "按钮相关动画", num: "8" },],
+      rightList: [{ title: "表单相关动画", num: "5" },{ title: "按钮相关动画", num: "9" },],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -141,6 +145,7 @@ export default {
     SearchBox,
     HoverBtn,
     HoverBtnTwo,
+    GradientBtn,
     ClickBtn,
     CssClickBtn,
     JellyBtn,

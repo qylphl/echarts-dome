@@ -111,19 +111,15 @@ export default {
 <style lang="scss" scoped>
 @import "style/animationBtn/hoverBtn2.scss";
 .loadbox {
-  padding: 20px 20px 0;
+  padding: 20px;
   flex-wrap: wrap;
-  justify-content: space-between;
   box-sizing: border-box;
   .btn {
     min-width: 150px !important;
     width: 150px !important;
     height: 54px !important;
     box-sizing: border-box;
-    margin: 1em;
-    &:last-child {
-        margin-right: auto;
-    }
+    margin: 1em 1.46em;
   }
 }
 </style>
