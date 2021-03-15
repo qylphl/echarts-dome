@@ -69,8 +69,8 @@ export default {
                   },
                 },
                 emphasis: {
-                  shadowBlur: 10,
-                  shadowColor: "#333",
+                  shadowBlur: 8,
+                  shadowColor: "#e6e6e6",
                 },
               },
               data: that.data,
