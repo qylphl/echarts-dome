@@ -22,6 +22,9 @@
         <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
          <StyleLoading></StyleLoading>
         </div>
+        <div class="pie-box" :style="{'width': '100%', 'height': 'max-content', 'border-color': themeType == 1 ? '#082b7d' : '#eaeaea', }">
+         <LoadingThree></LoadingThree>
+        </div>
       </div>
       
     </div>
@@ -45,11 +48,12 @@ import Loading2 from "components/animation/loading/loading2";
 import Loading from "components/animation/loading/loading";
 import StyleLoading from "components/animation/loading/styleLoading";
 import SimpleLoading from "components/animation/loading/simpleLoading";
+import LoadingThree from "components/animation/loading/loading3";
 export default {
   data() {
     return {
       // 右侧导航菜单
-      rightList: [{ title: "进度条相关动画", num: "2" },{ title: "加载相关动画", num: "3" }],
+      rightList: [{ title: "进度条相关动画", num: "2" },{ title: "加载相关动画", num: "4" }],
       scroll: "",
       chooseIndex: 0, // 选中右侧导航的index值
       differ: 0, // 差值
@@ -106,6 +110,7 @@ export default {
     SimpleLoading,
     ProgressBar,
     Loading2,
+    LoadingThree,
   },
 };
 </script>
